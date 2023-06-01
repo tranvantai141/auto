@@ -1,0 +1,8 @@
+import E{{titleCase state}}ActionTypes from "./{{state}}.types"; 
+
+class {{titleCase state}}Actions { 
+  public static _set{{{titleCase state}}}TestAction = (input: string) => {
+    return { type: E{{titleCase state}}ActionTypes.SET_TEST, payload: input }; 
+  }; 
+} 
+export default {{titleCase state}}Actions;

@@ -1,0 +1,46 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "java.configuration.updateBuildConfiguration": "disabled",
+  "todo-tree.highlights.defaultHighlight": {
+    "icon": "alert",
+    "type": "text-and-comment",
+    "foreground": "#1a0505",
+    "background": "#FFFFFF",
+    "opacity": 50,
+    "iconColour": "#236dc9",
+    "gutterIcon": true
+  },
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "check",
+      "foreground": "#09ff00",
+      "background": "#420b14",
+      "iconColour": "#09ff00"
+    },
+    "NOTE": {
+      "icon": "note",
+      "foreground": "#420b14",
+      "background": "#5ec2ff",
+      "iconColour": "#5ec2ff"
+    },
+    "COMMENT": {
+      "icon": "note",
+      "foreground": "#420b14",
+      "background": "#e2ceb8",
+      "iconColour": "#e2ceb8"
+    },
+    "FIXME": {
+      "foreground": "#420b14",
+      "background": "#f1c40f",
+      "iconColour": "#f1c40f"
+    },
+    "BUG": {
+      "foreground": "#420b14",
+      "background": "#e2062c",
+      "iconColour": "#e2062c"
+    }
+  },
+  "todo-tree.general.tags": ["BUG", "FIXME", "TODO", "NOTE", "COMMENT"],
+  "cSpell.words": ["joltup", "keychain", "libphonenumber", "pinchable", "requeststarttime"]
+}

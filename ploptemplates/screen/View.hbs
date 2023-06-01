@@ -1,0 +1,12 @@
+import React from "react";
+import { View } from "react-native";
+import styles from "./Styles.{{pascalCase screenName}}Screen";
+import ViewModel from "./ViewModel.{{pascalCase screenName}}Screen";
+
+const {{pascalCase screenName}}Screen = React.memo(() => {
+  const {} = ViewModel();
+  return <View style={styles.container}></View>;
+});
+
+{{pascalCase screenName}}Screen.displayName = styles.SCREEN_TAG;
+export default {{pascalCase screenName}}Screen;

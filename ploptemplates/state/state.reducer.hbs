@@ -1,0 +1,27 @@
+import E{{titleCase state}}ActionTypes from "./{{state}}.types";
+import persistReducer from "redux-persist/lib/persistReducer";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { IAction{{titleCase state}}, I{{titleCase state}}Reducer } from "./{{state}}.model";
+
+export const defaultState: I{{titleCase state}}Reducer = {
+  someState: '',
+};
+
+const {{titleCase state}}Reducer = (state = defaultState, action: IAction{{titleCase state}}) => {
+  switch (action.type) {
+    case E{{titleCase state}}ActionTypes.SET_TEST: {
+      return { ...state, someState: action.payload };
+    }
+
+    default:
+      return state;
+  }
+};
+
+const {{state}}PersistConfig = {
+  key: "{{titleCase state}}Reducer",
+  storage: AsyncStorage,
+  whitelist: [],
+};
+
+export default persistReducer({{state}}PersistConfig, {{titleCase state}}Reducer);

@@ -1,0 +1,12 @@
+import ServicesManager from "@src/helper/ServicesManager";
+
+class {{pascalCase serviceName}}Services {
+  //change the api default uri
+  private static axiosInstance = new ServicesManager(ServicesManager.AUTH_URL).getAxiosInstance(false);
+
+  public static getSomethingApi = (): Promise<null> => {
+    return this.axiosInstance.get("something").then((res) => res.data);
+  };
+}
+
+export default {{pascalCase serviceName}}Services;

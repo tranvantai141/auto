@@ -1,0 +1,11 @@
+import E{{titleCase state}}ActionTypes from "./{{state}}.types"; 
+
+export interface I{{titleCase state}}Reducer {
+  someState: '' 
+} 
+
+export interface ISet{{titleCase state}}Action { 
+  type: E{{titleCase state}}ActionTypes.SET_TEST;
+  payload: '' //typeof payload; 
+} 
+export type IAction{{titleCase state}} = ISet{{titleCase state}}Action;

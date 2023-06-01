@@ -1,0 +1,418 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FirstScreen renders correctly 1`] = `
+<View
+  accessibilityIgnoresInvertColors={true}
+  style={
+    Object {
+      "bottom": 0,
+      "left": 0,
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <Image
+    accessibilityLabel="FirstScreen-imageBackground"
+    accessible={true}
+    resizeMode="stretch"
+    source={
+      Object {
+        "testUri": "../../../src/assets/images/LoginBackground.jpg",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "height": undefined,
+          "width": undefined,
+        },
+        undefined,
+      ]
+    }
+    testID="FirstScreen-imageBackground"
+  />
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "height": 180.7142857142857,
+          "justifyContent": "center",
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        accessibilityLabel="OnboardingComponent-1container"
+        accessible={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "space-between",
+            "marginTop": 20,
+          }
+        }
+        testID="OnboardingComponent-1container"
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "#0FDE82",
+              "borderRadius": 100,
+              "height": 57.5,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Inter-Regular",
+                "fontSize": 9.75,
+              }
+            }
+          >
+            1
+          </Text>
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#0FDE82",
+              "fontFamily": "Inter-Regular",
+              "fontSize": 9.75,
+            }
+          }
+        >
+          Basic Info
+        </Text>
+      </View>
+      <View
+        accessibilityLabel="OnboardingComponent-2container"
+        accessible={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "space-between",
+            "marginTop": 20,
+          }
+        }
+        testID="OnboardingComponent-2container"
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "#E5E5E5",
+              "borderRadius": 100,
+              "height": 57.5,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#336CFB",
+                "fontFamily": "Inter-Regular",
+                "fontSize": 9.75,
+              }
+            }
+          >
+            2
+          </Text>
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#E5E5E5",
+              "fontFamily": "Inter-Regular",
+              "fontSize": 9.75,
+            }
+          }
+        >
+          Additional Info
+        </Text>
+      </View>
+      <View
+        accessibilityLabel="OnboardingComponent-3container"
+        accessible={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "space-between",
+            "marginTop": 20,
+          }
+        }
+        testID="OnboardingComponent-3container"
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "#E5E5E5",
+              "borderRadius": 100,
+              "height": 57.5,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#336CFB",
+                "fontFamily": "Inter-Regular",
+                "fontSize": 9.75,
+              }
+            }
+          >
+            3
+          </Text>
+        </View>
+        <Text
+          style={
+            Object {
+              "color": "#E5E5E5",
+              "fontFamily": "Inter-Regular",
+              "fontSize": 9.75,
+            }
+          }
+        >
+          Purposes
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "marginTop": 32,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Inter-SemiBold",
+            "fontSize": 11.25,
+            "marginBottom": 13.142857142857142,
+            "marginTop": 26.285714285714285,
+          }
+        }
+      >
+        Full-name
+      </Text>
+      <TextInput
+        errorMessageText="Invalid name"
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        placeHolder="Enter full-name"
+        placeholder="Enter full-name"
+        placeholderTextColor="#9f9f9f"
+        setValue={[Function]}
+        style={
+          Object {
+            "alignSelf": "center",
+            "backgroundColor": "#E5E5E5",
+            "borderColor": "#e4e4e4",
+            "borderRadius": 8,
+            "borderWidth": 2,
+            "color": "#333333",
+            "fontFamily": "Inter-Regular",
+            "fontSize": 9.75,
+            "height": 78.85714285714286,
+            "paddingLeft": 16,
+            "width": 686,
+          }
+        }
+        testID="username-textinput"
+        testId="username-textinput"
+        value=""
+      />
+      <Text
+        style={
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Inter-SemiBold",
+            "fontSize": 11.25,
+            "marginBottom": 13.142857142857142,
+            "marginTop": 26.285714285714285,
+          }
+        }
+      >
+        ID number
+      </Text>
+      <TextInput
+        errorMessageText="ID contains 12 digits"
+        keyboardType="decimal-pad"
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        placeHolder="Enter 12 digits ID number"
+        placeholder="Enter 12 digits ID number"
+        placeholderTextColor="#9f9f9f"
+        setValue={[Function]}
+        style={
+          Object {
+            "alignSelf": "center",
+            "backgroundColor": "#E5E5E5",
+            "borderColor": "#e4e4e4",
+            "borderRadius": 8,
+            "borderWidth": 2,
+            "color": "#333333",
+            "fontFamily": "Inter-Regular",
+            "fontSize": 9.75,
+            "height": 78.85714285714286,
+            "paddingLeft": 16,
+            "width": 686,
+          }
+        }
+        testID="id-textinput"
+        testId="id-textinput"
+        value=""
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "alignSelf": "center",
+          "bottom": 39.42857142857143,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "position": "absolute",
+          "width": 710.5714285714286,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          Object {
+            "disabled": true,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "aspectRatio": 1.5,
+            "backgroundColor": "#E5E5E5",
+            "borderRadius": 100,
+            "elevation": 5,
+            "height": 72.28571428571428,
+            "justifyContent": "center",
+            "opacity": 0,
+            "shadowColor": "#000",
+            "shadowOffset": Object {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.25,
+            "shadowRadius": 3.84,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontFamily": "Inter-SemiBold",
+              "fontSize": 16.5,
+            }
+          }
+        >
+          ←
+        </Text>
+      </View>
+      <View
+        accessibilityState={
+          Object {
+            "disabled": true,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "aspectRatio": 1.5,
+            "backgroundColor": "#E5E5E5",
+            "borderRadius": 100,
+            "elevation": 5,
+            "height": 72.28571428571428,
+            "justifyContent": "center",
+            "opacity": 0.5,
+            "shadowColor": "#000",
+            "shadowOffset": Object {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.25,
+            "shadowRadius": 3.84,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontFamily": "Inter-SemiBold",
+              "fontSize": 16.5,
+            }
+          }
+        >
+          →
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
