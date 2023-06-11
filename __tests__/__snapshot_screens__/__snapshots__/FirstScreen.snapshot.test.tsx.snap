@@ -14,8 +14,7 @@ exports[`FirstScreen renders correctly 1`] = `
   }
 >
   <Image
-    accessibilityLabel="FirstScreen-imageBackground"
-    accessible={true}
+    accessible={false}
     resizeMode="stretch"
     source={
       Object {
@@ -69,8 +68,7 @@ exports[`FirstScreen renders correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="OnboardingComponent-1container"
-        accessible={true}
+        accessible={false}
         style={
           Object {
             "alignItems": "center",
@@ -118,8 +116,7 @@ exports[`FirstScreen renders correctly 1`] = `
         </Text>
       </View>
       <View
-        accessibilityLabel="OnboardingComponent-2container"
-        accessible={true}
+        accessible={false}
         style={
           Object {
             "alignItems": "center",
@@ -167,8 +164,7 @@ exports[`FirstScreen renders correctly 1`] = `
         </Text>
       </View>
       <View
-        accessibilityLabel="OnboardingComponent-3container"
-        accessible={true}
+        accessible={false}
         style={
           Object {
             "alignItems": "center",
@@ -400,6 +396,7 @@ exports[`FirstScreen renders correctly 1`] = `
             "shadowRadius": 3.84,
           }
         }
+        testID="nextButton"
       >
         <Text
           style={
@@ -413,6 +410,20 @@ exports[`FirstScreen renders correctly 1`] = `
         </Text>
       </View>
     </View>
+    <DatePicker
+      androidVariant="iosClone"
+      cancelText="Cancel"
+      confirmText="Confirm"
+      date={2008-06-11T09:07:11.052Z}
+      locale="us"
+      modal={true}
+      mode="date"
+      onCancel={[Function]}
+      onConfirm={[Function]}
+      open={false}
+      testID="DatePicker"
+      title="Select date and Time"
+    />
   </View>
 </View>
 `;

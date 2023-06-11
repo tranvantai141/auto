@@ -247,9 +247,9 @@ export class DateManager {
   }
 
   private createDayList() {
-    const firstMonthOfArr = new Date(
-      `01/01/${parseInt(moment(DateManager.TODAY).format("YY")) - this.pastYearRange}`,
-    ).getTime();
+    const yearDeficit = parseInt(moment(DateManager.TODAY).format("YY")) - this.pastYearRange;
+    const isLastCentury = yearDeficit < 0;
+    const firstMonthOfArr = new Date(`01/01/${isLastCentury ? yearDeficit + 100 : yearDeficit}`).getTime();
 
     const totalYear = this.pastYearRange + this.futureYearRange + 1;
     const leapYear = totalYear % 4;

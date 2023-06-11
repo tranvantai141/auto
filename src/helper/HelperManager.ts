@@ -1,5 +1,6 @@
 import RegOptions from "@src/models/RegModel";
 import parsePhoneNumber, { CountryCode, PhoneNumber } from "libphonenumber-js";
+import { Platform } from "react-native";
 
 interface IOmit {
   <T extends object, K extends [...(keyof T)[]]>(obj: T, ...keys: K): {
@@ -106,10 +107,18 @@ class HelperManager {
   };
 
   public static setLocator = (prefix: string, id: string) => {
+    const testID = `${prefix}-${id}`;
+    if (Platform.OS === "ios") {
+      return {
+        testID,
+        accessible: false,
+      };
+    }
+
     return {
+      testID,
       accessible: true,
-      accessibilityLabel: `${prefix}-${id}`,
-      testID: `${prefix}-${id}`,
+      accessibilityLabel: testID,
     };
   };
 }

@@ -7,8 +7,8 @@ import { ANIMATIONS, COLORS, THEMES } from "@src/assets";
 import { ECurrentStep, PURPOSE_LIST, STEP_LIST } from "./Model.OnboardingComponent";
 import InputComponent from "../InputComponent/View.InputComponent";
 import RegOptions from "@src/models/RegModel";
-import { CalendarComponent } from "..";
 import LottieView from "lottie-react-native";
+import DatePicker from "react-native-date-picker";
 
 const OnboardingComponent = React.memo(() => {
   const {
@@ -17,6 +17,7 @@ const OnboardingComponent = React.memo(() => {
     idNumber,
     username,
     setEmail,
+    errorText,
     setIdNumber,
     phoneNumber,
     setUsername,
@@ -24,12 +25,36 @@ const OnboardingComponent = React.memo(() => {
     selectedDate,
     setPhoneNumber,
     dismissKeyboard,
+    setSelectedDate,
     selectedPurposes,
     _handlePressBack,
     _handlePressNext,
+    dateModalVisible,
+    _handleOnConfirmDate,
+    setDateModalVisible,
     _handleSelectPurpose,
-    CalendarComponentProps,
   } = ViewModel();
+
+  const _renderDateModal = React.useCallback(() => {
+    return (
+      <DatePicker
+        testID="DatePicker"
+        modal
+        mode={"date"}
+        title={"Select date and Time"}
+        open={dateModalVisible}
+        date={selectedDate}
+        locale={"us"}
+        androidVariant="iosClone"
+        confirmText={"Confirm"}
+        cancelText={"Cancel"}
+        onConfirm={_handleOnConfirmDate}
+        onCancel={() => {
+          setDateModalVisible(false);
+        }}
+      />
+    );
+  }, [_handleOnConfirmDate, dateModalVisible, selectedDate, setDateModalVisible, setSelectedDate]);
 
   const _renderHeader = React.useCallback(() => {
     const output: JSX.Element[] = [];
@@ -66,7 +91,12 @@ const OnboardingComponent = React.memo(() => {
           <Text style={THEMES.commonBoldText}>←</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity disabled={!canNext} onPress={_handlePressNext} style={styles.nextButtonStyle(canNext)}>
+        <TouchableOpacity
+          testID="nextButton"
+          disabled={!canNext}
+          onPress={_handlePressNext}
+          style={styles.nextButtonStyle(canNext)}
+        >
           <Text style={THEMES.commonBoldText}>→</Text>
         </TouchableOpacity>
       </View>
@@ -165,13 +195,21 @@ const OnboardingComponent = React.memo(() => {
             <View style={styles.dateOfBirthRow}>
               <Text style={styles.dateOfBirthText}>{"Date of birth"}</Text>
               <Text style={styles.dateOfBirthText}>{`Age: ${
-                new Date().getFullYear() - new Date(selectedDate.millisecondCount).getFullYear()
+                new Date().getFullYear() - new Date(selectedDate.getTime()).getFullYear()
               } years old`}</Text>
             </View>
-            <CalendarComponent {...CalendarComponentProps} />
-            <View style={styles.dateOfBirthRow}>
+
+            {!!errorText && <Text testID="errorText">{errorText}</Text>}
+
+            <TouchableOpacity
+              testID="setDateModalVisible"
+              onPress={() => {
+                setDateModalVisible(true);
+              }}
+              style={styles.dateOfBirthRow}
+            >
               <Text style={styles.minAgeUsageNotice}>*The minimum age requirement is 15 years or older</Text>
-            </View>
+            </TouchableOpacity>
           </ScrollView>
         );
         break;
@@ -180,17 +218,17 @@ const OnboardingComponent = React.memo(() => {
         output = (
           <React.Fragment>
             <View style={THEMES.spacer} />
-            <View style={THEMES.spacer} />
+            <View testID="step3" style={THEMES.spacer} />
 
             {PURPOSE_LIST.map((purpose) => {
               return (
                 <TouchableOpacity
                   style={styles.purposeButton}
                   onPress={_handleSelectPurpose(purpose)}
-                  testID={`purpose-option-${purpose.name}`}
+                  testID={`purpose-option-${purpose.valueCode}`}
                   key={`purpose-option-${purpose.name}`}
                 >
-                  <Text style={THEMES.commonMediumTextStyle(COLORS.white)}>hello</Text>
+                  <Text style={THEMES.commonMediumTextStyle(COLORS.white)}>{purpose.name}</Text>
                   <View testID={purpose.name} style={styles.squareCheckTextWrapper}>
                     {selectedPurposes.map((s) => s.valueCode).includes(purpose.valueCode) && (
                       <Text style={styles.checkText}>✓</Text>
@@ -213,8 +251,6 @@ const OnboardingComponent = React.memo(() => {
     return <View style={styles.bodyContainer}>{output}</View>;
   }, [
     currentStep,
-    selectedPurposes,
-    _handleSelectPurpose,
     username,
     setUsername,
     idNumber,
@@ -223,8 +259,11 @@ const OnboardingComponent = React.memo(() => {
     setEmail,
     phoneNumber,
     setPhoneNumber,
-    selectedDate.millisecondCount,
-    CalendarComponentProps,
+    selectedDate,
+    errorText,
+    setDateModalVisible,
+    _handleSelectPurpose,
+    selectedPurposes,
   ]);
 
   if (currentStep === ECurrentStep.success) {
@@ -252,6 +291,8 @@ const OnboardingComponent = React.memo(() => {
         {_renderBody()}
 
         {_renderButtonFooter()}
+
+        {_renderDateModal()}
       </View>
     </TouchableWithoutFeedback>
   );

@@ -2,47 +2,36 @@ import React from "react";
 import { ECurrentStep, IPurpose, IUserOnboardInformation, TValueTestArr } from "./Model.OnboardingComponent";
 import { Keyboard } from "react-native";
 import HelperManager from "@src/helper/HelperManager";
-import { DateManager, MyDay, TMonth } from "@src/helper/DateManager";
-import moment from "moment";
-import { ICalendarComponentProps } from "../CalendarComponent/Model.CalendarComponent";
-import styles from "./Styles.OnboardingComponent";
 import RegOptions from "@src/models/RegModel";
+import styles from "./Styles.OnboardingComponent";
 
 const ViewModel = () => {
+  const [dateModalVisible, setDateModalVisible] = React.useState(false);
   const [currentStep, setCurrentStep] = React.useState<ECurrentStep>(ECurrentStep.stepOne);
   const [username, setUsername] = React.useState("");
   const [idNumber, setIdNumber] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
   const [selectedPurposes, setSelectedPurposes] = React.useState<Array<IPurpose>>([]);
-  const [selectedMonth, setSelectedMonth] = React.useState(
-    moment(new Date(styles.ASSUMED_ONLY_15_YEARS_OLD_TO_HAVE_E_BANK_ACCOUNT).getTime()).format(DateManager.MONTH_NAME),
-  );
-  const [selectedDate, setSelectedDate] = React.useState(
-    new MyDay().createNewDay(styles.ASSUMED_ONLY_15_YEARS_OLD_TO_HAVE_E_BANK_ACCOUNT.getTime(), true),
-  );
-
-  const currentMonthDetail = React.useMemo(
-    () => new DateManager(20, 1).getMonthList().find((m) => Object.keys(m)[0] === selectedMonth) as TMonth,
-    [selectedMonth],
-  );
-
-  const CalendarComponentProps: ICalendarComponentProps = React.useMemo(
-    () => ({
-      selectedMonth,
-      setSelectedDate,
-      setSelectedMonth,
-      selectedDate,
-      disableRange: true,
-      notShowOutOfMonth: true,
-      currentMonthDetail,
-    }),
-    [currentMonthDetail, selectedDate, selectedMonth],
-  );
+  const [selectedDate, setSelectedDate] = React.useState(styles.ASSUMED_ONLY_15_YEARS_OLD_TO_HAVE_E_BANK_ACCOUNT);
+  const [errorText, setErrorText] = React.useState("");
 
   const dismissKeyboard = React.useCallback(() => {
     Keyboard.dismiss();
   }, []);
+
+  const _handleOnConfirmDate = React.useCallback(
+    (date: Date) => {
+      if (date.getTime() > selectedDate.getTime()) {
+        setErrorText("You can't");
+        return;
+      }
+      setErrorText("");
+      setSelectedDate(date);
+      setDateModalVisible(false);
+    },
+    [selectedDate],
+  );
 
   const _handlePressBack = React.useCallback(() => {
     if (currentStep === ECurrentStep.stepOne) return;
@@ -55,7 +44,7 @@ const ViewModel = () => {
       idNumber,
       email,
       phoneNumber,
-      dateOfBirth: new Date(selectedDate.millisecondCount),
+      dateOfBirth: new Date(selectedDate.getTime()),
       purposes: selectedPurposes,
     };
     console.log("📢 [ViewModel.OnboardingComponent.ts:61]", userInformation);
@@ -90,7 +79,7 @@ const ViewModel = () => {
         passConditions: [],
       },
       {
-        value: selectedDate,
+        value: selectedDate.getTime(),
         passConditions: [],
       },
     ];
@@ -112,6 +101,7 @@ const ViewModel = () => {
     idNumber,
     username,
     setEmail,
+    errorText,
     setIdNumber,
     phoneNumber,
     setUsername,
@@ -119,11 +109,14 @@ const ViewModel = () => {
     selectedDate,
     setPhoneNumber,
     dismissKeyboard,
+    setSelectedDate,
     selectedPurposes,
     _handlePressBack,
     _handlePressNext,
+    dateModalVisible,
+    setDateModalVisible,
+    _handleOnConfirmDate,
     _handleSelectPurpose,
-    CalendarComponentProps,
   };
 };
 
