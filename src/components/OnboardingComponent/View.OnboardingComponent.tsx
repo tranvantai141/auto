@@ -225,7 +225,7 @@ const OnboardingComponent = React.memo(() => {
                 <TouchableOpacity
                   style={styles.purposeButton}
                   onPress={_handleSelectPurpose(purpose)}
-                  testID={`purpose-option-${purpose.valueCode}`}
+                  {...HelperManager.setLocator(styles.TEST_ID, purpose.name)}
                   key={`purpose-option-${purpose.name}`}
                 >
                   <Text style={THEMES.commonMediumTextStyle(COLORS.white)}>{purpose.name}</Text>
