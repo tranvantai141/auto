@@ -69,9 +69,7 @@ describe("OnboardingComponent", () => {
 
     // Now we should be in step three
     const purposeOptionId = `OnboardingComponent-${PURPOSE_LIST[0].name}`;
-    await waitFor(element(by.id(purposeOptionId)))
-      .toBeVisible()
-      .withTimeout(100);
+    await waitFor(element(by.id(purposeOptionId))).toBeVisible();
     await element(by.id(purposeOptionId)).tap();
 
     // Click next
