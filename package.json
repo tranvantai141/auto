@@ -24,7 +24,9 @@
     "lint": "aslant —ignore-path .gitignore . eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier —ignore-path .gitignore —write \"**/*.{ts,tsx}\"",
     "detox:ios:build": "npx detox build --configuration ios.sim.debug",
-    "detox:ios:test": "npx detox test --configuration ios.sim.debug"
+    "detox:ios:test": "npx detox test --configuration ios.sim.debug",
+    "detox:android:build": "npx detox build --configuration android.emu.debug",
+    "detox:android:test": "npx detox test --configuration android.emu.debug"
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "^0.2.8",

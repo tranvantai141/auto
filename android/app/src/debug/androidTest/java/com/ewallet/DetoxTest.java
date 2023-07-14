@@ -2,6 +2,7 @@ package com.ewallet;
 
 import com.wix.detox.Detox;
 import com.wix.detox.config.DetoxConfig;
+import com.ewallet.BuildConfig;
 
 import org.junit.Rule;
 import org.junit.Test;
