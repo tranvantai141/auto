@@ -12,7 +12,6 @@ import {
 } from '../typings';
 import { SupplementalInformation } from '@screens/customerInfo/typings/request';
 import { GetCustomerFlagDTO } from '../typings/DTO';
-import LoggerManager from "../../../common/utils/LoggerManager";
 
 export function checkCustomerExistence(transactionId: string) {
   return axiosTokenInstance.post<any>('/onboarding/customer/core-banking-existence-check', {
@@ -23,18 +22,13 @@ export function checkCustomerExistence(transactionId: string) {
 export async function getCifInfoList(transactionId: string): Promise<GetListCifDTO> {
   // /onboarding/transaction/get-cif-info-list
   // https://bluebikglobal.atlassian.net/wiki/spaces/VCBTA/pages/101351558/ETB+Backend+API+Specification
-  try {
-    const res = await axiosTokenInstance.post<GetListCifDTO>(
-        '/onboarding/transaction/get-cif-info-list',
-        {
-          transactionId,
-        }
-    );
-    return res.data;
-  } catch (error) {
-    console.error('error', error)
-  }
-
+  const res = await axiosTokenInstance.post<GetListCifDTO>(
+    '/onboarding/transaction/get-cif-info-list',
+    {
+      transactionId,
+    }
+  );
+  return res.data;
 
   // await delay(2000);
   // return {

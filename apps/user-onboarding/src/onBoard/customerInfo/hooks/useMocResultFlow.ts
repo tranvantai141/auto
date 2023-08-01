@@ -141,11 +141,10 @@ export function useMocResultFlow() {
     ['getCifInfoList', transactionId],
     async () => {
       const res = await getCifInfoList(transactionId ?? '');
-      if (res && res.code === 'SUCCESS') {
+      if (res.code === 'SUCCESS') {
         return res.cifInfoList;
       }
-      return []
-      // throw new Error(res?.message);
+      throw new Error(res.message);
     },
     {
       enabled: transactionId != null && mocValidationErrors.length === 0,

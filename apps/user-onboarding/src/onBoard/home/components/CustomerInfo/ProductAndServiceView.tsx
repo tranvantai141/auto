@@ -21,9 +21,7 @@ import { Items } from '@dummy/ListItems';
 import { CustomerInforResult } from '@screens/home/hooks/useCustomerInfoResult';
 
 type Props = {
-  resultEBank?: CustomerInforResult;
-  resultCard?: CustomerInforResult;
-  resultAccount?: CustomerInforResult;
+  resultData?: CustomerInforResult;
 };
 
 function ProductAndServiceView(props: Props) {
@@ -34,12 +32,11 @@ function ProductAndServiceView(props: Props) {
   );
 }
 
-const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: Props) => {
+const ProductAndServiceContent = ({ resultData }: Props) => {
   // MARK: - Render Line View
 
-
   const fillerCard = useCallback((data: CardListDataDTO[], type: string) => {
-    return data?.filter((item) => item.physical === type) ?? [];
+    return data.filter((item) => item.physical === type) ?? [];
   }, []);
 
   const LineView = ({
@@ -117,7 +114,7 @@ const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: 
     hiddenLine?: boolean;
   }) => {
     const content = () => {
-      if (resultEBank?.productEbankErrDetail === 'FAILED' ) {
+      if (resultData?.productErrDetail === 'ebank' || resultData?.productErrDetail === 'all') {
         return (
           <Text style={{ marginTop: 12, fontSize: 16, fontWeight: '400', color: Colors.red }}>
             {translate('get_info_fail_message')}
@@ -133,7 +130,7 @@ const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: 
                 <RenderRowView
                   key={index}
                   title={translate('digibank_title')}
-                  content={`: ${item?.mobileNo}${item?.cusEmail ? ' | ' : ''}${
+                  content={`: ${item.mobileNo}${item?.cusEmail ? ' | ' : ''}${
                     item?.cusEmail ?? ''
                   }`}
                 />
@@ -144,10 +141,10 @@ const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: 
     };
 
     // if API is OK but data is empty, not show digi section
-    if (resultEBank?.productEbankErrDetail === 'SUCCESS' && resultEBank?.result === 'ETB') {
+    if (resultData?.productErrDetail !== 'ebank' && resultData?.productErrDetail !== 'all' && resultData?.result === 'ETB') {
       if (
-        resultEBank?.productResult?.ebanks == null ||
-        resultEBank?.productResult?.ebanks?.mobileNo == null
+        resultData.productResult.ebanks == null ||
+        resultData.productResult.ebanks.mobileNo == null
       ) {
         return null;
       }
@@ -155,11 +152,11 @@ const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: 
 
     // If no error and data is empty, dont show this section
     if (
-      resultEBank?.productEbankErrDetail === null &&
-      resultEBank?.result === 'ETB' &&
-      resultAccount?.accountList?.length === 0 &&
-      resultCard?.productResult?.cards.length === 0 &&
-      resultEBank?.productResult?.ebanks == null
+      resultData?.productErrDetail === null &&
+      resultData?.result === 'ETB' &&
+      resultData.accountList.length === 0 &&
+      resultData.productResult.cards.length === 0 &&
+      resultData.productResult.ebanks == null
     ) {
       return null;
     }
@@ -178,7 +175,6 @@ const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: 
     );
   };
 
-
   // MARK: - Render RenderNonPhysicalDebitCardView Services View
   const RenderNonPhysicalDebitCardView = ({
     title,
@@ -190,7 +186,7 @@ const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: 
     hiddenLine?: boolean;
   }) => {
     const content = () => {
-      if (resultCard?.productCardErrDetail === 'FAILED' ) {
+      if (resultData?.productErrDetail === 'card' || resultData?.productErrDetail === 'all') {
         return (
           <Text style={{ marginTop: 12, fontSize: 16, fontWeight: '400', color: Colors.red }}>
             {translate('get_info_fail_message')}
@@ -219,10 +215,10 @@ const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: 
     };
 
     // if API is OK but data is empty, not show card section
-    if (resultCard?.productCardErrDetail === 'SUCCESS' && resultCard?.result === 'ETB') {
+    if (resultData?.productErrDetail !== 'card' && resultData?.productErrDetail !== 'all' && resultData?.result === 'ETB') {
       if (
-        (resultCard?.productResult?.cards ?? []).length === 0 ||
-        fillerCard(resultCard?.productResult?.cards, 'N').length === 0
+        (resultData.productResult.cards ?? []).length === 0 ||
+        fillerCard(resultData.productResult.cards, 'N').length === 0
       ) {
         return null;
       }
@@ -251,7 +247,7 @@ const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: 
     data?: CardListDataDTO[];
   }) => {
     const content = () => {
-      if (resultCard?.productCardErrDetail === 'FAILED') {
+      if (resultData?.productErrDetail === 'card' || resultData?.productErrDetail === 'all') {
         return (
           <Text style={{ marginTop: 12, fontSize: 16, fontWeight: '400', color: Colors.red }}>
             {translate('get_info_fail_message')}
@@ -284,10 +280,10 @@ const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: 
     };
 
     // if API is OK but data is empty, not show card section
-    if (resultCard?.productCardErrDetail === 'SUCCESS' && resultCard?.result === 'ETB') {
+    if (resultData?.productErrDetail !== 'card' && resultData?.productErrDetail !== 'all' && resultData?.result === 'ETB') {
       if (
-        (resultCard?.productResult?.cards ?? []).length === 0 ||
-        fillerCard(resultCard?.productResult?.cards, 'Y').length === 0
+        (resultData.productResult.cards ?? []).length === 0 ||
+        fillerCard(resultData.productResult.cards, 'Y').length === 0
       ) {
         return null;
       }
@@ -306,19 +302,17 @@ const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: 
     );
   };
 
-  if (resultEBank?.result !== 'ETB' || resultCard?.result !== 'ETB' || resultAccount?.result !== 'ETB' ) {
+  if (resultData?.result !== 'ETB') {
     return null;
   }
 
   // MARK: - filter account acceppted
 
-  const filterAccounts = resultAccount?.accountList
-    ? resultAccount?.accountList.filter(
+  const filterAccounts = resultData.accountList
+    ? resultData.accountList.filter(
         (item) => item.acctType == 'D' && ['1', '3', '5', '6', '7', '9'].includes(item.acctStatus)
       )
     : [];
-
-
 
   return (
     <View style={[styles.container]}>
@@ -328,28 +322,28 @@ const ProductAndServiceContent = ({ resultEBank , resultCard , resultAccount }: 
         <RenderCardView
           title="Dịch vụ Tài khoản thanh toán"
           data={filterAccounts}
-          hiddenLine={resultEBank?.productResult?.ebanks && resultAccount?.productResult?.cards?.length == 0}
+          hiddenLine={resultData.productResult.ebanks && resultData.productResult.cards.length == 0}
         />
       )) || <View />}
 
       <RenderEBankingServicesView
         title="Dịch vụ Ngân hàng điện tử"
-        data={[resultEBank?.productResult?.ebanks]}
+        data={[resultData.productResult.ebanks]}
         hiddenLine={
-          fillerCard(resultCard?.productResult?.cards, 'N').length == 0 &&
-          fillerCard(resultCard?.productResult?.cards, 'Y').length == 0
+          fillerCard(resultData.productResult.cards, 'N').length == 0 &&
+          fillerCard(resultData.productResult.cards, 'Y').length == 0
         }
       />
 
       <RenderNonPhysicalDebitCardView
         title="Dịch vụ Thẻ ghi nợ phi vật lý"
-        data={fillerCard(resultCard?.productResult?.cards, 'N')}
-        hiddenLine={fillerCard(resultCard?.productResult?.cards, 'Y').length == 0}
+        data={fillerCard(resultData.productResult.cards, 'N')}
+        hiddenLine={fillerCard(resultData.productResult.cards, 'Y').length == 0}
       />
 
       <RenderPhysicalDebitCardView
         title="Dịch vụ Thẻ ghi nợ vật lý"
-        data={fillerCard(resultCard?.productResult?.cards, 'Y')}
+        data={fillerCard(resultData.productResult.cards, 'Y')}
       />
     </View>
   );

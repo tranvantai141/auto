@@ -44,13 +44,10 @@ type Props = {
   formTitle: string;
   rawFormTitle?: string;
   result?: CustomerInforResult;
-  resultSupplymental?: CustomerInforResult;
-  resultEBank?: CustomerInforResult;
-  resultCard?: CustomerInforResult;
 };
 
 const CustomerInfoModal = (props: Props) => {
-  const { textSearch, isVisible, onClosePress, onBackdropPress, onReloadPress, result,resultSupplymental,resultEBank , resultCard } = props;
+  const { textSearch, isVisible, onClosePress, onBackdropPress, onReloadPress, result } = props;
   const [ht, setHt] = useState<number>(HEIGHT);
   const [wt, setWt] = useState<number>(WIDTH);
   const [orientation, setOrientation] = useState('portrait');
@@ -79,7 +76,6 @@ const CustomerInfoModal = (props: Props) => {
   //   }
   // }, [props?.isVisible]);
 
-
   const renderError = useCallback(() => {
     if (result?.result === 'ERROR') {
       return (
@@ -95,18 +91,14 @@ const CustomerInfoModal = (props: Props) => {
   }, [result]);
 
   const shouldShowRetryButton = useMemo(() => {
-    if(result?.result === 'LOADING') return false;
-    if (result?.result === 'ETB' && resultEBank?.productEbankStatus === 'FAILED') {
+    if (result?.result === 'ETB' && result?.productStatus === 'FAILED') {
       return true;
     }
-    if (result?.result === 'ETB' && resultCard?.productCardStatus === 'FAILED') {
-      return true;
-    }
-    if (resultSupplymental?.result === 'ETB' && resultSupplymental?.supplementalInfo?.state !== 'SUCCESS') {
+    if (result?.result === 'ETB' && result?.supplementalInfo?.state !== 'SUCCESS') {
       return true;
     }
     return false;
-  }, [result , resultSupplymental , resultEBank , resultCard]);
+  }, [result]);
 
   // Callbacks render
   const renderErrorBanner = useCallback(() => {
@@ -139,7 +131,7 @@ const CustomerInfoModal = (props: Props) => {
       }
 
     return null;
-  }, [ result,resultSupplymental , resultEBank , resultCard, shouldShowRetryButton]);
+  }, [ result, shouldShowRetryButton]);
 
   const renderLoading = useCallback(() => {
     if (result?.result === 'LOADING') {
@@ -183,8 +175,8 @@ const CustomerInfoModal = (props: Props) => {
         >
           <PersonalDocumentInfoETB resultData={result} />
           <View style={{ marginTop: hp(3), marginRight: wp(2) }}>
-            {result?.cifMemo.length > 0 ||
-            (result?.accountList.length > 0 &&
+            {result.cifMemo.length > 0 ||
+            (result.accountList.length > 0 &&
               result.accountList.some((account) => (account.memoInfo ?? []).length > 0)) ? (
               <ListMemoETB resultData={result} />
             ) : (
@@ -198,7 +190,7 @@ const CustomerInfoModal = (props: Props) => {
 
   // One CIF info section
   const renderSupplementalSection = useCallback(() => {
-    if (resultSupplymental?.result === 'ETB') {
+    if (result?.result === 'ETB') {
       return (
         <View
           style={{
@@ -210,9 +202,9 @@ const CustomerInfoModal = (props: Props) => {
         >
           <SuplementaryInfoSection
             loading={true}
-            failded={resultSupplymental?.supplementalInfo?.state !== 'SUCCESS'}
+            failded={result?.supplementalInfo?.state !== 'SUCCESS'}
             data={
-              [...resultSupplymental?.supplementalInfo?.data].filter(
+              [...result?.supplementalInfo?.data].filter(
                 (item) => item !== null
               ) as SupplementalInfoDTO[]
             }
@@ -225,7 +217,7 @@ const CustomerInfoModal = (props: Props) => {
         </View>
       );
     }
-  }, [result , resultSupplymental]);
+  }, [result]);
 
   const renderProductionInformation = useCallback(() => {
     if (result?.result === 'ETB') {
@@ -241,12 +233,12 @@ const CustomerInfoModal = (props: Props) => {
           }}
         >
           <View>
-            <ProductAndServiceView resultEBank={resultEBank} resultCard={resultCard} resultAccount={result} />
+            <ProductAndServiceView resultData={result} />
           </View>
         </View>
       );
     }
-  }, [result , resultEBank , resultCard]);
+  }, [result]);
 
   return (
     <>

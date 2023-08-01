@@ -57,8 +57,8 @@ const Login = (props: any) => {
   // const [timerModal, setTimerModal] = useState(false);
   const userRoleList = useAppSelector((state: RootState) => state.userRole);
   const [loginForm, setLoginForm] = useState<ILoginForm>({
-    username: '',
-    password: '',
+    username: 'huynk.ho',
+    password: 'Chatbot0323',
   });
 
   const [loginFormError, setLoginFormError] = useState<ILoginFormError>({

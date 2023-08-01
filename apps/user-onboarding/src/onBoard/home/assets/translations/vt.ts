@@ -50,5 +50,4 @@ export default {
   get_info_fail_message: 'Không lấy được thông tin',
   retry_message: 'Hệ thống bị gián đoạn. Vui lòng lấy lại thông tin khách hàng.',
   retry_button: 'Lấy lại thông tin',
-  digibank_title: 'Ngân hàng số VCB Digibank',
 };
