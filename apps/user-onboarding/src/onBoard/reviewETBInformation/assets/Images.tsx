@@ -1,0 +1,18 @@
+export default {
+  drop_up: require('../../../assets/images/icons/drop_up.png'),
+  drop_down: require('../../../assets/images/icons/drop_down.png'),
+  edit: require('../../../assets/images/icons/edit.png'),
+  user_pic: require('../../../assets/images/icons/user_pic.png'),
+  group1: require('../../../assets/images/icons/group1.png'),
+  group2: require('../../../assets/images/icons/group2.png'),
+  group3: require('../../../assets/images/icons/group3.png'),
+  group4: require('../../../assets/images/icons/group4.png'),
+  dot: require('../../../assets/images/onboarding/dot.png'),
+  triangle_dot: require('../../../assets/images/icons/triangle_dot.png'),
+  green_tick: require('../../../assets/images/icons/green_tick.png'),
+  edit_grey: require('../../../assets/images/icons/edit_grey.png'),
+  trash: require('../../../assets/images/icons/trash.png'),
+  black_back_arrow: require('../../../assets/images/icons/black_back_arrow.png'),
+  documentTextIcon: require('../../../assets/images/icons/document_text.png'),
+  newUser: require('../../../assets/images/onboarding/newuser.png'),
+};

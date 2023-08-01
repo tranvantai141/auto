@@ -1,0 +1,64 @@
+{
+  "columns": [
+    {
+      "key": "no",
+      "title": "tb_no",
+      "width": 40
+    },
+    {
+      "key": "idNumber",
+      "title": "tb_id_number",
+      "width": 120
+    },
+    {
+      "key": "fullName",
+      "title": "tb_full_name",
+      "width": 200
+    },
+    {
+      "key": "phoneNumber",
+      "title": "tb_phone_number",
+      "width": 150
+    },
+    {
+      "key": "cifNumber",
+      "title": "tb_cif_number",
+      "width": 150
+    },
+    {
+      "key": "accountNumber",
+      "title": "tb_account_number",
+      "width": 150
+    },
+    {
+      "key": "province",
+      "title": "tb_province",
+      "width": 150
+    },
+    {
+      "key": "district",
+      "title": "tb_district",
+      "width": 150
+    },
+    {
+      "key": "ward",
+      "title": "tb_ward",
+      "width": 150
+    },
+    {
+      "key": "serviceType",
+      "title": "tb_service_type",
+      "width": 320
+    },
+    {
+      "key": "registerTime",
+      "title": "tb_register_time",
+      "width": 150
+    },
+    {
+      "key": "status",
+      "title": "tb_status",
+      "width": 150
+    }
+  ]
+}

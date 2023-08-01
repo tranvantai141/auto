@@ -1,0 +1,1004 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E356F31AD99517003FC87E /* UserOnboardingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* UserOnboardingTests.m */; };
+		0B7D35012A30992C00CA8475 /* eID_SDK_D3_v1.3.5_update.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA5B65C29F8D0E400CE7E86 /* eID_SDK_D3_v1.3.5_update.xcframework */; };
+		0B7D35022A30992C00CA8475 /* eID_SDK_D3_v1.3.5_update.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA5B65C29F8D0E400CE7E86 /* eID_SDK_D3_v1.3.5_update.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0BA5B66729F8D0EE00CE7E86 /* eID_Shared_v120_VCB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA5B65B29F8D0E400CE7E86 /* eID_Shared_v120_VCB.framework */; };
+		0BA5B66829F8D0EE00CE7E86 /* eID_Shared_v120_VCB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA5B65B29F8D0E400CE7E86 /* eID_Shared_v120_VCB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0C80B921A6F3F58F76C31292 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		18E4C3EE29A4527C0033FCD8 /* eIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E4C3EC29A4527C0033FCD8 /* eIDViewController.m */; };
+		18E4C3F229A4527C0033FCD8 /* eIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4C3ED29A4527C0033FCD8 /* eIDViewController.swift */; };
+		51AB96AD018EE46B468B0726 /* libPods-UserOnboarding-UserOnboarding-Simulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B49B526B7B4A33E0A52D7F /* libPods-UserOnboarding-UserOnboarding-Simulator.a */; };
+		75084F6F2A4DE13100D20533 /* FeeQuotaDetail.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 75084F6E2A4DE13100D20533 /* FeeQuotaDetail.pdf */; };
+		75084F702A4DE13100D20533 /* FeeQuotaDetail.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 75084F6E2A4DE13100D20533 /* FeeQuotaDetail.pdf */; };
+		751957F6297EB14C00E0E524 /* PurposePdf.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 751957F4297EB13D00E0E524 /* PurposePdf.pdf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9262ECFFB539AF83836666C3 /* libPods-UserOnboarding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A7FBD7DF693D22B26CAB2A5 /* libPods-UserOnboarding.a */; };
+		BC0C00002A2F2CEE00DFD458 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		BC0C00012A2F2CEE00DFD458 /* eIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E4C3EC29A4527C0033FCD8 /* eIDViewController.m */; };
+		BC0C00022A2F2CEE00DFD458 /* ENVConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0CFFF92A2F294400DFD458 /* ENVConfig.swift */; };
+		BC0C00032A2F2CEE00DFD458 /* eIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4C3ED29A4527C0033FCD8 /* eIDViewController.swift */; };
+		BC0C000A2A2F2CEE00DFD458 /* PurposePdf.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 751957F4297EB13D00E0E524 /* PurposePdf.pdf */; };
+		BC0C000B2A2F2CEE00DFD458 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		BC0C000C2A2F2CEE00DFD458 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		BC0CFFFA2A2F294400DFD458 /* ENVConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0CFFF92A2F294400DFD458 /* ENVConfig.swift */; };
+		BC0CFFFF2A2F2CEE00DFD458 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		F431A8A55C67FF6B238B0036 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = UserOnboarding;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C76832C829A4F123000E0193 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0B7D35022A30992C00CA8475 /* eID_SDK_D3_v1.3.5_update.xcframework in Embed Frameworks */,
+				0BA5B66829F8D0EE00CE7E86 /* eID_Shared_v120_VCB.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		00E356EE1AD99517003FC87E /* UserOnboardingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserOnboardingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* UserOnboardingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserOnboardingTests.m; sourceTree = "<group>"; };
+		09ADB727B1F4401B44719C76 /* Pods-UserOnboarding-OnBoarding-sit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-sit.release.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-sit/Pods-UserOnboarding-OnBoarding-sit.release.xcconfig"; sourceTree = "<group>"; };
+		0BA5B65B29F8D0E400CE7E86 /* eID_Shared_v120_VCB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = eID_Shared_v120_VCB.framework; sourceTree = "<group>"; };
+		0BA5B65C29F8D0E400CE7E86 /* eID_SDK_D3_v1.3.5_update.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = eID_SDK_D3_v1.3.5_update.xcframework; sourceTree = "<group>"; };
+		1193251C0A83F57B172215C1 /* Pods-UserOnboarding-OnBoarding-poc.onboarding-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-poc.onboarding-prod.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-poc/Pods-UserOnboarding-OnBoarding-poc.onboarding-prod.xcconfig"; sourceTree = "<group>"; };
+		13856D4CEDBA4FF7CF7483F8 /* Pods-UserOnboarding-OnBoarding-prod.onboarding-sit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-prod.onboarding-sit.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-prod/Pods-UserOnboarding-OnBoarding-prod.onboarding-sit.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* UserOnboarding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserOnboarding.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = UserOnboarding/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = UserOnboarding/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = UserOnboarding/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = UserOnboarding/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = UserOnboarding/main.m; sourceTree = "<group>"; };
+		18E4C3E829A452760033FCD8 /* UserOnboarding-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UserOnboarding-Bridging-Header.h"; sourceTree = "<group>"; };
+		18E4C3EC29A4527C0033FCD8 /* eIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = eIDViewController.m; sourceTree = "<group>"; };
+		18E4C3ED29A4527C0033FCD8 /* eIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eIDViewController.swift; sourceTree = "<group>"; };
+		337C98D11A96633C7084BB0E /* Pods-UserOnboarding-OnBoarding-poc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-poc.debug.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-poc/Pods-UserOnboarding-OnBoarding-poc.debug.xcconfig"; sourceTree = "<group>"; };
+		38DE36D56EA962E8B9887784 /* libPods-UserOnboarding-OnBoarding-poc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UserOnboarding-OnBoarding-poc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3928CE2B90B08F02B4473C09 /* Pods-UserOnboarding.onboarding-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding.onboarding-prod.xcconfig"; path = "Target Support Files/Pods-UserOnboarding/Pods-UserOnboarding.onboarding-prod.xcconfig"; sourceTree = "<group>"; };
+		39B49B526B7B4A33E0A52D7F /* libPods-UserOnboarding-UserOnboarding-Simulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UserOnboarding-UserOnboarding-Simulator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4392A12AC88292D35C810B /* Pods-UserOnboarding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding.debug.xcconfig"; path = "Target Support Files/Pods-UserOnboarding/Pods-UserOnboarding.debug.xcconfig"; sourceTree = "<group>"; };
+		42E395B5354822D1AF653409 /* libPods-UserOnboarding-OnBoarding-prod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UserOnboarding-OnBoarding-prod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A7FBD7DF693D22B26CAB2A5 /* libPods-UserOnboarding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UserOnboarding.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		518941E10C558F4FD8EE840B /* Pods-UserOnboarding-UserOnboardingTests.onboarding-sit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-UserOnboardingTests.onboarding-sit.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-UserOnboardingTests/Pods-UserOnboarding-UserOnboardingTests.onboarding-sit.xcconfig"; sourceTree = "<group>"; };
+		5339E176AF513B35FACEB0A7 /* Pods-UserOnboarding-OnBoarding-sit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-sit.debug.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-sit/Pods-UserOnboarding-OnBoarding-sit.debug.xcconfig"; sourceTree = "<group>"; };
+		5709B34CF0A7D63546082F79 /* Pods-UserOnboarding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding.release.xcconfig"; path = "Target Support Files/Pods-UserOnboarding/Pods-UserOnboarding.release.xcconfig"; sourceTree = "<group>"; };
+		601BFCF18EB0E1164991B9B4 /* Pods-UserOnboarding-UserOnboardingTests.onboarding-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-UserOnboardingTests.onboarding-prod.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-UserOnboardingTests/Pods-UserOnboarding-UserOnboardingTests.onboarding-prod.xcconfig"; sourceTree = "<group>"; };
+		6C36B76327E754CB7EA6A9AF /* Pods-UserOnboarding-OnBoarding-prod.onboarding-poc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-prod.onboarding-poc.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-prod/Pods-UserOnboarding-OnBoarding-prod.onboarding-poc.xcconfig"; sourceTree = "<group>"; };
+		75084F6E2A4DE13100D20533 /* FeeQuotaDetail.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = FeeQuotaDetail.pdf; path = ../src/onBoard/productServices/assets/pdf/FeeQuotaDetail.pdf; sourceTree = "<group>"; };
+		751957F4297EB13D00E0E524 /* PurposePdf.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = PurposePdf.pdf; path = ../src/onBoard/onBoardingProcess/OnBoardingStep4/assets/pdf/PurposePdf.pdf; sourceTree = "<group>"; };
+		759A1DA5298A74CC003FD6EB /* RNENVConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNENVConfig.h; sourceTree = "<group>"; };
+		759A1DA6298A74CC003FD6EB /* RNENVConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNENVConfig.m; sourceTree = "<group>"; };
+		759A1DBC298A84CE003FD6EB /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		7A0B9E9FF15EAD12DF97AF97 /* Pods-UserOnboarding.onboarding-poc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding.onboarding-poc.xcconfig"; path = "Target Support Files/Pods-UserOnboarding/Pods-UserOnboarding.onboarding-poc.xcconfig"; sourceTree = "<group>"; };
+		7FA49B894CB850EBCE770E3B /* Pods-UserOnboarding-OnBoarding-poc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-poc.release.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-poc/Pods-UserOnboarding-OnBoarding-poc.release.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = UserOnboarding/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8423E6FA06C3F0E2897734F8 /* Pods-UserOnboarding-UserOnboarding-Simulator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-UserOnboarding-Simulator.release.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-UserOnboarding-Simulator/Pods-UserOnboarding-UserOnboarding-Simulator.release.xcconfig"; sourceTree = "<group>"; };
+		84D6AEFDAE5A1CA683DE71B5 /* Pods-UserOnboarding-OnBoarding-poc.onboarding-sit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-poc.onboarding-sit.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-poc/Pods-UserOnboarding-OnBoarding-poc.onboarding-sit.xcconfig"; sourceTree = "<group>"; };
+		8EF58155EF08FE6A55D3D3A7 /* libPods-UserOnboarding-OnBoarding-sit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UserOnboarding-OnBoarding-sit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96810C95BCAAD8C4DC189897 /* Pods-UserOnboarding-OnBoarding-sit.onboarding-poc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-sit.onboarding-poc.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-sit/Pods-UserOnboarding-OnBoarding-sit.onboarding-poc.xcconfig"; sourceTree = "<group>"; };
+		995674672C4D813E0080E927 /* Pods-UserOnboarding-OnBoarding-prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-prod.debug.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-prod/Pods-UserOnboarding-OnBoarding-prod.debug.xcconfig"; sourceTree = "<group>"; };
+		AFABA202D9162F0060820647 /* Pods-UserOnboarding-UserOnboardingTests.onboarding-poc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-UserOnboardingTests.onboarding-poc.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-UserOnboardingTests/Pods-UserOnboarding-UserOnboardingTests.onboarding-poc.xcconfig"; sourceTree = "<group>"; };
+		B456F541C28FF6EA6D0FBCA2 /* Pods-UserOnboarding.onboarding-sit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding.onboarding-sit.xcconfig"; path = "Target Support Files/Pods-UserOnboarding/Pods-UserOnboarding.onboarding-sit.xcconfig"; sourceTree = "<group>"; };
+		B4595BEB64201F4FC458BA2A /* Pods-UserOnboarding-UserOnboarding-Simulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-UserOnboarding-Simulator.debug.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-UserOnboarding-Simulator/Pods-UserOnboarding-UserOnboarding-Simulator.debug.xcconfig"; sourceTree = "<group>"; };
+		BC0C00162A2F2CEE00DFD458 /* UserOnboarding-Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UserOnboarding-Simulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC0CFFF92A2F294400DFD458 /* ENVConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENVConfig.swift; sourceTree = "<group>"; };
+		C4A5112327AE9DE116777033 /* Pods-UserOnboarding-OnBoarding-sit.onboarding-sit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-sit.onboarding-sit.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-sit/Pods-UserOnboarding-OnBoarding-sit.onboarding-sit.xcconfig"; sourceTree = "<group>"; };
+		E694910CD9254AA1D31BBC2A /* Pods-UserOnboarding-OnBoarding-prod.onboarding-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-prod.onboarding-prod.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-prod/Pods-UserOnboarding-OnBoarding-prod.onboarding-prod.xcconfig"; sourceTree = "<group>"; };
+		E6AA35601FAF99EE72D6E4F9 /* Pods-UserOnboarding-OnBoarding-prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-prod.release.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-prod/Pods-UserOnboarding-OnBoarding-prod.release.xcconfig"; sourceTree = "<group>"; };
+		EC6B595F4559621660F76D4A /* Pods-UserOnboarding-OnBoarding-sit.onboarding-prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-sit.onboarding-prod.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-sit/Pods-UserOnboarding-OnBoarding-sit.onboarding-prod.xcconfig"; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F734B6634478BF672FBB796A /* Pods-UserOnboarding-OnBoarding-poc.onboarding-poc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserOnboarding-OnBoarding-poc.onboarding-poc.xcconfig"; path = "Target Support Files/Pods-UserOnboarding-OnBoarding-poc/Pods-UserOnboarding-OnBoarding-poc.onboarding-poc.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B7D35012A30992C00CA8475 /* eID_SDK_D3_v1.3.5_update.xcframework in Frameworks */,
+				0C80B921A6F3F58F76C31292 /* BuildFile in Frameworks */,
+				F431A8A55C67FF6B238B0036 /* BuildFile in Frameworks */,
+				0BA5B66729F8D0EE00CE7E86 /* eID_Shared_v120_VCB.framework in Frameworks */,
+				9262ECFFB539AF83836666C3 /* libPods-UserOnboarding.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC0C00042A2F2CEE00DFD458 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51AB96AD018EE46B468B0726 /* libPods-UserOnboarding-UserOnboarding-Simulator.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* UserOnboardingTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* UserOnboardingTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = UserOnboardingTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* UserOnboarding */ = {
+			isa = PBXGroup;
+			children = (
+				75084F6E2A4DE13100D20533 /* FeeQuotaDetail.pdf */,
+				0BA5B65C29F8D0E400CE7E86 /* eID_SDK_D3_v1.3.5_update.xcframework */,
+				0BA5B65B29F8D0E400CE7E86 /* eID_Shared_v120_VCB.framework */,
+				18E4C3EC29A4527C0033FCD8 /* eIDViewController.m */,
+				18E4C3ED29A4527C0033FCD8 /* eIDViewController.swift */,
+				751957F4297EB13D00E0E524 /* PurposePdf.pdf */,
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				13B07FB71A68108700A75B9A /* main.m */,
+				18E4C3E829A452760033FCD8 /* UserOnboarding-Bridging-Header.h */,
+				BC0CFFF92A2F294400DFD458 /* ENVConfig.swift */,
+			);
+			name = UserOnboarding;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				38DE36D56EA962E8B9887784 /* libPods-UserOnboarding-OnBoarding-poc.a */,
+				42E395B5354822D1AF653409 /* libPods-UserOnboarding-OnBoarding-prod.a */,
+				8EF58155EF08FE6A55D3D3A7 /* libPods-UserOnboarding-OnBoarding-sit.a */,
+				39B49B526B7B4A33E0A52D7F /* libPods-UserOnboarding-UserOnboarding-Simulator.a */,
+				4A7FBD7DF693D22B26CAB2A5 /* libPods-UserOnboarding.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				759A1DBC298A84CE003FD6EB /* Config.xcconfig */,
+				759A1DA5298A74CC003FD6EB /* RNENVConfig.h */,
+				759A1DA6298A74CC003FD6EB /* RNENVConfig.m */,
+				13B07FAE1A68108700A75B9A /* UserOnboarding */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* UserOnboardingTests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				BBD78D7AC51CEA395F1C20DB /* Pods */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* UserOnboarding.app */,
+				00E356EE1AD99517003FC87E /* UserOnboardingTests.xctest */,
+				BC0C00162A2F2CEE00DFD458 /* UserOnboarding-Simulator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B4392A12AC88292D35C810B /* Pods-UserOnboarding.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-UserOnboarding.release.xcconfig */,
+				7A0B9E9FF15EAD12DF97AF97 /* Pods-UserOnboarding.onboarding-poc.xcconfig */,
+				B456F541C28FF6EA6D0FBCA2 /* Pods-UserOnboarding.onboarding-sit.xcconfig */,
+				3928CE2B90B08F02B4473C09 /* Pods-UserOnboarding.onboarding-prod.xcconfig */,
+				337C98D11A96633C7084BB0E /* Pods-UserOnboarding-OnBoarding-poc.debug.xcconfig */,
+				F734B6634478BF672FBB796A /* Pods-UserOnboarding-OnBoarding-poc.onboarding-poc.xcconfig */,
+				84D6AEFDAE5A1CA683DE71B5 /* Pods-UserOnboarding-OnBoarding-poc.onboarding-sit.xcconfig */,
+				7FA49B894CB850EBCE770E3B /* Pods-UserOnboarding-OnBoarding-poc.release.xcconfig */,
+				1193251C0A83F57B172215C1 /* Pods-UserOnboarding-OnBoarding-poc.onboarding-prod.xcconfig */,
+				995674672C4D813E0080E927 /* Pods-UserOnboarding-OnBoarding-prod.debug.xcconfig */,
+				6C36B76327E754CB7EA6A9AF /* Pods-UserOnboarding-OnBoarding-prod.onboarding-poc.xcconfig */,
+				13856D4CEDBA4FF7CF7483F8 /* Pods-UserOnboarding-OnBoarding-prod.onboarding-sit.xcconfig */,
+				E6AA35601FAF99EE72D6E4F9 /* Pods-UserOnboarding-OnBoarding-prod.release.xcconfig */,
+				E694910CD9254AA1D31BBC2A /* Pods-UserOnboarding-OnBoarding-prod.onboarding-prod.xcconfig */,
+				5339E176AF513B35FACEB0A7 /* Pods-UserOnboarding-OnBoarding-sit.debug.xcconfig */,
+				96810C95BCAAD8C4DC189897 /* Pods-UserOnboarding-OnBoarding-sit.onboarding-poc.xcconfig */,
+				C4A5112327AE9DE116777033 /* Pods-UserOnboarding-OnBoarding-sit.onboarding-sit.xcconfig */,
+				09ADB727B1F4401B44719C76 /* Pods-UserOnboarding-OnBoarding-sit.release.xcconfig */,
+				EC6B595F4559621660F76D4A /* Pods-UserOnboarding-OnBoarding-sit.onboarding-prod.xcconfig */,
+				AFABA202D9162F0060820647 /* Pods-UserOnboarding-UserOnboardingTests.onboarding-poc.xcconfig */,
+				518941E10C558F4FD8EE840B /* Pods-UserOnboarding-UserOnboardingTests.onboarding-sit.xcconfig */,
+				601BFCF18EB0E1164991B9B4 /* Pods-UserOnboarding-UserOnboardingTests.onboarding-prod.xcconfig */,
+				B4595BEB64201F4FC458BA2A /* Pods-UserOnboarding-UserOnboarding-Simulator.debug.xcconfig */,
+				8423E6FA06C3F0E2897734F8 /* Pods-UserOnboarding-UserOnboarding-Simulator.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* UserOnboardingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "UserOnboardingTests" */;
+			buildPhases = (
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = UserOnboardingTests;
+			productName = UserOnboardingTests;
+			productReference = 00E356EE1AD99517003FC87E /* UserOnboardingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* UserOnboarding */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "UserOnboarding" */;
+			buildPhases = (
+				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				FD10A7F022414F080027D42C /* Start Packager */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				C76832C829A4F123000E0193 /* Embed Frameworks */,
+				2F2F1978A0F342D7BB0EA704 /* Upload Debug Symbols to Sentry */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UserOnboarding;
+			productName = UserOnboarding;
+			productReference = 13B07F961A680F5B00A75B9A /* UserOnboarding.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BC0CFFFB2A2F2CEE00DFD458 /* UserOnboarding-Simulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC0C00132A2F2CEE00DFD458 /* Build configuration list for PBXNativeTarget "UserOnboarding-Simulator" */;
+			buildPhases = (
+				BC0CFFFC2A2F2CEE00DFD458 /* [CP] Check Pods Manifest.lock */,
+				BC0CFFFD2A2F2CEE00DFD458 /* Start Packager */,
+				BC0CFFFE2A2F2CEE00DFD458 /* Sources */,
+				BC0C00042A2F2CEE00DFD458 /* Frameworks */,
+				BC0C00092A2F2CEE00DFD458 /* Resources */,
+				BC0C000D2A2F2CEE00DFD458 /* Bundle React Native code and images */,
+				BC0C000F2A2F2CEE00DFD458 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UserOnboarding-Simulator";
+			productName = UserOnboarding;
+			productReference = BC0C00162A2F2CEE00DFD458 /* UserOnboarding-Simulator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1420;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "UserOnboarding" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* UserOnboarding */,
+				00E356ED1AD99517003FC87E /* UserOnboardingTests */,
+				BC0CFFFB2A2F2CEE00DFD458 /* UserOnboarding-Simulator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				751957F6297EB14C00E0E524 /* PurposePdf.pdf in Resources */,
+				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				75084F6F2A4DE13100D20533 /* FeeQuotaDetail.pdf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC0C00092A2F2CEE00DFD458 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC0C000A2A2F2CEE00DFD458 /* PurposePdf.pdf in Resources */,
+				BC0C000B2A2F2CEE00DFD458 /* LaunchScreen.storyboard in Resources */,
+				BC0C000C2A2F2CEE00DFD458 /* Images.xcassets in Resources */,
+				75084F702A4DE13100D20533 /* FeeQuotaDetail.pdf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=/opt/homebrew/bin/node\n../node_modules/react-native/packager/react-native-xcode.sh to node_modules/react-native/scripts/react-native-xcode.sh\nexport SENTRY_PROPERTIES=sentry.properties\nexport EXTRA_PACKAGER_ARGS=\"--sourcemap-output $DERIVED_FILE_DIR/main.jsbundle.map\"\nset -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT \\\"../node_modules/@sentry/cli/bin/sentry-cli react-native xcode $REACT_NATIVE_XCODE\\\"\"\n\n/bin/sh ../node_modules/@sentry/react-native/scripts/collect-modules.sh\n";
+		};
+		2F2F1978A0F342D7BB0EA704 /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Debug Symbols to Sentry";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nexport SENTRY_PROPERTIES=sentry.properties\n[[ $SENTRY_INCLUDE_NATIVE_SOURCES == \"true\" ]] && INCLUDE_SOURCES_FLAG=\"--include-sources\" || INCLUDE_SOURCES_FLAG=\"\"\n../node_modules/@sentry/cli/bin/sentry-cli debug-files upload \"$INCLUDE_SOURCES_FLAG\" \"$DWARF_DSYM_FOLDER_PATH\"\n";
+		};
+		BC0C000D2A2F2CEE00DFD458 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export SENTRY_PROPERTIES=sentry.properties\nexport EXTRA_PACKAGER_ARGS=\"--sourcemap-output $DERIVED_FILE_DIR/main.jsbundle.map\"\nset -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT \\\"../node_modules/@sentry/cli/bin/sentry-cli react-native xcode $REACT_NATIVE_XCODE\\\"\"\n\n/bin/sh ../node_modules/@sentry/react-native/scripts/collect-modules.sh\n";
+		};
+		BC0C000F2A2F2CEE00DFD458 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UserOnboarding-UserOnboarding-Simulator/Pods-UserOnboarding-UserOnboarding-Simulator-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UserOnboarding-UserOnboarding-Simulator/Pods-UserOnboarding-UserOnboarding-Simulator-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UserOnboarding-UserOnboarding-Simulator/Pods-UserOnboarding-UserOnboarding-Simulator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC0CFFFC2A2F2CEE00DFD458 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UserOnboarding-UserOnboarding-Simulator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC0CFFFD2A2F2CEE00DFD458 /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UserOnboarding-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UserOnboarding/Pods-UserOnboarding-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-UserOnboarding/Pods-UserOnboarding-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UserOnboarding/Pods-UserOnboarding-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F022414F080027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* UserOnboardingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				18E4C3EE29A4527C0033FCD8 /* eIDViewController.m in Sources */,
+				BC0CFFFA2A2F294400DFD458 /* ENVConfig.swift in Sources */,
+				18E4C3F229A4527C0033FCD8 /* eIDViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC0CFFFE2A2F2CEE00DFD458 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC0CFFFF2A2F2CEE00DFD458 /* AppDelegate.mm in Sources */,
+				BC0C00002A2F2CEE00DFD458 /* main.m in Sources */,
+				BC0C00012A2F2CEE00DFD458 /* eIDViewController.m in Sources */,
+				BC0C00022A2F2CEE00DFD458 /* ENVConfig.swift in Sources */,
+				BC0C00032A2F2CEE00DFD458 /* eIDViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* UserOnboarding */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = UserOnboardingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UserOnboarding.app/UserOnboarding";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = UserOnboardingTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UserOnboarding.app/UserOnboarding";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-UserOnboarding.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = NQFW7WBKV4;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UserOnboarding",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = UserOnboarding/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(DISPLAY_NAME)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vcb.onboarding;
+				PRODUCT_NAME = UserOnboarding;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "VCB Onboarding InHouse Distribution";
+				SWIFT_OBJC_BRIDGING_HEADER = "UserOnboarding-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-UserOnboarding.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = NQFW7WBKV4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UserOnboarding",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = UserOnboarding/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(DISPLAY_NAME)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vcb.onboarding;
+				PRODUCT_NAME = UserOnboarding;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "VCB Onboarding InHouse Distribution";
+				SWIFT_OBJC_BRIDGING_HEADER = "UserOnboarding-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 759A1DBC298A84CE003FD6EB /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 759A1DBC298A84CE003FD6EB /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC0C00142A2F2CEE00DFD458 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4595BEB64201F4FC458BA2A /* Pods-UserOnboarding-UserOnboarding-Simulator.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = NQFW7WBKV4;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UserOnboarding",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = UserOnboarding/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(DISPLAY_NAME)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vcb.onboarding;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "VCB Onboarding InHouse Distribution";
+				SWIFT_OBJC_BRIDGING_HEADER = "UserOnboarding-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		BC0C00152A2F2CEE00DFD458 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8423E6FA06C3F0E2897734F8 /* Pods-UserOnboarding-UserOnboarding-Simulator.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = NQFW7WBKV4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UserOnboarding",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = UserOnboarding/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(DISPLAY_NAME)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vcb.onboarding;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "VCB Onboarding InHouse Distribution";
+				SWIFT_OBJC_BRIDGING_HEADER = "UserOnboarding-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "UserOnboardingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "UserOnboarding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "UserOnboarding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC0C00132A2F2CEE00DFD458 /* Build configuration list for PBXNativeTarget "UserOnboarding-Simulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC0C00142A2F2CEE00DFD458 /* Debug */,
+				BC0C00152A2F2CEE00DFD458 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}

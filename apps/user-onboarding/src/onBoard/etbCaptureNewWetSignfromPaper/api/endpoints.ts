@@ -1,0 +1,1 @@
+export const GET_CUSTOMER_INFO_FLAG = '/onboarding/transaction/get-customer-info-flag';

@@ -1,0 +1,21 @@
+export default {
+  app_black: '#262626',
+  black: '#000000',
+  white: '#ffffff',
+  light_grey: '#F2F2F2',
+  grey_text: '#4C4C4C',
+  shaded_grey: '#9A9A9A',
+  primary: '#008047',
+  light_green: '#92C03E',
+  light_black: '#B5B5B5',
+  app_background: '#EEEEEE',
+  placeholder_grey: '#D9D9D9',
+  error_red: '#F84832',
+  app_green: '#008047',
+  neutral_gray: '#0D0D0D',
+  loading_color: '#6C727',
+  grey_transparent: 'rgba(0, 0, 0, 0.3)',
+  header_black: '#0D0D0D',
+  grey: '#6D6D6D',
+  black_light: '#1B1B1B'
+};

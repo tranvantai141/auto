@@ -1,0 +1,22 @@
+export default {
+  service_rating: 'Đánh giá dịch vụ',
+  select_service: 'Chọn dịch vụ',
+  additional_info_heading: 'Bổ sung thông tin',
+  complaince_act_heading: 'Kiểm tra Đạo luật tuân thủ thuế',
+  heading_rate:
+    'Vui lòng đánh giá chất lượng dịch vụ của Vietcombank để chúng tôi phục vụ quý khách tốt hơn.',
+  service_perform: 'Chọn dịch vụ quý khách muốn thực hiện',
+  info_heading: 'Thêm thông tin cá nhân để hoàn thiện hồ sơ',
+  complaince_act_purpose_heading: 'Vui lòng cung cấp thông tin cho mục đích tuân thủ',
+  continue: 'Tiếp tục',
+  placeholder_phone: 'Nhập số điện thoại',
+  phone_no: 'Số điện thoại',
+  placeholder_email: 'Nhập email',
+  heading_occupation: 'Nghề nghiệp',
+  placeholder_occupation: '- Chọn nghề nghiệp -',
+  heading_ref_code: 'Thông tin người giới thiệu (tuỳ chọn)',
+  ref_code: 'SĐT/Mã người giới thiệu',
+  placeholder_ref_code: 'Nhập SĐT/mã giới thiệu',
+  error_code: 'Số điện thoại đã đăng ký Digibank. Vui lòng nhập số điện thoại khác.  ',
+  error_format_email: 'Vui lòng nhập email đúng định dạng ',
+};

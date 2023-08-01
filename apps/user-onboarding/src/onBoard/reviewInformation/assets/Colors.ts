@@ -1,0 +1,17 @@
+export default {
+  white: '#ffffff',
+  app_black: '#262626',
+  light_grey: '#F2F2F2',
+  black: '#0D0D0D',
+  background_color: 'rgba(242, 242, 242, 1)',
+  border_green: '#008047',
+  grey_transparent: 'rgba(0, 0, 0, 0.3)',
+  border_grey: '#D9D9D9',
+  red: '#F84932',
+  border_color: '#E9E9E9',
+  light_black: '#1B1B1B',
+  header_black: '#0D0D0D',
+  neutral_grey: '#666666',
+  light_background: '#F9F9F9',
+  app_green: '#008047',
+};
