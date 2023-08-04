@@ -65,8 +65,10 @@ const EtbSignatureUpdateScreen = (props: any) => {
   const onPressPrintForm = React.useCallback(async () => {
     pdfUrl && printRemotePDF(pdfUrl);
   }, [pdfUrl]);
-  const onPressSeeDetails = () => {
+
+  const onPressSeeDetails = async () => {
     setIsVisible(true);
+
   };
 
   return (

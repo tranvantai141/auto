@@ -1,11 +1,11 @@
 import { heightPercentageToDP, widthPercentageToDP } from '@assets/sizes/Sizes';
 import { AppButton } from '@components/Button/AppButton';
-import GradientButton from '@components/Button/GradientButton';
 import GlobalLoading from '@components/GlobalLoading/GlobalLoading';
 import ScreenLayout from '@components/screen/ScreenLayout';
 import { ICustomerInfoInfoResponse, moc_error_list } from '@interfaces/I_Customer_info';
-import { useIsFocused } from '@react-navigation/native';
+import { RouteProp, useIsFocused } from '@react-navigation/native';
 import { RouteNames } from '@routeNames';
+import FooterButton from '@screens/WebView/components/FooterButton';
 import InformationModal from '@screens/customerInfo/components/Modal/InformationModal';
 import UpdateSupplementalInformationModal from '@screens/customerInfo/components/Modal/UpdateSupplementalInformationModal';
 import ImageInformation from '@screens/customerInformation/components/ImageInformation';
@@ -37,12 +37,25 @@ import { useMocResultFlow } from '../hooks/useMocResultFlow';
 import useSearchOtherDocument from '../hooks/useSearchOtherDocument';
 import { SupplementalInfoDTO } from '../typings';
 import { SupplementalInformation } from '../typings/request';
-import FooterButton from '@screens/WebView/components/FooterButton';
-function CustomerInfo() {
-  const transactionId = useTransactionId();
+
+interface PropsCustomerInfo {
+  route: RouteProp<any>
+}
+
+function CustomerInfo(props: PropsCustomerInfo) {
+  const transactionId = useTransactionId() ?? '';
   const { navigate } = useRootNavigation();
   const openCancel = useCancelModal();
-  const { result } = useMocResultFlow();
+  const { result, existingAccountList } = useMocResultFlow();
+
+  useEffect(() => {
+    if (!existingAccountList?.length && typeof existingAccountList === 'object') {
+      props?.route?.params?.callbackGetExistingAccountFalse()
+    }
+  }, [existingAccountList, props])
+
+
+
   const handleDisableButtonStopTranscation = () => {
     if (
       result.result === 'INVALID_MEMO' ||
@@ -60,6 +73,9 @@ function CustomerInfo() {
     }
     return false;
   };
+
+ 
+
   return (
     <QueryErrorResetBoundary>
       {({ reset }) => (
@@ -94,17 +110,15 @@ function CustomerInfo() {
   );
 }
 
+
 function CustomerInfoContent() {
   // Custom hooks
   const transactionId = useTransactionId();
-  // const { mocResults, errors: mocValidationErrors, continueAction } = useMoCResult();
   const dispatch = useAppDispatch();
 
   const isFocused = useIsFocused();
 
-  const { result, continueAction, retryAction, validateAction } = useMocResultFlow();
-
-  // const { data } = useCustomerExistence(transactionId);
+  const { result, continueAction, retryAction, validateAction, existingAccountList } = useMocResultFlow();
   const handleError = useErrorBoundary();
   const [isLoadingSearchOtherDoc, searchOtherDoc] = useSearchOtherDocument();
   const cancelTransaction = useCancelTransactionMoC();
@@ -124,8 +138,10 @@ function CustomerInfoContent() {
   const [text, setText] = useState('');
   const [updatedSupplementalInfo, setUpdatedSupplementalInfo] =
     useState<Partial<SupplementalInfoDTO> | null>({});
+  const globalLoading = useAppSelector((state: RootState) => state.globalLoading.isLoading);
 
   const isSupInfoError = result.result === 'ETB' && result.isSupInfoError;
+  const isLoading = isCtaLoading || isRetryLoading || globalLoading;
 
   useEffect(() => {
     if (isSupInfoError) {
@@ -192,6 +208,7 @@ function CustomerInfoContent() {
   }, [isFocused]);
 
   const mocError = result.mocResult.error?.code === 0 ? undefined : result.mocResult.error?.code;
+  const onPressUpdateSupplementalInfo = () => setUpdateInfoPopup(true);
 
   const mocValidationErrors = useMemo(() => {
     return result.result === 'INVALID_MOC' ? result.errors : [];
@@ -207,6 +224,27 @@ function CustomerInfoContent() {
         return '';
     }
   });
+
+  const onHandleContinue = () => {
+    if (text?.trim().length > 0) {
+      setErrSearch('Vui lòng tìm kiếm số GTTT khác hoặc bỏ trống trường này trước khi tiếp tục');
+      scrollViewRef.current?.scrollTo({
+        x: 0,
+        y: 0,
+        animated: true,
+      });
+      return;
+    }
+    if (isSupInfoError) {
+      scrollViewRef.current?.scrollTo({
+        x: 0,
+        y: supplementaryLayout.current?.y ?? 0,
+        animated: true,
+      });
+      return;
+    }
+    startCtaLoading(continueAction());
+  };
 
   const shouldShowRetryButton = useMemo(() => {
     if (result.result === 'ETB' && result.supplementalInfo.state === 'FAILED') {
@@ -332,7 +370,7 @@ function CustomerInfoContent() {
         }}
       />
     );
-  }, [result.result, result.mocResult.imageUri]);
+  }, [result]);
 
   const renderSearchOtherDocSection = useCallback(() => {
     if (
@@ -342,9 +380,9 @@ function CustomerInfoContent() {
       (result.result === 'ETB' && result.invalidDiffInfo) ||
       (result.result === 'ETB' && result.invalidMemoKyc) ||
       result.result === 'MUTIPLE_CIF'
-    ) {
+    )
       return null;
-    }
+
     return (
       <SearchOtherPages
         ref={inputRef}
@@ -453,7 +491,7 @@ function CustomerInfoContent() {
                 (item) => item !== null
               ) as SupplementalInfoDTO[]
             }
-            onPressUpdate={() => setUpdateInfoPopup(true)}
+            onPressUpdate={onPressUpdateSupplementalInfo}
             onPressClear={(key: string) => {
               //remove data in slice
               dispatch(removeData(key));
@@ -489,18 +527,9 @@ function CustomerInfoContent() {
             paddingBottom: 16,
           }}
         >
-          {(!result.diffInfos.includes('NAME') && !result.diffInfos.includes('BIRTHDATE') && (
-            <View>
-              {/* {result.accountList.length > 0 ||
-              result.productResult.cards.length > 0 ||
-              result.productResult.ebanks ? (
-                <ProductAndServiceView resultData={result} />
-              ) : (
-                <View />
-              )} */}
-              <ProductAndServiceView resultData={result} />
-            </View>
-          )) || <View />}
+          {!result.diffInfos.includes('NAME') && !result.diffInfos.includes('BIRTHDATE') ? (
+            <ProductAndServiceView resultData={result} />
+          ) : null}
         </View>
       );
     }
@@ -534,7 +563,6 @@ function CustomerInfoContent() {
               setIDSearchPopup(true);
               setResultSearch(result);
             } catch (error) {
-              // console.log('error', error);
               handleError.showBoundary(error);
             }
           }}
@@ -589,6 +617,7 @@ function CustomerInfoContent() {
 
   return (
     <>
+      <GlobalLoading isLoading={isLoading} />
       <ScrollView style={styles.container} ref={scrollViewRef} showsVerticalScrollIndicator={false}>
         {renderErrorBanner()}
         <Text style={styles.titleText}>{translate('title')}</Text>
@@ -602,75 +631,13 @@ function CustomerInfoContent() {
           {renderModal()}
         </View>
       </ScrollView>
-      {/* <View style={styles.bottomView}>
-        <GradientButton
-          testIdValue={'btnContinue'}
-          buttonStyle={styles.buttonStyle}
-          useDisableColors={shouldShowRetryButton}
-          toggleView
-          right_icon={ctaButtonTitle().icon === 'right'}
-          icon={ctaButtonTitle().icon === 'left'}
-          // useDisableColors={faceImage.loading}
-          isLoading={isCtaLoading}
-          onPress={() => {
-            if (text?.trim().length > 0) {
-              setErrSearch(
-                'Vui lòng tìm kiếm số GTTT khác hoặc bỏ trống trường này trước khi tiếp tục'
-              );
-              scrollViewRef.current?.scrollTo({
-                x: 0,
-                y: 0,
-                animated: true,
-              });
-              return;
-            }
-
-            if (isSupInfoError) {
-              scrollViewRef.current?.scrollTo({
-                x: 0,
-                y: supplementaryLayout.current?.y ?? 0,
-                animated: true,
-              });
-              return;
-            }
-
-            startCtaLoading(continueAction());
-            // setUpdateInfoPopup(true);
-          }}
-          buttonText={ctaButtonTitle().title}
-        />
-      </View> */}
       <FooterButton
         text={ctaButtonTitle().title}
         testId={'btnContinue'}
         isLoading={isCtaLoading}
         isDisabled={shouldShowRetryButton}
         isLeftIcon={ctaButtonTitle().icon === 'left'}
-        onPress={() => {
-          if (text?.trim().length > 0) {
-            setErrSearch(
-              'Vui lòng tìm kiếm số GTTT khác hoặc bỏ trống trường này trước khi tiếp tục'
-            );
-            scrollViewRef.current?.scrollTo({
-              x: 0,
-              y: 0,
-              animated: true,
-            });
-            return;
-          }
-
-          if (isSupInfoError) {
-            scrollViewRef.current?.scrollTo({
-              x: 0,
-              y: supplementaryLayout.current?.y ?? 0,
-              animated: true,
-            });
-            return;
-          }
-
-          startCtaLoading(continueAction());
-          // setUpdateInfoPopup(true);
-        }}
+        onPress={onHandleContinue}
       />
     </>
   );

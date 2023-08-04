@@ -5,7 +5,7 @@ import {
   widthPercentageToDP as wp,
 } from '@assets/sizes/Sizes';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Modal from 'react-native-modal';
 // import PDFView from 'react-native-view-pdf';
 // import { convertFileToBase64 } from 'src/common/utils/ConvertFileToBase64';
@@ -30,6 +30,7 @@ import ProductAndServiceView from '../CustomerInfo/ProductAndServiceView';
 import ErrorView from '@screens/home/components/ErrorView';
 import Banner from '@screens/customerInfo/components/Banner';
 import { AppButton } from '@components/Button/AppButton';
+import Color from '@screens/home/assets/Colors';
 
 const HEIGHT = Dimensions.get('window').height;
 const WIDTH = Dimensions.get('window').width;
@@ -44,10 +45,13 @@ type Props = {
   formTitle: string;
   rawFormTitle?: string;
   result?: CustomerInforResult;
+  resultSupplymental?: CustomerInforResult;
+  resultEBank?: CustomerInforResult;
+  resultCard?: CustomerInforResult;
 };
 
 const CustomerInfoModal = (props: Props) => {
-  const { textSearch, isVisible, onClosePress, onBackdropPress, onReloadPress, result } = props;
+  const { textSearch, isVisible, onClosePress, onBackdropPress, onReloadPress, result,resultSupplymental,resultEBank , resultCard } = props;
   const [ht, setHt] = useState<number>(HEIGHT);
   const [wt, setWt] = useState<number>(WIDTH);
   const [orientation, setOrientation] = useState('portrait');
@@ -76,6 +80,7 @@ const CustomerInfoModal = (props: Props) => {
   //   }
   // }, [props?.isVisible]);
 
+
   const renderError = useCallback(() => {
     if (result?.result === 'ERROR') {
       return (
@@ -91,14 +96,18 @@ const CustomerInfoModal = (props: Props) => {
   }, [result]);
 
   const shouldShowRetryButton = useMemo(() => {
-    if (result?.result === 'ETB' && result?.productStatus === 'FAILED') {
+    if(result?.result === 'LOADING') return false;
+    if (result?.result === 'ETB' && resultEBank?.productEbankStatus === 'FAILED') {
       return true;
     }
-    if (result?.result === 'ETB' && result?.supplementalInfo?.state !== 'SUCCESS') {
+    if (result?.result === 'ETB' && resultCard?.productCardStatus === 'FAILED') {
+      return true;
+    }
+    if (resultSupplymental?.result === 'ETB' && resultSupplymental?.supplementalInfo?.state !== 'SUCCESS') {
       return true;
     }
     return false;
-  }, [result]);
+  }, [result , resultSupplymental , resultEBank , resultCard]);
 
   // Callbacks render
   const renderErrorBanner = useCallback(() => {
@@ -131,13 +140,30 @@ const CustomerInfoModal = (props: Props) => {
       }
 
     return null;
-  }, [ result, shouldShowRetryButton]);
+  }, [ result,resultSupplymental , resultEBank , resultCard, shouldShowRetryButton]);
 
   const renderLoading = useCallback(() => {
     if (result?.result === 'LOADING') {
       return <Loading />;
     }
   }, [result]);
+
+  const renderLoadingMore = useCallback(() => {
+
+
+    if (result?.result === 'LOADING' && resultSupplymental?.result === 'LOADING' && resultCard?.result === 'LOADING' && resultEBank?.result === 'LOADING')
+        return null;
+
+
+    if(result?.result === 'ERROR' || result?.result === 'CUSTOMER_NOT_EXIST' || result?.result === 'MUTIPLE_CIF')
+      return null;
+
+    if (result?.result !== 'LOADING' && resultSupplymental?.result !== 'LOADING' && resultCard?.result !== 'LOADING' && resultEBank?.result !== 'LOADING')
+      return null;
+
+      return (<ActivityIndicator style={Style.loader} size={20} color={Color.primary} />);
+
+  }, [result , resultSupplymental , resultCard , resultEBank]);
 
   const renderCustomerNotExist = useCallback(() => {
     if (result?.result === 'CUSTOMER_NOT_EXIST') {
@@ -175,8 +201,8 @@ const CustomerInfoModal = (props: Props) => {
         >
           <PersonalDocumentInfoETB resultData={result} />
           <View style={{ marginTop: hp(3), marginRight: wp(2) }}>
-            {result.cifMemo.length > 0 ||
-            (result.accountList.length > 0 &&
+            {result?.cifMemo.length > 0 ||
+            (result?.accountList.length > 0 &&
               result.accountList.some((account) => (account.memoInfo ?? []).length > 0)) ? (
               <ListMemoETB resultData={result} />
             ) : (
@@ -190,7 +216,7 @@ const CustomerInfoModal = (props: Props) => {
 
   // One CIF info section
   const renderSupplementalSection = useCallback(() => {
-    if (result?.result === 'ETB') {
+    if (resultSupplymental?.result === 'ETB') {
       return (
         <View
           style={{
@@ -202,9 +228,9 @@ const CustomerInfoModal = (props: Props) => {
         >
           <SuplementaryInfoSection
             loading={true}
-            failded={result?.supplementalInfo?.state !== 'SUCCESS'}
+            failded={resultSupplymental?.supplementalInfo?.state !== 'SUCCESS'}
             data={
-              [...result?.supplementalInfo?.data].filter(
+              [...resultSupplymental?.supplementalInfo?.data].filter(
                 (item) => item !== null
               ) as SupplementalInfoDTO[]
             }
@@ -217,7 +243,7 @@ const CustomerInfoModal = (props: Props) => {
         </View>
       );
     }
-  }, [result]);
+  }, [result , resultSupplymental]);
 
   const renderProductionInformation = useCallback(() => {
     if (result?.result === 'ETB') {
@@ -233,12 +259,12 @@ const CustomerInfoModal = (props: Props) => {
           }}
         >
           <View>
-            <ProductAndServiceView resultData={result} />
+            <ProductAndServiceView resultEBank={resultEBank} resultCard={resultCard} resultAccount={result} />
           </View>
         </View>
       );
     }
-  }, [result]);
+  }, [result , resultEBank , resultCard]);
 
   return (
     <>
@@ -272,7 +298,9 @@ const CustomerInfoModal = (props: Props) => {
 
           <ScrollView>
             <View style={Style.main_container}>
-              <Text style={Style.titleText}>{translate('title')}</Text>
+              <Text style={Style.titleText}>{translate('title')}
+              </Text>
+              {renderLoadingMore()}
               {renderError()}
               {renderErrorBanner()}
               {renderLoading()}
@@ -363,6 +391,10 @@ const Style = StyleSheet.create({
   buttonView: {
     backgroundColor: 'white',
     paddingBottom: hp(3),
+  },
+  loader: {
+    marginBottom : 20,
+    marginLeft : 20
   },
 });
 export default CustomerInfoModal;

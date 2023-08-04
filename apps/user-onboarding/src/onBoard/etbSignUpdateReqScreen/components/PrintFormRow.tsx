@@ -16,23 +16,23 @@ interface IPrintFormRow {
 const PrintFormRow = (props: IPrintFormRow) => {
   return (
     <View style={Style.container}>
-      <View style={Style.iconDocumentView}>
+       <View style={Style.iconDocumentView}>
         <IconDocumentBlack />
-      </View>
-      <View style={Style.textContainer}>
-        <Text style={Style.titleText}>{props.rowTitle}</Text>
-        <Text onPress={props.onPressSeeDetails} style={Style.detailText}>
-          {translate("see_details")}
-        </Text>
-      </View>
-      <View style={{ justifyContent: "center" }}>
-        <PrintItemView
-          isDisabled={props.isPrintDisabled}
-          onPress={props.onPressPrintForm}
-          key={"print-1"}
-          title={translate(props.printActionTitle)}
-        />
-      </View>
+        </View>
+        <View style={Style.textContainer}>
+          <Text style={Style.titleText}>{props.rowTitle}</Text>
+          <Text onPress={props.onPressSeeDetails} style={Style.detailText}>
+            {translate("see_details")}
+          </Text>
+        </View>
+        <View style={{ justifyContent: "center" }}>
+          <PrintItemView
+            isDisabled={props.isPrintDisabled}
+            onPress={props.onPressPrintForm}
+            key={"print-1"}
+            title={translate(props.printActionTitle)}
+          />
+        </View>
     </View>
   );
 };

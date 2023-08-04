@@ -32,7 +32,7 @@ async function refreshToken(refreshToken: string): Promise<AuthenticationData> {
 const axiosTokenInstance = axios.create({
   baseURL: Config.BASE_URL,
 });
-axiosTokenInstance.defaults.timeout = 35000;
+axiosTokenInstance.defaults.timeout = 45 * 1000;
 
 axiosTokenInstance.interceptors.request.use(
   async (config) => {
@@ -50,11 +50,13 @@ axiosTokenInstance.interceptors.request.use(
 axiosTokenInstance.interceptors.response.use(
   // Your response success handler
   (response: any) => {
+
     if (response?.data?.exception?.code === '408') {
       throw {
         data: response?.data?.exception?.message ?? 'Request Timeout',
         status: 408,
       };
+
     } else if (response?.data?.DATA?.errorCode === '408') {
       throw {
         data: response?.data?.DATA?.errorMessage ?? 'Request Timeout',

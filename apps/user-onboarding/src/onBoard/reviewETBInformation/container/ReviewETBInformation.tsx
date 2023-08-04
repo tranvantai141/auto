@@ -49,7 +49,6 @@ import {
   ReviewInfoResponse,
 } from '../typings/ReviewInfoResponse';
 import Style from './Style';
-import { setLoading } from '@screens/home/redux/slices/GlobalLoadingSlice';
 import { resetGetRegCustomerAccFormResponse } from '../redux/slices/GetRegCustomerAccFormSlice';
 import { resetGetFatcaInfoFormResponse } from '../redux/slices/GetFatcaFormSlice';
 import { resetGetRegDebitAccFormResponse } from '../redux/slices/GetRegDebitAccFormSlice';
@@ -359,7 +358,7 @@ const ReviewETBInformation = (props: any) => {
   };
 
   const handleFormRequestResponse = useCallback(
-    (formId: FormType) => {
+    async (formId: FormType) => {
       if (getRegCustomerAccFormResult?.response?.pdfUrl && formId === 'register_customer_acc') {
         setFormState({
           formUrl: getRegCustomerAccFormResult.response?.pdfUrl,

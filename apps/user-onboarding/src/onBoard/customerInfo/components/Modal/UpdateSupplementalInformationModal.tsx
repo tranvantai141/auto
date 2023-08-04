@@ -988,7 +988,7 @@ const UpdateSupplementalInformationModal = (props: Props) => {
       isVisible={props?.isVisible}
       style={Styles.modal}
     >
-      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={hp(0)}>
+      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={hp(10)}>
         <View style={Styles.modal_view}>
           <Text style={Styles.heading_text}>{translate('title_update')}</Text>
           <View style={Styles.middle_view}>

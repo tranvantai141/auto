@@ -10,8 +10,9 @@ interface Props {
 }
 const GlobalLoading = (props: Props) => {
   const [count, setCount] = useState<boolean>(true);
-
+  const { containerStyle, imageStyle, isLoading } = props;
   useEffect(() => {
+    setCount(true);
     const loadingTimeout = setTimeout(() => {
       setCount(false);
     }, 45 * 1000);
@@ -19,9 +20,7 @@ const GlobalLoading = (props: Props) => {
       setCount(true);
       clearTimeout(loadingTimeout);
     };
-  }, []);
-
-  const { containerStyle, imageStyle, isLoading } = props;
+  }, [isLoading]);
 
   if (!(isLoading && count)) return null;
 

@@ -41,6 +41,7 @@ import { AuthenticationData } from 'src/typings/global';
 import EnvView from '../components/EnvView';
 
 const Login = (props: any) => {
+  const isDev = __DEV__;
   const { navigation } = props;
   const [toggle, setToggle] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -56,10 +57,17 @@ const Login = (props: any) => {
   // const [timeLeft, setTimeLeft] = useState('');
   // const [timerModal, setTimerModal] = useState(false);
   const userRoleList = useAppSelector((state: RootState) => state.userRole);
-  const [loginForm, setLoginForm] = useState<ILoginForm>({
-    username: 'huynk.ho',
-    password: 'Chatbot0323',
-  });
+  const [loginForm, setLoginForm] = useState<ILoginForm>(
+    isDev
+      ? {
+          username: 'huynk.ho',
+          password: 'Chatbot0323',
+        }
+      : {
+          username: '',
+          password: '',
+        }
+  );
 
   const [loginFormError, setLoginFormError] = useState<ILoginFormError>({
     username: '',

@@ -1,15 +1,25 @@
 import { RouteNames } from '@routeNames';
 import useUpdateSupplementalInfo from '@screens/customerInfo/hooks/useUpdateSupplementalInfo';
+import { resetAccountList } from '@screens/productServices/redux/slices/GetAccountListSlice';
+import { resetDigi } from '@screens/productServices/redux/slices/GetDigibankRegisteredInfoSlice';
+import { resetDebitCardList } from '@screens/productServices/redux/slices/GetRequestedDebitCardSlice';
+import { resetAdditional } from '@screens/productServices/redux/slices/UpdateAdditionalInfoSlice';
+import { resetDelivery } from '@screens/productServices/redux/slices/UpdateDeliveryInfoSlice';
 import { useQuery } from '@tanstack/react-query';
 import moment from 'moment';
 import { useCallback, useMemo, useState } from 'react';
+import Config from 'react-native-config';
 import { CompareStringOptions, compareString } from 'src/common/utils/compareString';
+import { delay } from 'src/common/utils/delay';
 import { fuzzyDateParser } from 'src/common/utils/fuzzyDateParser';
 import { useConfirmModal } from 'src/hooks/useConfirmModal';
 import useTransactionId from 'src/hooks/useTransactionId';
 import useRootNavigation from 'src/navigation/hooks/useRootNavigation';
+import { clearCacheTransaction } from 'src/redux/actions/cancelTransaction/CancelTransaction';
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks';
+import { updateCustomerInfoData } from 'src/redux/slices/customerInfoData/CustomerInfoDataSlice';
 import { updateETBUpdatedInfo } from 'src/redux/slices/mocResultInfo/ETBUpdatedInfoSlice';
+import { setPhoneNumber } from 'src/redux/slices/phoneNumberForOtp/PhoneNumberForOtp';
 import { RootState } from 'src/redux/store';
 import { MoCResultData } from 'src/typings/global';
 import { updateCurentSupplementalResult } from '../../../redux/slices/mocResultInfo/SupplementalInfo';
@@ -29,16 +39,6 @@ import {
   ResponseApiProductionAndServices,
   useProductionAndServices,
 } from './useProductionAndServices';
-import { updateCustomerInfoData } from 'src/redux/slices/customerInfoData/CustomerInfoDataSlice';
-import { setPhoneNumber } from 'src/redux/slices/phoneNumberForOtp/PhoneNumberForOtp';
-import { delay } from 'src/common/utils/delay';
-import { resetDigi } from '@screens/productServices/redux/slices/GetDigibankRegisteredInfoSlice';
-import { resetDebitCardList } from '@screens/productServices/redux/slices/GetRequestedDebitCardSlice';
-import { resetAccountList } from '@screens/productServices/redux/slices/GetAccountListSlice';
-import { resetDelivery } from '@screens/productServices/redux/slices/UpdateDeliveryInfoSlice';
-import { resetAdditional } from '@screens/productServices/redux/slices/UpdateAdditionalInfoSlice';
-import Config from 'react-native-config';
-import { clearCacheTransaction } from 'src/redux/actions/cancelTransaction/CancelTransaction';
 
 type MoCValidationErrors = 'ELIGIBLE_AGE' | 'EXPIRED' | 'INVALID_DOB' | 'INVALID_EXPIRED_DATE';
 
@@ -89,9 +89,7 @@ export function useMocResultFlow() {
   const getSupplementalInfo = useAppSelector(
     (state: RootState) => state.getSupplementalInfoSlice.data
   );
-
   const dispatch = useAppDispatch();
-
   const navigation = useRootNavigation();
   const cancelTransaction = useCancelTransactionMoC();
   const [, updateSupplemental] = useUpdateSupplementalInfo();
@@ -100,10 +98,8 @@ export function useMocResultFlow() {
 
   // 1. Check MOC result
   const isMocResultFailed = mocResult.error?.code != null && mocResult.error.code !== 0;
-
   const mocValidationErrors = useMemo(() => {
     const errors: MoCValidationErrors[] = [];
-
     // validate DOB is valid (> 15)
     const dateOfBirth = fuzzyDateParser(mocResult?.DOB ?? '');
     if (dateOfBirth == null) {
@@ -114,7 +110,6 @@ export function useMocResultFlow() {
         errors.push('ELIGIBLE_AGE');
       }
     }
-
     // validate moc is expired
     if (
       !compareString(mocResult?.ExpiredDate ?? 'N/A', 'Không thời hạn', {
@@ -141,17 +136,19 @@ export function useMocResultFlow() {
     ['getCifInfoList', transactionId],
     async () => {
       const res = await getCifInfoList(transactionId ?? '');
-      if (res.code === 'SUCCESS') {
+      if (res && res.code === 'SUCCESS') {
         return res.cifInfoList;
       }
-      throw new Error(res.message);
+      return [];
+      // throw new Error(res?.message);
     },
     {
       enabled: transactionId != null && mocValidationErrors.length === 0,
       refetchOnReconnect: false,
       refetchOnWindowFocus: false,
-      staleTime: 10 * 1000,
-      cacheTime: 10 * 1000,
+      // staleTime: 10 * 1000,
+      cacheTime: 0,
+      staleTime: 0,
     }
   );
 
@@ -186,8 +183,8 @@ export function useMocResultFlow() {
     },
     {
       enabled: cifInfos != null && cifInfos.length === 1 && !isBlockByDiffInfo,
-      staleTime: 10 * 1000,
-      cacheTime: 10 * 1000,
+      cacheTime: 0,
+      staleTime: 0,
     }
   );
 
@@ -196,16 +193,22 @@ export function useMocResultFlow() {
   const { data: existingAccountList } = useQuery(
     ['getExistingAccountList', transactionId],
     async () => {
-      const res = await getAccounts(transactionId ?? '');
-      if (res.code === 'SUCCESS') {
-        return res.accountList ?? [];
+      try {
+        const res = await getAccounts(transactionId ?? '');
+        if (res?.code === 'SUCCESS') {
+          return res?.accountList ?? [];
+        }
+        return []
+      } catch (err) {
+        return []
       }
-      throw new Error(res.message);
+// 
+      // throw new Error(res?.message);
     },
     {
       enabled: cifInfos != null && cifInfos.length === 1 && !isBlockByDiffInfo,
-      staleTime: 10 * 1000,
-      cacheTime: 10 * 1000,
+      staleTime: 0,
+      cacheTime: 0,
     }
   );
 
@@ -238,10 +241,6 @@ export function useMocResultFlow() {
   } = useQuery(
     ['getSuplementaryInfo', transactionId, isMemoFetched],
     async () => {
-      // Mock error
-      // await delay(2000);
-      // throw new Error('Timeout');
-
       const res = await getSupplementary(transactionId ?? '');
 
       if (res.code === 'SUCCESS') {
@@ -291,12 +290,14 @@ export function useMocResultFlow() {
       suspense: false,
       refetchOnMount: true,
       useErrorBoundary: false,
-      staleTime: 10 * 1000,
-      cacheTime: 10 * 1000,
+      // staleTime: 10 * 1000,
+      cacheTime: 0,
+      staleTime: 0,
     }
   );
 
-  const result = useMemo<MoCResultFlow>(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const result = (() => {
     if (isMocResultFailed) {
       return {
         result: 'MOC_FAILED',
@@ -361,23 +362,25 @@ export function useMocResultFlow() {
       result: 'INVALID_MEMO',
       mocResult,
     };
-  }, [
-    isMocResultFailed,
-    mocValidationErrors,
-    isListCifFetched,
-    mocResult,
-    cifInfos,
-    diffInfos,
-    isBlockByDiffInfo,
-    isBlockByMemoKyc,
-    memos,
-    existingAccountList,
-    productResult.result,
-    productResult.status,
-    getSuplementaryInfoStatus,
-    suplementaryInfoList,
-    isSupInfoError,
-  ]);
+  })() 
+  // [
+  //   isMocResultFailed,
+  //   mocValidationErrors,
+  //   isListCifFetched,
+  //   mocResult,
+  //   cifInfos,
+  //   diffInfos,
+  //   isBlockByDiffInfo,
+  //   isBlockByMemoKyc,
+  //   memos,
+  //   existingAccountList,
+  //   productResult.result,
+  //   productResult.status,
+  //   getSuplementaryInfoStatus,
+  //   suplementaryInfoList,
+  //   isSupInfoError,
+  // ]
+  // );
 
   const retryAction = useCallback(async () => {
     if (result.result === 'ETB' && getSuplementaryInfoStatus === 'error') {
@@ -533,19 +536,31 @@ export function useMocResultFlow() {
     navigation.navigate(RouteNames.supplementaryInfo.name, {
       detailAddressParam: mocResult.Resident,
     });
-  }, [result, dispatch, navigation, mocResult.Resident, transactionId, cancelTransaction, suplementaryInfoList, getSupplementalInfo, updateSupplemental, showConfirmModal, cifInfos, showAlertModal]);
+  }, [
+    result,
+    dispatch,
+    navigation,
+    mocResult.Resident,
+    transactionId,
+    cancelTransaction,
+    suplementaryInfoList,
+    getSupplementalInfo,
+    updateSupplemental,
+    showConfirmModal,
+    cifInfos,
+    showAlertModal,
+  ]);
 
-  return useMemo(() => {
-    return {
-      result,
-      continueAction,
-      retryAction,
-      validateAction,
-    };
-  }, [continueAction, result, retryAction, validateAction]);
+  return {
+    ...(cifInfos != null && cifInfos.length === 1 && !isBlockByDiffInfo && {existingAccountList}),
+    result,
+    continueAction,
+    retryAction,
+    validateAction,
+  };
 }
 
-function compareMocWithCifInfo(mocResult: MoCResultData, cifInfos: CifDataDTO): CompareResult[] {
+export function compareMocWithCifInfo(mocResult: MoCResultData, cifInfos: CifDataDTO): CompareResult[] {
   const result: CompareResult[] = [];
 
   const stringCompareOptions: CompareStringOptions = {

@@ -3,7 +3,7 @@ import CancelModal from '@components/modals/CancelModal';
 import ScreenLayout from '@components/screen/ScreenLayout';
 import ErrorView from '@screens/customerInfo/components/ErrorView';
 import { CreateFatcaInfoParam } from '@screens/etbFatcaInformation/typings/CreateFatcaInfoParams';
-import { QueryErrorResetBoundary } from '@tanstack/react-query';
+import { QueryErrorResetBoundary, useQuery } from '@tanstack/react-query';
 import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import RNPrint from 'react-native-print';
@@ -171,7 +171,7 @@ function PrintFormETBScreen() {
     transactionId,
   ]);
 
-  const fetchFormUrls = useCallback(() => {
+  const fetchData = async () => {
     const requestParams: FormRequestParams = {
       transactionId: transactionId,
       requestType: 'TRIGGER',
@@ -184,40 +184,50 @@ function PrintFormETBScreen() {
       transactionId: transactionId,
       step: 'PRINT_FORM',
     };
-
     // Request to get register customer acc form data
-    if (isOpenAccount && transactionId)
+    if (isOpenAccount && transactionId) {
       dispatch(GetRegisterCustomerAccForm({ ...requestParams, contractType: 'OB_REG_CUS' }));
+    }
 
     // Request to get registered e-banking service form data
-    if (isOpenDigiRequested && transactionId)
+    if (isOpenDigiRequested && transactionId) {
       dispatch(GetRegisterDigibankAccForm({ ...requestParams, contractType: 'OB_REG_DIGI' }));
+    }
 
     // Request to get debit/e-debit card info form data
-    if (isOpenDebitCard && transactionId)
+    if (isOpenDebitCard && transactionId) {
       dispatch(GetIssuedDebitAccForm({ ...requestParams, contractType: 'OB_ISS_DBC' }));
+    }
 
     // Request to get updated info form data
-    if ((isNewEntryAdded || isCustomerInfoUpdated) && transactionId)
+    if ((isNewEntryAdded || isCustomerInfoUpdated) && transactionId) {
       dispatch(GetUpdateInfoAccForm({ ...requestParams, contractType: 'OB_UPD_INFO' }));
+    }
 
     // Request to get fatca info form data
-    if (ifAnyYesStateInFatca && transactionId && isOpenAccount)
+    if (ifAnyYesStateInFatca && transactionId && isOpenAccount) {
       dispatch(GetFatcaInfoAccForm(fatcaReqParams));
-  }, [
-    dispatch,
-    ifAnyYesStateInFatca,
-    isCustomerInfoUpdated,
-    isNewEntryAdded,
-    isOpenAccount,
-    isOpenDebitCard,
-    isOpenDigiRequested,
-    transactionId,
-  ]);
+    }
+    return true;
+  };
 
-  useEffect(() => {
-    fetchFormUrls();
-  }, [fetchFormUrls, ifAnyYesStateInFatca, isCustomerInfoUpdated, isNewEntryAdded]);
+  useQuery(
+    [
+      'fetchFormUrls',
+      transactionId,
+      ifAnyYesStateInFatca,
+      isCustomerInfoUpdated,
+      isNewEntryAdded,
+      isOpenAccount,
+      isOpenDebitCard,
+      isOpenDigiRequested,
+    ],
+    fetchData,
+    {
+      enabled: !!transactionId, // only run the query if `transactionId` is truthy
+      refetchInterval: 10 * 60 * 1000,
+    }
+  );
 
   const handleFormRequestResponse = (formId: FormType, type: string) => {
     if (getRegAccFormToPrintResult?.response?.pdfUrl && formId === 'register_customer_acc') {
@@ -327,7 +337,7 @@ function PrintFormETBScreen() {
                   false
                 }
                 onClose={() => setFormState(undefined)}
-                reTryFetchData={fetchFormUrls}
+                reTryFetchData={fetchData}
                 isLoading={isLoading}
                 showError={isError}
                 onPrintButtonClick={(formId: FormType) =>

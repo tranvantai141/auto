@@ -38,12 +38,15 @@ export function useProductionAndServices() {
   } = useQuery(
     ['cardList', transactionId], // key
     async () => {
-      const res = await getCardList(transactionId ?? '');
-      if (res.code === 'SUCCESS') {
-        dispatch(getPhysicalCardSuccess(res.cardList));
-        return res.cardList;
+      try {
+        const res = await getCardList(transactionId ?? '');
+        if (res?.code === 'SUCCESS') {
+          dispatch(getPhysicalCardSuccess(res?.cardList ?? []));
+          return res?.cardList ?? [];
+        }
+      } catch(err) {
+        //
       }
-      throw new Error(res.message);
     },
     {
       enabled: transactionId != null ,
@@ -110,12 +113,15 @@ export function useProductionAndServices() {
   } = useQuery(
     ['accountList', transactionId], // key
     async () => {
-      const res = await getAccounts(transactionId ?? '');
-      if (res.code === 'SUCCESS') {
-        dispatch(updateExistAccountList(res?.accountList));
-        return res.accountList;
+      try {
+        const res = await getAccounts(transactionId ?? '');
+        if (res?.code === 'SUCCESS') {
+          dispatch(updateExistAccountList(res?.accountList));
+          return res?.accountList ?? [];
+        }
+      } catch (err) {
+        //
       }
-      throw new Error(res.message);
     },
     {
       enabled: transactionId != null,

@@ -1,15 +1,15 @@
-import axios, { AxiosError } from 'axios';
+import { ISaveMocResultForm } from '@interfaces/I_SaveMoc_result';
 import { saveMoc_Result_URL } from '@screens/customerInformation/api/endpoints';
+import { AxiosError } from 'axios';
+import axiosTokenInstance from 'src/service/network/axios';
 import {
-  setLoading,
   onSaveMocResultError,
   onSaveMocResultResponse,
+  setLoading,
 } from '../slices/SaveMocResultSlice';
-import { ISaveMocResultForm } from '@interfaces/I_SaveMoc_result';
-import axiosTokenInstance from 'src/service/network/axios';
 
 export const saveMocResultRequest =
-  (param: ISaveMocResultForm) => async (dispatch: any | undefined) => {
+  (param: ISaveMocResultForm, callback?: () => void) => async (dispatch: any | undefined) => {
     try {
       dispatch(setLoading(true));
       axiosTokenInstance({
@@ -23,6 +23,7 @@ export const saveMocResultRequest =
         .then((resp) => {
           dispatch(onSaveMocResultResponse(resp?.data));
           dispatch(setLoading(false));
+          callback && callback()
         })
         .catch((error: AxiosError) => {
           dispatch(setLoading(false));

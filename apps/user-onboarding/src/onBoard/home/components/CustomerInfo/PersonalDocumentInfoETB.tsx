@@ -77,41 +77,41 @@ const PersonalDocumentInfoETBContent = ({ title, resultData }: Props) => {
       <Text style={styles.txtHeader}>{translate('personal_info_paper')}</Text>
       {/* User infomation */}
       <View style={styles.containerRow}>
-        <RowViewInformation title={translate('cif_number')} cifValue={resultData.cif.cifNumber} />
+        <RowViewInformation title={translate('cif_number')} cifValue={resultData?.cif?.cifNumber} />
       </View>
       <View style={styles.containerRow}>
-        <RowViewInformation title={translate('full_name')} cifValue={resultData.cif.fullName} />
+        <RowViewInformation title={translate('full_name')} cifValue={resultData?.cif?.fullName} />
         <View style={{ height: 1, width: wp(90), backgroundColor: Colors.dark_grey }}></View>
 
         <RowViewInformation
           title={translate('date_of_birth')}
           cifValue={
-            resultData.cif.formattedDoB?.includes('*')
-              ? resultData.cif.formattedDoB
-              : formatFuzzyDate(parseInt(resultData.cif.dob), 'DD/MM/yyyy')
+            resultData?.cif?.formattedDoB?.includes('*')
+              ? resultData?.cif?.formattedDoB
+              : formatFuzzyDate(parseInt(resultData?.cif?.dob), 'DD/MM/yyyy')
           }
         />
         <View style={{ height: 1, width: wp(90), backgroundColor: Colors.dark_grey }}></View>
 
-        <RowViewInformation title={translate('sex')} cifValue={resultData.cif.gender} />
+        <RowViewInformation title={translate('sex')} cifValue={resultData?.cif?.gender} />
         <View style={{ height: 1, width: wp(90), backgroundColor: Colors.dark_grey }}></View>
       </View>
       {/* User document infomation */}
       <View style={styles.containerRow}>
         <RowViewInformation
           title={translate('customer_document_number')}
-          cifValue={resultData.cif.idNumber}
+          cifValue={resultData?.cif?.idNumber}
         />
         <View style={{ height: 1, width: wp(90), backgroundColor: Colors.dark_grey }}></View>
 
         <RowViewInformation
           title={translate('date_range')}
           cifValue={
-            resultData.cif.formattedValidDate?.includes('*')
-              ? resultData.cif.formattedValidDate
-              : resultData.cif.formattedValidDate === 'Không thời hạn'
+            resultData?.cif?.formattedValidDate?.includes('*')
+              ? resultData?.cif?.formattedValidDate
+              : resultData?.cif?.formattedValidDate === 'Không thời hạn'
               ? 'Không thời hạn'
-              : formatFuzzyDate(parseInt(resultData.cif.validDate), 'DD/MM/yyyy')
+              : formatFuzzyDate(parseInt(resultData?.cif?.validDate), 'DD/MM/yyyy')
           }
         />
         <View style={{ height: 1, width: wp(90), backgroundColor: Colors.dark_grey }}></View>
@@ -119,18 +119,18 @@ const PersonalDocumentInfoETBContent = ({ title, resultData }: Props) => {
         <RowViewInformation
           title={translate('valid_until')}
           cifValue={
-            resultData.cif.formattedExpiredDate?.includes('*')
-              ? resultData.cif.formattedExpiredDate
-              : resultData.cif.formattedExpiredDate === 'Không thời hạn'
+            resultData?.cif?.formattedExpiredDate?.includes('*')
+              ? resultData?.cif?.formattedExpiredDate
+              : resultData?.cif?.formattedExpiredDate === 'Không thời hạn'
               ? 'Không thời hạn'
-              : formatFuzzyDate(parseInt(resultData.cif.expiredDate), 'DD/MM/yyyy')
+              : formatFuzzyDate(parseInt(resultData?.cif?.expiredDate), 'DD/MM/yyyy')
           }
         />
         <View style={{ height: 1, width: wp(90), backgroundColor: Colors.dark_grey }}></View>
 
         <RowViewInformation
           title={translate('issued_by')}
-          cifValue={resultData.cif.issuePlaceDescription}
+          cifValue={resultData?.cif?.issuePlaceDescription}
         />
       </View>
 
@@ -138,7 +138,7 @@ const PersonalDocumentInfoETBContent = ({ title, resultData }: Props) => {
       <View style={styles.containerRow}>
         <RowViewInformation
           title={translate('nationality')}
-          cifValue={resultData.cif.nationality}
+          cifValue={resultData?.cif?.nationality}
         />
       </View>
     </View>

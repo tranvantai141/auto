@@ -23,11 +23,15 @@ export function useProductionAndServices(isEnable: boolean) {
   } = useQuery(
     ['cardList', transactionId], // key
     async () => {
-      const res = await getCardList(transactionId ?? '');
-      if (res.code === 'SUCCESS') {
-        return res.cardList;
+      try {
+        const res = await getCardList(transactionId ?? '');
+        if (res?.code === 'SUCCESS') {
+          return res?.cardList ?? [];
+        }
+      } catch(err) {
+        return []
       }
-      throw new Error(res.message);
+    
       // throw new Error('Timeout');
     },
     {

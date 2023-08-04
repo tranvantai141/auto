@@ -12,6 +12,8 @@ import {
 } from '../typings';
 import { SupplementalInformation } from '@screens/customerInfo/typings/request';
 import { GetCustomerFlagDTO } from '../typings/DTO';
+import LoggerManager from "../../../common/utils/LoggerManager";
+import HelperManager from 'src/common/utils/HelperManager';
 
 export function checkCustomerExistence(transactionId: string) {
   return axiosTokenInstance.post<any>('/onboarding/customer/core-banking-existence-check', {
@@ -22,13 +24,18 @@ export function checkCustomerExistence(transactionId: string) {
 export async function getCifInfoList(transactionId: string): Promise<GetListCifDTO> {
   // /onboarding/transaction/get-cif-info-list
   // https://bluebikglobal.atlassian.net/wiki/spaces/VCBTA/pages/101351558/ETB+Backend+API+Specification
-  const res = await axiosTokenInstance.post<GetListCifDTO>(
-    '/onboarding/transaction/get-cif-info-list',
-    {
-      transactionId,
-    }
-  );
-  return res.data;
+  try {
+    const res = await axiosTokenInstance.post<GetListCifDTO>(
+        '/onboarding/transaction/get-cif-info-list',
+        {
+          transactionId,
+        }
+    );
+    return res.data;
+  } catch (error) {
+    console.error('error', error)
+  }
+
 
   // await delay(2000);
   // return {
@@ -58,13 +65,17 @@ export async function getMemoByCif(transactionId: string): Promise<GetMemoByCifD
   // /onboarding/transaction/get-memo-by-cif
   // https://bluebikglobal.atlassian.net/wiki/spaces/VCBTA/pages/101351558/ETB+Backend+API+Specification
 
-  const res = await axiosTokenInstance.post<GetMemoByCifDTO>(
-    '/onboarding/transaction/get-memo-by-cif',
-    {
-      transactionId,
-    }
-  );
-  return res.data;
+  try {
+    const res = await axiosTokenInstance.post<GetMemoByCifDTO>(
+      '/onboarding/transaction/get-memo-by-cif',
+      {
+        transactionId,
+      }
+    );
+    return res.data;
+  } catch (error) {
+    //
+  }
 
   await delay(1000);
   return {
@@ -105,14 +116,18 @@ export async function getMemoByCif(transactionId: string): Promise<GetMemoByCifD
 export async function getAccounts(transactionId: string): Promise<GetAccountByCifDTO> {
   // /onboarding/transaction/get-existing-accounts-list
   // https://bluebikglobal.atlassian.net/wiki/spaces/VCBTA/pages/101351558/ETB+Backend+API+Specification
-  const res = await axiosTokenInstance.post<GetAccountByCifDTO>(
-    '/onboarding/transaction/get-existing-accounts-list',
-    {
-      transactionId,
-    }
-  );
+    try {
+      const res = await axiosTokenInstance.post<GetAccountByCifDTO>(
+        '/onboarding/transaction/get-existing-accounts-list',
+        {
+          transactionId,
+        }
+      );
 
-  return res.data;
+      return res?.data;
+    } catch (error) {
+      //
+    }
 
   // await delay(2000);
   // return {
@@ -159,11 +174,15 @@ export async function getAccounts(transactionId: string): Promise<GetAccountByCi
 export async function getSupplementary(transactionId: string): Promise<GetSupplementalInfoDTO> {
   // /onboarding/transaction/get-updating-sup-info
   // https://bluebikglobal.atlassian.net/wiki/spaces/VCBTA/pages/101351558/ETB+Backend+API+Specification
-  const res = await axiosTokenInstance.post<any>('/onboarding/transaction/get-updating-sup-info', {
-    transactionId,
-  });
+  try {
+    const res = await axiosTokenInstance.post<any>('/onboarding/transaction/get-updating-sup-info', {
+      transactionId,
+    });
 
-  return res?.data;
+    return res?.data;
+  } catch (error) {
+    //    
+  }
 
   // await delay(2000);
   // return {
@@ -225,14 +244,19 @@ export async function getProduct(): Promise<unknown> {
 
 export async function getCardList(transactionId: string): Promise<GetCardListDTO> {
   // /onboarding/transaction/get-existing-cards-list
-  const res = await axiosTokenInstance.post<GetCardListDTO>(
-    '/onboarding/transaction/get-existing-cards-list',
-    {
-      transactionId,
-    }
-  );
+  try {
+    const res = await axiosTokenInstance.post<GetCardListDTO>(
+      '/onboarding/transaction/get-existing-cards-list',
+      {
+        transactionId,
+      }
+    );
+  
+    return res?.data;
+  } catch (error) {
+    //
+  }
 
-  return res.data;
 
   // await delay(2000);
   // return {
@@ -274,15 +298,19 @@ export async function getEbankingList(
   cifNo: string
 ): Promise<GetEBankingListDTO> {
   // /onboarding/transaction/get-digibank-info
-  const res = await axiosTokenInstance.post<GetEBankingListDTO>(
-    '/onboarding/transaction/get-digibank-info',
-    {
-      transactionId,
-      cifNo,
-    }
-  );
+  try {
+    const res = await axiosTokenInstance.post<GetEBankingListDTO>(
+      '/onboarding/transaction/get-digibank-info',
+      {
+        transactionId,
+        cifNo,
+      }
+    );
 
-  return res.data;
+    return res.data;
+  } catch (error) {
+    //
+  }
 
   // await delay(2000);
   // return {
@@ -299,21 +327,29 @@ export async function getEbankingList(
 }
 
 export function updateSupplementalInfo(supplementalInfo: SupplementalInformation) {
-  return axiosTokenInstance.post<any>(
-    '/onboarding/transaction/get-updating-sup-info/save',
-    supplementalInfo
-  );
+  try {
+    return axiosTokenInstance.post<any>(
+      '/onboarding/transaction/get-updating-sup-info/save',
+      supplementalInfo
+    );
+  } catch (error) {
+    //
+  }
 }
 
 export async function getUpdatedFlag(transactionId: string): Promise<GetCustomerFlagDTO> {
-  const res = await axiosTokenInstance.post<GetCustomerFlagDTO>(
-    '/onboarding/transaction/get-customer-info-flag',
-    {
-      transactionId,
-    }
-  );
+  try {
+    const res = await axiosTokenInstance.post<GetCustomerFlagDTO>(
+      '/onboarding/transaction/get-customer-info-flag',
+      {
+        transactionId,
+      }
+    );
 
-  return res.data;
+    return res.data;
+  } catch (error) {
+    //
+  }
 
   // await delay(1000);
   // return {
@@ -328,12 +364,16 @@ export async function getUpdatedFlag(transactionId: string): Promise<GetCustomer
 
 
 export async function prepareProductService(transactionId: string): Promise<any> {
-  const res = await axiosTokenInstance.post<any>(
-    '/onboarding/register-products/preparing',
-    {
-      transactionId,
-    }
-  );
+  try {
+    const res = await axiosTokenInstance.post<any>(
+      '/onboarding/register-products/preparing',
+      {
+        transactionId,
+      }
+    );
 
-  return res.data;
+    return res.data;
+  } catch (error) {
+    //
+  }
 }

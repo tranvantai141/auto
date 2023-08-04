@@ -34,6 +34,8 @@ import { resetSaveImageResponse } from '../redux/slices/saveImageSlice';
 import { ISaveImage } from '../typings/I_Save_Image';
 import HeaderBar from '@screens/WebView/components/HeaderBar';
 import LoadingCustomerImageScanner from '../components/LoadingCustomerImageScanner';
+import { ConfirmDialog } from 'src/hooks/useConfirmModal';
+import { useQueryClient } from '@tanstack/react-query';
 
 const CustomerImageScanner = (props: any) => {
   const { navigation } = props;
@@ -46,6 +48,7 @@ const CustomerImageScanner = (props: any) => {
   const [isCamareFront, setCameraFront] = useState(false);
   const [cardSelected, setCardSelected] = useState<ICardReaderInfomation>();
   const mocResults = useAppSelector((state: RootState) => state.getMoCResults);
+
   const [loading, setLoading] = React.useState(false);
   const savedImageResult = useAppSelector((state: RootState) => state.SaveFaceImageResponse);
   const { uploadImage, uploadState } = useImageUploadToS3();
@@ -53,13 +56,33 @@ const CustomerImageScanner = (props: any) => {
   const transactionId = useTransactionId();
   const saveMocResultSlice = useAppSelector((state: RootState) => state.saveMocResult);
 
+  const [showErrorExistingAccount, setErrorExistingAccount] = useState<boolean>(false)
+
+  const queryclient= useQueryClient()
+
+  const callbackGetExistingAccountFalse = () => {
+    setLoading(false)
+    setErrorExistingAccount(true)
+    navigation.goBack()
+  }
+
+  const inValidQueryMockResult = () => {
+    queryclient.invalidateQueries(getUserDataQueryKey(), {
+      exact: true,
+      stale: false,
+    })
+  }
+
+
   const gotToNextScreen = (shouldUploadPhoto?: boolean) => {
     if (shouldUploadPhoto) {
       saveImage();
       return;
     }
     setLoading(false);
-    navigation.navigate(RouteNames.customerInfo.name);
+    inValidQueryMockResult()
+
+    navigation.navigate(RouteNames.customerInfo.name, {callbackGetExistingAccountFalse});
   };
 
   useEffect(() => {
@@ -132,6 +155,8 @@ const CustomerImageScanner = (props: any) => {
               ValidDate: data.ValidDate,
               FaceImage: data.FaceImage,
             })
+
+
           );
           if (data) {
             gotToNextScreen(true);
@@ -182,72 +207,7 @@ const CustomerImageScanner = (props: any) => {
       };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mocResults.data]);
-
-  // useEffect(() => {
-  //   isEmulator().then((_isEmulator) => {
-  //     if (!_isEmulator) {
-  //       const CardEventEmitter = new NativeEventEmitter(NativeModules.eIDViewController);
-  //       const subscription = CardEventEmitter.addListener('CardInfo', (data: MoCResultData) => {
-  //         dispatch(
-  //           updateMoCResult({
-  //             ...mocResults.data,
-  //             FullName: data.FullName,
-  //             IDNumber: data.IDNumber,
-  //             OldIDNumber: data.OldIDNumber,
-  //             Gender: data.Gender,
-  //             ExpiredDate: data.ExpiredDate,
-  //             Nationality: data.Nationality,
-  //             DDND: data.DDND,
-  //             DOB: data.DOB,
-  //             Hometown: data.Hometown,
-  //             Resident: data.Resident,
-  //             ValidDate: data.ValidDate,
-  //           })
-  //         );
-  //         if (data) {
-  //           gotToNextScreen();
-  //         }
-  //         setLoading(false)
-  //         console.log('RN listener CardInfo ', data);
-  //         console.log('RN listener CardInfo type ', data.FullName);
-  //         console.log('RN listener CardInfo type2 ', data['FullName']);
-  //       });
-  //       const subscription1 = CardEventEmitter.addListener('Error', (errorInfo: MoCError) => {
-  //         // this error code tells the close state of the card reader event e.g after Wrong face captured
-  //         console.log('RN listener Error.code', errorInfo.code);
-  //         setLoading(false)
-  //         if (errorInfo.code !== 12) {
-  //           dispatch(updateMoCResult({ ...mocResults.data, error: errorInfo }));
-  //           gotToNextScreen()
-  //         } else {
-  //           gotToNextScreen();
-  //         }
-  //         console.log('RN listener Error', errorInfo);
-  //       });
-  //       const subscription2 = CardEventEmitter.addListener('SODResult', (errorInfo: MoCError) => {
-  //         console.log('RN listener SODResult', errorInfo);
-  //         dispatch(updateMoCResult({ ...mocResults.data, error: errorInfo }));
-  //         setLoading(false)
-  //         // (errorInfo && errorInfo.code) && Alert.alert(`${errorInfo.code}--${errorInfo.description}`)
-  //       });
-  //       const subscription3 = CardEventEmitter.addListener('ShowLoading', (data: any) => {
-  //         console.log('RN listener ShowLoading', data);
-  //       });
-  //       const subscription4 = CardEventEmitter.addListener('HideLoading', (data: any) => {
-  //         console.log('RN listener HideLoading', data);
-  //       });
-  //       return () => {
-  //         //Remove listen
-  //         subscription.remove();
-  //         subscription1.remove();
-  //         subscription2.remove();
-  //         subscription3.remove();
-  //         subscription4.remove();
-  //       };
-  //     }
-  //   });
-  // }, [mocResults.data]);
+  }, [mocResults?.data]);
 
   useEffect(() => {
     requestCameraPermission();
@@ -313,7 +273,7 @@ const CustomerImageScanner = (props: any) => {
       'bankTransInfo',
       198,
       clickedPicture[0],
-      (err: string, r: string) => bleCardReaderResult(r)
+      (err: string, r: string) => bleCardReaderResult()
     );
   }
 
@@ -327,24 +287,24 @@ const CustomerImageScanner = (props: any) => {
       if (!_isEmulator) {
         bleCardReaderCheck();
       } else {
-        // const mockData: MoCResultData = {
-        //   // NTB
-        //   IDNumber: '0020010544',
-        //   DDND: 'Sẹo chấm ở đuôi lông mày phải',
-        //   DOB: '05/08/1994',
-        //   ExpiredDate: '05/08/2034',
-        //   FullName: 'Chu Minh Hải',
-        //   Gender: 'Nam',
-        //   Hometown: 'Trường Sơn, Đức Thọ, Hà Tĩnh',
-        //   Nationality: 'Việt Nam',
-        //   OldIDNumber: '187388998',
-        //   Resident: 'Khối Tân Thành 1, Lê Mao, Thành phố Vinh, Nghệ An',
-        //   ValidDate: '05/01/2022',
-        //   transactionId: '50022302210002',
-        //   imageUri: clickedPicture[0],
-        //   otherIdNumber: '',
-        //   FaceImage: '',
-        // };
+        const mockData: MoCResultData = {
+          // NTB
+          IDNumber: '0020010544',
+          DDND: 'Sẹo chấm ở đuôi lông mày phải',
+          DOB: '05/08/1994',
+          ExpiredDate: '05/08/2034',
+          FullName: 'Chu Minh Hải',
+          Gender: 'Nam',
+          Hometown: 'Trường Sơn, Đức Thọ, Hà Tĩnh',
+          Nationality: 'Việt Nam',
+          OldIDNumber: '187388998',
+          Resident: 'Khối Tân Thành 1, Lê Mao, Thành phố Vinh, Nghệ An',
+          ValidDate: '05/01/2022',
+          transactionId: '50022302210002',
+          imageUri: clickedPicture[0],
+          otherIdNumber: '',
+          FaceImage: '',
+        };
 
         //
         // const mockData: MoCResultData = {
@@ -387,25 +347,25 @@ const CustomerImageScanner = (props: any) => {
         //   FaceImage: '',
         // };
 
-        const mockData: MoCResultData = {
-          // ETB
-          IDNumber: '001088022892',
-          DDND: 'Nốt ruồi c:1,5cm trên sau mép phải',
-          DOB: '19/04/1988',
-          ExpiredDate: '19/07/2029',
-          FullName: 'PHAM HOANG HA',
-          Gender: 'Nam',
-          Hometown: 'Nga Trường, Nga Sơn, Thanh Hóa',
-          Nationality: 'Việt Nam',
-          OldIDNumber: '012815421',
-          Resident:
-            'Căn Hộ 1107B Cc Ct1 Khu Dự Án Nhà Ở Thạch Bàn Tổ 17, Thạch Bàn, Long Biên, Hà Nội',
-          ValidDate: '07/04/2019',
-          transactionId: '0396072306120059',
-          imageUri: clickedPicture[0],
-          otherIdNumber: '',
-          FaceImage: '',
-        };
+        // const mockData: MoCResultData = {
+        //   // ETB
+        //   IDNumber: '001088022892',
+        //   DDND: 'Nốt ruồi c:1,5cm trên sau mép phải',
+        //   DOB: '19/04/1988',
+        //   ExpiredDate: '19/07/2029',
+        //   FullName: 'PHAM HOANG HA',
+        //   Gender: 'Nam',
+        //   Hometown: 'Nga Trường, Nga Sơn, Thanh Hóa',
+        //   Nationality: 'Việt Nam',
+        //   OldIDNumber: '012815421',
+        //   Resident:
+        //     'Căn Hộ 1107B Cc Ct1 Khu Dự Án Nhà Ở Thạch Bàn Tổ 17, Thạch Bàn, Long Biên, Hà Nội',
+        //   ValidDate: '07/04/2019',
+        //   transactionId: '0396072306120059',
+        //   imageUri: clickedPicture[0],
+        //   otherIdNumber: '',
+        //   FaceImage: '',
+        // };
 
         // const mockData: MoCResultData = {
         //   // ETB ONLY CIF
@@ -539,6 +499,25 @@ const CustomerImageScanner = (props: any) => {
         //   FaceImage: '',
         // };
 
+
+        //    const mockData: MoCResultData = {
+        //   IDNumber: '001189038772',
+        //   DDND: 'Sẹo chấm ở đuôi lông mày phải',
+        //   DOB: '31/10/1989',
+        //   ExpiredDate: '05/08/2034',
+        //   FullName: 'NGUYEN THUY NGA',
+        //   Gender: 'Nam',
+        //   Hometown: 'Trường Sơn, Đức Thọ, Hà Tĩnh',
+        //   Nationality: 'Việt Nam',
+        //   OldIDNumber: '112329750',
+        //   Resident: 'C1612 Ct1a No23 Thượng Thanh, Long Biên, Hà Nội',
+        //   ValidDate: '28/06/2022',
+        //   transactionId: '0003202306150002',
+        //   imageUri: clickedPicture[0],
+        //   otherIdNumber: '',
+        //   FaceImage: '',
+        // };
+
         dispatch(updateMoCResult(mockData));
         saveImage();
       }
@@ -581,7 +560,8 @@ const CustomerImageScanner = (props: any) => {
 
   useEffect(() => {
     if (saveMocResultSlice?.response != undefined) {
-      navigation.navigate(RouteNames.customerInfo.name);
+      inValidQueryMockResult()
+      // navigation.navigate(RouteNames.customerInfo.name, {callbackGetExistingAccountFalse});
     } else if (saveMocResultSlice?.error != undefined) {
       Toast.show({
         type: 'error',
@@ -615,7 +595,10 @@ const CustomerImageScanner = (props: any) => {
       errorCode: 'errorCode',
       errorMessage: 'errorMessage',
     };
-    dispatch(saveMocResultRequest(params));
+    const callbackSuccess = () => {
+      navigation.navigate(RouteNames.customerInfo.name, {callbackGetExistingAccountFalse})
+    };
+    dispatch(saveMocResultRequest(params, callbackSuccess));
   };
   function remove_image() {
     saveClickedPicture([]);
@@ -632,20 +615,49 @@ const CustomerImageScanner = (props: any) => {
     navigation.goBack();
   }, [navigation]);
 
+  const getUserDataQueryKey = () => ['getCifInfoList', 'getMemo', 'getExistingAccountList', 'getSuplementaryInfo']
+
+  const renderExistingAccountErrorModal = () => {
+    if (showErrorExistingAccount) {
+      return (
+        <View
+          style={{
+            zIndex: 1000,
+            position: 'absolute',
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'transparent',
+          }}
+        >
+        <ConfirmDialog
+          isOpen={true}
+          icon="warning"
+          text={'Lỗi: Không kết nối được hệ thống'}
+          confirmText="Thử lại"
+          close={() => {
+            //
+          }}
+          resolve={(isRetry) => {
+            if (isRetry) {
+              setErrorExistingAccount(false)
+              inValidQueryMockResult()
+              navigation.navigate(RouteNames.customerInfo.name, {callbackGetExistingAccountFalse})
+            } else {
+              setErrorExistingAccount(false)
+            }
+          }}
+          cancelText="Đóng"
+        />
+      </View>
+      )
+    }
+  }
+
   return (
     <View style={{ flex: 1, backgroundColor: Color?.black }}>
-      {/* <HeaderTitle
-        testId={TestIds.card_scanner}
-        color={Color.white}
-        title={translate('come_back')}
-        onPress={() => {
-          dispatch(resetSaveMocResponse());
-          navigation.goBack();
-        }}
-        header_style={Style?.header_style}
-        rightHeading
-        navigation={navigation}
-      /> */}
+      {renderExistingAccountErrorModal()}
+
       <HeaderBar
         testId={TestIds.card_scanner}
         isBlackBackground
@@ -669,7 +681,8 @@ const CustomerImageScanner = (props: any) => {
               setLoading(true);
               sendCapturedImageToBleReader();
             } else {
-              navigation.navigate(RouteNames.customerInfo.name);
+              inValidQueryMockResult()
+              navigation.navigate(RouteNames.customerInfo.name, {callbackGetExistingAccountFalse});
             }
           } else {
             Alert.alert(

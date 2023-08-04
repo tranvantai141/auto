@@ -17,27 +17,35 @@ export const REGISTER_DEVICES ='onboarding/register-device';
 
 
 export async function creatTransaction(staffCode: string , transactionType: string): Promise<AxiosResponse> {
-  const res = await axiosTokenInstance.post<any>(
-    CREATE_TRANSACTION,
-    {
-      transactionType
-    }
-  );
-  return res;
-
+  try {
+    const res = await axiosTokenInstance.post<any>(
+      CREATE_TRANSACTION,
+      {
+        transactionType
+      }
+    );
+    return res;
+  } catch (error) {
+    //
+  }
 
 }
 
 export async function getCifInfoList(transactionId: string): Promise<GetListCifDTO> {
   // /onboarding/transaction/get-cif-info-list
   // https://bluebikglobal.atlassian.net/wiki/spaces/VCBTA/pages/101351558/ETB+Backend+API+Specification
-  const res = await axiosTokenInstance.post<GetListCifDTO>(
-    '/onboarding/transaction/get-cif-info-list',
-    {
-      transactionId,
-    }
-  );
-  return res.data;
+  try {
+    const res = await axiosTokenInstance.post<GetListCifDTO>(
+      '/onboarding/transaction/get-cif-info-list',
+      {
+        transactionId,
+      }
+    );
+    return res.data;
+  } catch (error) {
+    //
+  }
+
 
   // await delay(500);
   // return {
@@ -85,13 +93,19 @@ export async function getMemoByCif(transactionId: string): Promise<GetMemoByCifD
   // /onboarding/transaction/get-memo-by-cif
   // https://bluebikglobal.atlassian.net/wiki/spaces/VCBTA/pages/101351558/ETB+Backend+API+Specification
 
-  const res = await axiosTokenInstance.post<GetMemoByCifDTO>(
-    '/onboarding/transaction/get-memo-by-cif',
-    {
-      transactionId,
-    }
-  );
-  return res.data;
+  try {
+    const res = await axiosTokenInstance.post<GetMemoByCifDTO>(
+      '/onboarding/transaction/get-memo-by-cif',
+      {
+        transactionId,
+      }
+    );
+    return res.data;
+  } catch (error) {
+    //
+  }
+
+
 
   // await delay(1000);
   // return {
@@ -131,15 +145,19 @@ export async function getMemoByCif(transactionId: string): Promise<GetMemoByCifD
 
 export async function getAccounts(transactionId: string): Promise<GetAccountByCifDTO> {
   // /onboarding/transaction/get-existing-accounts-list
-  // https://bluebikglobal.atlassian.net/wiki/spaces/VCBTA/pages/101351558/ETB+Backend+API+Specification
-  const res = await axiosTokenInstance.post<GetAccountByCifDTO>(
-    '/onboarding/transaction/get-existing-accounts-list',
-    {
-      transactionId,
-    }
-  );
+  try {
+    const res = await axiosTokenInstance.post<GetAccountByCifDTO>(
+      '/onboarding/transaction/get-existing-accounts-list',
+      {
+        transactionId,
+      }
+    );
+  
+    return res?.data;
+  } catch (error) {
+    //
+  }
 
-  return res.data;
 
   // await delay(2000);
   // return {
@@ -186,11 +204,16 @@ export async function getAccounts(transactionId: string): Promise<GetAccountByCi
 export async function getSupplementary(transactionId: string): Promise<GetSupplementalInfoDTO> {
   // /onboarding/transaction/get-updating-sup-info
   // https://bluebikglobal.atlassian.net/wiki/spaces/VCBTA/pages/101351558/ETB+Backend+API+Specification
-  const res = await axiosTokenInstance.post<any>('/onboarding/transaction/get-updating-sup-info', {
-    transactionId,
-  });
+  try {
+    const res = await axiosTokenInstance.post<any>('/onboarding/transaction/get-updating-sup-info', {
+      transactionId,
+    });
+  
+    return res?.data;
+  } catch (error) {
+    //
+  }
 
-  return res?.data;
 
   // await delay(2000);
   // return {
@@ -265,6 +288,10 @@ export async function saveMOCResult(idNumber: string , transsactionId: string): 
     errorMessage: "errorMessage"
   };
 
-const res = await axiosTokenInstance.post<any>(saveMoc_Result_URL, params);
-return res;
+  try {
+    const res = await axiosTokenInstance.post<any>(saveMoc_Result_URL, params);
+    return res;
+  } catch (error) {
+    //
+  }
 }

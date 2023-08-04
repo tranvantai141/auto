@@ -6,7 +6,6 @@ import Analytics from 'appcenter-analytics';
 import React, { useEffect } from 'react';
 import { NativeModules } from 'react-native';
 import Config from 'react-native-config';
-import 'react-native-gesture-handler';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Toast from 'react-native-toast-message';
 import { Provider } from 'react-redux';
@@ -16,6 +15,7 @@ import RootNavigator from './src/navigation/RootNavigator';
 import { store } from './src/redux/store';
 
 import * as Sentry from '@sentry/react-native';
+import ErrorBoundary from './src/common/components/ErrorBoundary/View.ErrorBoundaryComponent';
 
 const env = Config.ENV;
 
@@ -87,13 +87,15 @@ const App = () => {
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <GestureHandlerRootView style={{ flex: 1 }}>
-          <OverlayProvider>
-            <AppTouchTracking>
-              <RootNavigator />
-              <Toast />
-              {shouldEnableNetworkLogDebugModal && <NetworkLogDebugModal />}
-            </AppTouchTracking>
-          </OverlayProvider>
+          <ErrorBoundary>
+            <OverlayProvider>
+              <AppTouchTracking>
+                <RootNavigator />
+                <Toast />
+                {shouldEnableNetworkLogDebugModal && <NetworkLogDebugModal />}
+              </AppTouchTracking>
+            </OverlayProvider>
+          </ErrorBoundary>
         </GestureHandlerRootView>
       </QueryClientProvider>
     </Provider>

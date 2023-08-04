@@ -93,7 +93,7 @@ const Home = (props: any, { value, errorValue, modalValue }: IHomeProps) => {
     errorMessage: string;
   }>({ isVisible: false, errorMessage: '' });
 
-  const [result, isLoadingSearch, searchCustomerInfo] = useCustomerInforResult();
+  const [result,resultSupplymental,resultCard , resultEBank, isLoadingSearch, searchCustomerInfo] = useCustomerInforResult();
   const [idSearchValue, setIDValue] = useState<string>('');
   const inputRef = React.useRef<any>();
 
@@ -496,6 +496,9 @@ const Home = (props: any, { value, errorValue, modalValue }: IHomeProps) => {
         {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
         <CustomerInfoModal
           result={result}
+          resultSupplymental={resultSupplymental}
+          resultCard={resultCard}
+          resultEBank={resultEBank}
           onClosePress={() => {
             inputRef?.current?.clear();
             setTimeout(() => {

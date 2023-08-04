@@ -29,14 +29,18 @@ export const UPDATE_ADDITIONAL_INFO = 'onboarding/register-products/update-open-
 export const GENERATE_ECONTRACT_FORM = 'onboarding/generate-econtract-form';
 export async function getCardList(transactionId: string): Promise<GetCardListDTO> {
   // /onboarding/transaction/get-existing-cards-list
-  const res = await axiosTokenInstance.post<GetCardListDTO>(
-    '/onboarding/transaction/get-existing-cards-list',
-    {
-      transactionId,
-    }
-  );
-
-  return res.data;
+  try {
+    const res = await axiosTokenInstance.post<GetCardListDTO>(
+      '/onboarding/transaction/get-existing-cards-list',
+      {
+        transactionId,
+      }
+    );
+  
+    return res?.data;
+  } catch (error) {
+    //
+  }
 }
 
 //MARK: get ebanking list of Product and Service
@@ -45,39 +49,36 @@ export async function getEbankingList(
   cifNo: string
 ): Promise<GetEBankingListDTO> {
   // /onboarding/transaction/get-digibank-info
-  const res = await axiosTokenInstance.post<GetEBankingListDTO>(
-    '/onboarding/transaction/get-digibank-info',
-    {
-      transactionId,
-      cifNo,
-    }
-  );
+  try {
+    const res = await axiosTokenInstance.post<GetEBankingListDTO>(
+      '/onboarding/transaction/get-digibank-info',
+      {
+        transactionId,
+        cifNo,
+      }
+    );
 
-  // // await delay(2000);
-  // return {
-  //   code: 'SUCCESS',
-  //   message: 'success',
-  //   customerInfo:{}
-  //     // {
-  //     //   mobileNo: '09237403245',
-  //     //   cusEmail: 'vcb@vietcombank.com.vn',
-  //     //   status: 'A',
-  //     // }
-  // };
-
-  return res.data;
+    return res.data;
+  } catch (error) {
+    //
+  }
 }
 
 export async function getAccounts(transactionId: string): Promise<Account_List_Response> {
   // /onboarding/transaction/get-existing-accounts-list
   // https://bluebikglobal.atlassian.net/wiki/spaces/VCBTA/pages/101351558/ETB+Backend+API+Specification
-  const res = await axiosTokenInstance.post<Account_List_Response>(
-    '/onboarding/transaction/get-existing-accounts-list',
-    {
-      transactionId,
-    }
-  );
-  return res.data;
+  try {
+    const res = await axiosTokenInstance.post<Account_List_Response>(
+      '/onboarding/transaction/get-existing-accounts-list',
+      {
+        transactionId,
+      }
+    );
+    return res?.data;
+  } catch (error) {
+    //
+  }
+
   // await delay(2000);
   // return {
   //   code: 'SUCCESS',
@@ -89,59 +90,95 @@ export async function getAccounts(transactionId: string): Promise<Account_List_R
 }
 
 export async function prepareProductService(transactionId: string): Promise<any> {
+ try {
   const res = await axiosTokenInstance.post<any>('/onboarding/register-products/preparing', {
     transactionId,
   });
 
   return res.data;
+ } catch (error) {
+  //
+ }
 }
 
 export async function openRequestAccount(requestedAccount: IOpenAccount): Promise<any> {
+ try {
   const res = await axiosTokenInstance.post<any>(OPEN_ACCOUNT, {
     requestedAccount,
   });
 
   return res.data;
+ } catch (error) {
+  //
+ }
 }
 
 export async function registerEBanking(digibankInfo: IRegisterDigibank): Promise<any> {
-  const res = await axiosTokenInstance.post<any>(SAVE_EBANKING_SERVICES, digibankInfo);
+  try {
+    const res = await axiosTokenInstance.post<any>(SAVE_EBANKING_SERVICES, digibankInfo);
 
-  return res.data;
+    return res.data;
+  } catch (error) {
+    //
+  }
 }
 
 export async function saveAdditional(additionalInfo: ISaveAdditionalInfo): Promise<any> {
-  const res = await axiosTokenInstance.post<any>(SAVE_ADDITIONAL_INFO, additionalInfo);
+  try {
+    const res = await axiosTokenInstance.post<any>(SAVE_ADDITIONAL_INFO, additionalInfo);
 
   return res.data;
+  } catch (error) {
+    //
+  }
 }
 
 export async function updateAdditional(additionalInfo: ISaveAdditionalInfo): Promise<any> {
+ try {
   const res = await axiosTokenInstance.put<any>(SAVE_ADDITIONAL_INFO, additionalInfo);
 
   return res.data;
+ } catch (error) {
+  //
+ }
 }
 
 export async function saveDelivery(deliveryAddress: IDeliveryAddress): Promise<any> {
-  const res = await axiosTokenInstance.post<any>(REGISTER_DEBIT_CARD_DELIVERY, deliveryAddress);
+  try {
+    const res = await axiosTokenInstance.post<any>(REGISTER_DEBIT_CARD_DELIVERY, deliveryAddress);
 
   return res.data;
+  } catch (error) {
+    //
+  }
 }
 
 export async function checkRegisterDigi(phoneNumber: string): Promise<any> {
-  const param = { phoneNumber: phoneNumber };
-  const res = await axiosTokenInstance.get<any>(CHECK_PHONE_EBANKING, {
+  try {
+    const param = { phoneNumber: phoneNumber };
+    const res = await axiosTokenInstance.get<any>(CHECK_PHONE_EBANKING, {
     params: param,
   });
   return res.data;
+} catch (error) {
+  //
+}
 }
 
 export async function accountProduct(): Promise<any> {
-  const res = await axiosTokenInstance.get<any>(OPEN_ACCOUNT_PRODUCTS);
-  return res.data;
+  try {
+    const res = await axiosTokenInstance.get<any>(OPEN_ACCOUNT_PRODUCTS);
+    return res.data;
+  } catch (error) {
+    //
+  }
 }
 
 export async function cardsProduct(): Promise<any> {
-  const res = await axiosTokenInstance.get<any>(GET_PRODUCT_LIST_DEBITCARD);
-  return res.data;
+  try {
+    const res = await axiosTokenInstance.get<any>(GET_PRODUCT_LIST_DEBITCARD);
+    return res.data;
+  } catch (error) {
+    //
+  }
 }
