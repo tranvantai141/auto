@@ -42,7 +42,8 @@
       "options": {
         "lintFilePatterns": [
           "libs/workspace-tools/**/*.ts",
-          "libs/workspace-tools/package.json"
+          "libs/workspace-tools/package.json",
+          "libs/workspace-tools/executors.json"
         ]
       }
     },
