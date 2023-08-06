@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@skeleton-lasted-version/workspace-tools": [
+        "libs/workspace-tools/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
