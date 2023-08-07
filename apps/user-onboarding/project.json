@@ -6,7 +6,7 @@
   "targets": {
     "start": {
       "executor": "@nx/react-native:start",
-      "dependsOn": ["ensure-symlink", "sync-deps", "pod-install"],
+      "dependsOn": ["pod-install"],
       "options": {
         "port": 8081
       }
@@ -19,7 +19,7 @@
     },
     "run-ios": {
       "executor": "@nx/react-native:run-ios",
-      "dependsOn": ["ensure-symlink", "sync-deps", "pod-install"],
+      "dependsOn": ["pod-install"],
       "options": {}
     },
     "bundle-ios": {

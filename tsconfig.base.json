@@ -15,8 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@skeleton-lasted-version/workspace-tools": [
+      "workspace-tools": [
         "libs/workspace-tools/src/index.ts"
+      ],
+      "workspace-tools/executors/*": [
+        "libs/workspace-tools/src/executors/*"
       ]
     }
   },
