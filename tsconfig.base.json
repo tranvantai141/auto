@@ -15,12 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "workspace-tools": [
-        "libs/workspace-tools/src/index.ts"
-      ],
-      "workspace-tools/executors/*": [
-        "libs/workspace-tools/src/executors/*"
-      ]
+      "workspace-tools": ["libs/workspace-tools/src/index.ts"],
+      "workspace-tools/executors/*": ["libs/workspace-tools/src/executors/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
