@@ -5,7 +5,7 @@
   "projectType": "application",
   "targets": {
     "start": {
-      "executor": "@nx/react-native:start",
+      "executor": "workspace-tools:start",
       "dependsOn": ["pod-install"],
       "options": {
         "port": 8081
