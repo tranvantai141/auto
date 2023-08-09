@@ -1,0 +1,26 @@
+{
+  "name": "root",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@react-native/metro-config": "*",
+    "@testing-library/jest-native": "*",
+    "@testing-library/react-native": "*",
+    "react": "*",
+    "react-native": "*",
+    "react-native-svg": "*",
+    "metro-config": "*",
+    "react-native-orientation-locker": "*",
+    "moment": "*",
+    "react-native-date-picker": "*",
+    "i18n-js": "*",
+    "react-native-splash-screen": "*",
+    "libphonenumber-js": "*",
+    "lottie-react-native": "*",
+    "axios": "*",
+    "@react-navigation/native": "*",
+    "@react-navigation/stack": "*",
+    "react-native-safe-area-context": "*",
+    "react-native-gesture-handler": "*"
+  }
+}

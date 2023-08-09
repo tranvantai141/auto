@@ -15,8 +15,23 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "workspace-tools": ["libs/workspace-tools/src/index.ts"],
-      "workspace-tools/executors/*": ["libs/workspace-tools/src/executors/*"]
+      "@skeleton-app/legacy/onboarding": [
+        "libs/legacy/onboarding/src/index.ts"
+      ],
+      "@skeleton-app/navigator/guest": ["libs/navigator/guest/src/index.ts"],
+      "@skeleton-app/navigator/root": ["libs/navigator/root/src/index.ts"],
+      "@skeleton-app/nx-welcome": ["libs/nx-welcome/src/nx-welcome.tsx"],
+      "@src/*": ["libs/legacy/onboarding/src/*"],
+      "@assets/*": ["libs/legacy/onboarding/src/assets/*"],
+      "@components/*": ["libs/legacy/onboarding/src/components/*"],
+      "@helper/*": ["libs/legacy/onboarding/src/helper/*"],
+      "@hooks/*": ["libs/legacy/onboarding/src/hooks/*"],
+      "@languages/*": ["libs/legacy/onboarding/src/languages/*"],
+      "@models/*": ["libs/legacy/onboarding/src/models/*"],
+      "@navigation/*": ["libs/legacy/onboarding/src/navigation/*"],
+      "@globalState/*": ["src/globalState/*"],
+      "@screens/*": ["libs/legacy/onboarding/src/screens/*"],
+      "@services/*": ["libs/legacy/onboarding/src/services/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
