@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@skeleton-app/legacy/onboarding": [
+        "libs/legacy/onboarding/src/index.ts"
+      ],
       "@skeleton-app/navigator/guest": ["libs/navigator/guest/src/index.ts"],
       "@skeleton-app/navigator/root": ["libs/navigator/root/src/index.ts"],
       "@skeleton-app/nx-welcome": ["libs/nx-welcome/src/nx-welcome.tsx"]
