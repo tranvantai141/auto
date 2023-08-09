@@ -9,6 +9,18 @@
     "react": "*",
     "react-native": "*",
     "react-native-svg": "*",
-    "metro-config": "*"
+    "metro-config": "*",
+    "react-native-orientation-locker": "*",
+    "moment": "*",
+    "react-native-date-picker": "*",
+    "i18n-js": "*",
+    "react-native-splash-screen": "*",
+    "libphonenumber-js": "*",
+    "lottie-react-native": "*",
+    "axios": "*",
+    "@react-navigation/native": "*",
+    "@react-navigation/stack": "*",
+    "react-native-safe-area-context": "*",
+    "react-native-gesture-handler": "*"
   }
 }

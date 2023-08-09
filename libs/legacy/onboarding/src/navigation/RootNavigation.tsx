@@ -1,14 +1,14 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { gestureHandlerRootHOC } from "react-native-gesture-handler";
-import { StatusBar } from "react-native";
-import { navigationRef } from "@helper/NavigationManager";
-import GuestNavigation from "./GuestNavigation";
-import { GlobalMessageComponent } from "@src/components";
-import { ROUTES } from "@src/models/RouterNamesModel";
-import SplashScreen from "react-native-splash-screen";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
+import { StatusBar } from 'react-native';
+import GuestNavigation from './GuestNavigation';
+import SplashScreen from 'react-native-splash-screen';
+import { navigationRef } from '@helper/NavigationManager';
+import { GlobalMessageComponent } from '../components';
+import { ROUTES } from '@models/RouterNamesModel';
 
 const Stack = createStackNavigator();
 
@@ -22,10 +22,17 @@ const RootNavigation = React.memo(() => {
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={"dark-content"} translucent={true} backgroundColor="transparent" />
+      <StatusBar
+        barStyle={'dark-content'}
+        translucent={true}
+        backgroundColor="transparent"
+      />
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name={ROUTES.GUEST_NAVIGATION} component={gestureHandlerRootHOC(GuestNavigation)} />
+          <Stack.Screen
+            name={ROUTES.GUEST_NAVIGATION}
+            component={gestureHandlerRootHOC(GuestNavigation)}
+          />
         </Stack.Navigator>
       </NavigationContainer>
       <GlobalMessageComponent />
@@ -33,5 +40,5 @@ const RootNavigation = React.memo(() => {
   );
 });
 
-RootNavigation.displayName = "RootNavigation";
+RootNavigation.displayName = 'RootNavigation';
 export default RootNavigation;
