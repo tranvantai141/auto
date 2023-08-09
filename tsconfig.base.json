@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@skeleton-app/navigator/guest": ["libs/navigator/guest/src/index.ts"],
+      "@skeleton-app/navigator/root": ["libs/navigator/root/src/index.ts"],
+      "@skeleton-app/nx-welcome": ["libs/nx-welcome/src/nx-welcome.tsx"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
