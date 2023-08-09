@@ -1,11 +1,13 @@
 import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
 import { EGuestScreenList } from "@src/models/RouterNamesModel";
 import { LoginScreen, OnBoardingStackScreen } from "@src/screens";
+import { IUserOnboardInformation } from "@src/screens/OnBoarding.OnBoardingStackScreen/Model.OnBoardingStackScreen";
 import React from "react";
 
 export type TGuestStackParam = {
-  [EGuestScreenList.FIRST_SCREEN]: undefined;
-  [EGuestScreenList.LOGIN_SCREEN]: undefined;
+  [EGuestScreenList.LOGIN_SCREEN]: {
+    userInformation: IUserOnboardInformation;
+  };
   [EGuestScreenList.ONBOARDING_SCREEN]: undefined;
 };
 

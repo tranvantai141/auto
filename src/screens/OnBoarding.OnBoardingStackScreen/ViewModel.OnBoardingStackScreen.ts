@@ -1,17 +1,19 @@
 import React from "react";
-import { ECurrentStep, IPurpose, IUserOnboardInformation, TValueTestArr } from "./Model.OnboardingComponent";
 import { Keyboard } from "react-native";
-import HelperManager from "@src/helper/HelperManager";
 import RegOptions from "@src/models/RegModel";
-import styles from "./Styles.OnboardingComponent";
+import styles from "./Styles.OnBoardingStackScreen";
+import HelperManager from "@src/helper/HelperManager";
+import NavigationManager from "@src/helper/NavigationManager";
+import { EGuestScreenList, EOnBoardingScreenList } from "@src/models/RouterNamesModel";
+import { ECurrentStep, IPurpose, IUserOnboardInformation, TValueTestArr } from "./Model.OnBoardingStackScreen";
 
 const ViewModel = () => {
   const [dateModalVisible, setDateModalVisible] = React.useState(false);
   const [currentStep, setCurrentStep] = React.useState<ECurrentStep>(ECurrentStep.stepOne);
-  const [username, setUsername] = React.useState("");
-  const [idNumber, setIdNumber] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [phoneNumber, setPhoneNumber] = React.useState("");
+  const [username, setUsername] = React.useState("HELLO");
+  const [idNumber, setIdNumber] = React.useState("123456789123");
+  const [email, setEmail] = React.useState("hello123@gmail.com");
+  const [phoneNumber, setPhoneNumber] = React.useState("097647456");
   const [selectedPurposes, setSelectedPurposes] = React.useState<Array<IPurpose>>([]);
   const [selectedDate, setSelectedDate] = React.useState(styles.ASSUMED_ONLY_15_YEARS_OLD_TO_HAVE_E_BANK_ACCOUNT);
   const [errorText, setErrorText] = React.useState("");
@@ -35,7 +37,22 @@ const ViewModel = () => {
 
   const _handlePressBack = React.useCallback(() => {
     if (currentStep === ECurrentStep.stepOne) return;
-    setCurrentStep((prev) => prev - 1);
+    setCurrentStep((prev) => {
+      switch (prev) {
+        case ECurrentStep.success:
+          NavigationManager.navigate(EOnBoardingScreenList.ONBOARDING_STEP_THREE_SCREEN);
+          break;
+
+        case ECurrentStep.stepThree:
+          NavigationManager.navigate(EOnBoardingScreenList.ONBOARDING_STEP_TWO_SCREEN);
+          break;
+
+        default:
+          NavigationManager.navigate(EOnBoardingScreenList.ONBOARDING_STEP_ONE_SCREEN);
+          break;
+      }
+      return prev - 1;
+    });
   }, [currentStep]);
 
   const _handlePressNext = React.useCallback(() => {
@@ -47,9 +64,26 @@ const ViewModel = () => {
       dateOfBirth: new Date(selectedDate.getTime()),
       purposes: selectedPurposes,
     };
-    console.log("📢 [ViewModel.OnboardingComponent.ts:61]", userInformation);
 
-    setCurrentStep((prev) => prev + 1);
+    setCurrentStep((prev) => {
+      switch (prev) {
+        case ECurrentStep.stepOne:
+          NavigationManager.navigate(EOnBoardingScreenList.ONBOARDING_STEP_TWO_SCREEN);
+          return prev + 1;
+
+        case ECurrentStep.stepTwo:
+          NavigationManager.navigate(EOnBoardingScreenList.ONBOARDING_STEP_THREE_SCREEN);
+          return prev + 1;
+
+        case ECurrentStep.stepThree:
+          NavigationManager.navigate(EOnBoardingScreenList.ONBOARDING_SUCCESS_SCREEN);
+          return prev + 1;
+
+        default:
+          NavigationManager.navigate(EGuestScreenList.LOGIN_SCREEN, { userInformation });
+          return prev + 1;
+      }
+    });
   }, [email, idNumber, phoneNumber, selectedDate, selectedPurposes, username]);
 
   const _handleSelectPurpose = React.useCallback(
@@ -87,7 +121,7 @@ const ViewModel = () => {
     const stepThreeCondition: TValueTestArr = [{ value: selectedPurposes, passConditions: [] }];
 
     const valueObjectListEachStep = [stepOneCondition, stepTwoCondition, stepThreeCondition, []][currentStep - 1];
-    return valueObjectListEachStep.every((valueObject) => {
+    return valueObjectListEachStep?.every((valueObject) => {
       if (typeof valueObject.value === "string") {
         return HelperManager.isValid(valueObject.value, valueObject.passConditions);
       }

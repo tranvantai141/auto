@@ -66,6 +66,7 @@ class Themes {
       marginTop: ScaleManager.scaleSizeHeight(16),
       marginBottom: ScaleManager.scaleSizeHeight(8),
       color: COLORS.white,
+      marginHorizontal: ScaleManager.PADDING_SIZE,
     },
     spacer: {
       height: ScaleManager.scaleSizeHeight(10),
@@ -104,6 +105,12 @@ class Themes {
       return {
         ...this._styles.bigInput,
         backgroundColor,
+      };
+    },
+    titleStyle: (color: string) => {
+      return {
+        ...this._styles.title,
+        color,
       };
     },
   };

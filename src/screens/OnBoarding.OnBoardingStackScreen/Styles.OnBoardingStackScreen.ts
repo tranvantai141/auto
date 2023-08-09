@@ -1,12 +1,11 @@
 import { COLORS } from "@src/assets";
 import ScaleManager from "@src/assets/ScaleManager";
-import FONTS from "@src/assets/fonts";
 import PHONE_CODES_AND_LINKS from "@src/assets/phone_code_and_links";
 import { CountryCode } from "libphonenumber-js";
 import { StyleSheet } from "react-native";
 
-class OnboardingComponentStyles {
-  private static TEST_ID = "OnboardingComponent";
+class OnBoardingStackScreen {
+  private static TEST_ID = "OnBoardingStackScreen";
 
   private static ASSUMED_ONLY_15_YEARS_OLD_TO_HAVE_E_BANK_ACCOUNT = (() => {
     const minDate = new Date();
@@ -28,6 +27,8 @@ class OnboardingComponentStyles {
       width: "100%",
       flexDirection: "row",
       justifyContent: "center",
+      position: "absolute",
+      top: 0,
     },
     bodyContainer: {
       flex: 1,
@@ -79,65 +80,6 @@ class OnboardingComponentStyles {
       elevation: 5,
       backgroundColor: COLORS.backgroundColor,
     },
-    dateOfBirthRow: {
-      width: (ScaleManager.WINDOW_WIDTH * 92) / 100,
-      marginTop: ScaleManager.scaleSizeHeight(16),
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
-      alignSelf: "center",
-      marginBottom: ScaleManager.scaleSizeHeight(8),
-    },
-    dateOfBirthText: {
-      fontSize: ScaleManager.moderateScale(15),
-      fontFamily: FONTS.interSemiBold,
-      color: COLORS.white,
-    },
-    minAgeUsageNotice: {
-      fontSize: ScaleManager.moderateScale(13),
-      fontFamily: FONTS.interRegular,
-      color: COLORS.white,
-      fontStyle: "italic",
-      marginBottom: ScaleManager.PADDING_SIZE,
-    },
-    successText: {
-      fontSize: ScaleManager.moderateScale(13),
-      fontFamily: FONTS.interRegular,
-      color: COLORS.white,
-      fontStyle: "italic",
-      marginBottom: ScaleManager.PADDING_SIZE,
-      textAlign: "center",
-    },
-    purposeButton: {
-      width: (ScaleManager.WINDOW_WIDTH * 92) / 100,
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
-      alignSelf: "center",
-      marginBottom: ScaleManager.scaleSizeHeight(8),
-      height: ScaleManager.BUTTON_HEIGHT,
-    },
-    squareCheckTextWrapper: {
-      borderWidth: 1,
-      borderColor: COLORS.white,
-      height: "80%",
-      aspectRatio: 1,
-      borderRadius: 4,
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    checkText: {
-      color: COLORS.successColor,
-      fontSize: ScaleManager.moderateScale(30),
-    },
-    lottieView: {
-      height: ScaleManager.scaleSizeHeight(160),
-      aspectRatio: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      alignSelf: "center",
-      marginBottom: ScaleManager.scaleSizeHeight(20),
-    },
   });
 
   public static styles = {
@@ -160,4 +102,4 @@ class OnboardingComponentStyles {
   };
 }
 
-export default OnboardingComponentStyles.styles;
+export default OnBoardingStackScreen.styles;

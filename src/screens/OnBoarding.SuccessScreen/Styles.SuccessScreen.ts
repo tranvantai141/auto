@@ -3,16 +3,38 @@ import ScaleManager from "@src/assets/ScaleManager";
 import FONTS from "@src/assets/fonts";
 import { StyleSheet } from "react-native";
 
-class StepTwoScreenStyles {
-  private static SCREEN_TAG = "StepTwoScreen";
+class SuccessScreenStyles {
+  private static SCREEN_TAG = "SuccessScreen";
 
   private static _styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "transparent",
+    },
     imageBackground: {
       position: "absolute",
       top: 0,
       left: 0,
       bottom: 0,
       right: 0,
+    },
+    successText: {
+      fontSize: ScaleManager.moderateScale(13),
+      fontFamily: FONTS.interRegular,
+      color: COLORS.white,
+      fontStyle: "italic",
+      marginBottom: ScaleManager.PADDING_SIZE,
+      textAlign: "center",
+    },
+    lottieView: {
+      height: ScaleManager.scaleSizeHeight(160),
+      aspectRatio: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      alignSelf: "center",
+      marginBottom: ScaleManager.scaleSizeHeight(20),
     },
     dateOfBirthRow: {
       width: (ScaleManager.WINDOW_WIDTH * 92) / 100,
@@ -23,23 +45,6 @@ class StepTwoScreenStyles {
       alignSelf: "center",
       marginBottom: ScaleManager.scaleSizeHeight(8),
     },
-    dateOfBirthText: {
-      fontSize: ScaleManager.moderateScale(15),
-      fontFamily: FONTS.interSemiBold,
-      color: COLORS.white,
-    },
-    minAgeUsageNotice: {
-      fontSize: ScaleManager.moderateScale(13),
-      fontFamily: FONTS.interRegular,
-      color: COLORS.white,
-      fontStyle: "italic",
-      marginBottom: ScaleManager.PADDING_SIZE,
-    },
-    scrollView: {
-      height: "100%",
-      width: "100%",
-      marginTop: ScaleManager.BACKGROUND_HEADER_HEIGHT,
-    },
   });
 
   public static styles = {
@@ -48,4 +53,4 @@ class StepTwoScreenStyles {
   };
 }
 
-export default StepTwoScreenStyles.styles;
+export default SuccessScreenStyles.styles;

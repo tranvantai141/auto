@@ -1,3 +1,16 @@
+import { EOnBoardingScreenList } from "@src/models/RouterNamesModel";
+import ViewModel from "./ViewModel.OnBoardingStackScreen";
+import { createStackNavigator } from "@react-navigation/stack";
+
+export type TOnBoardingStack = {
+  [EOnBoardingScreenList.ONBOARDING_STEP_ONE_SCREEN]: undefined;
+  [EOnBoardingScreenList.ONBOARDING_STEP_TWO_SCREEN]: undefined;
+  [EOnBoardingScreenList.ONBOARDING_STEP_THREE_SCREEN]: undefined;
+  [EOnBoardingScreenList.ONBOARDING_SUCCESS_SCREEN]: undefined;
+};
+
+export const OnBoardingStack = createStackNavigator<TOnBoardingStack>();
+
 export enum ECurrentStep {
   stepOne = 1,
   stepTwo = 2,
@@ -59,29 +72,4 @@ export const STEP_LIST: Array<IStep> = [
   },
 ];
 
-export const PURPOSE_LIST: Array<IPurpose> = [
-  {
-    name: "Money Transfer",
-    valueCode: EPurposes.money_transfer,
-  },
-  {
-    name: "Payment",
-    valueCode: EPurposes.payment,
-  },
-  {
-    name: "Bill Payment",
-    valueCode: EPurposes.bill_payment,
-  },
-  {
-    name: "Loan",
-    valueCode: EPurposes.loan,
-  },
-  {
-    name: "Investment",
-    valueCode: EPurposes.investment,
-  },
-  {
-    name: "Saving",
-    valueCode: EPurposes.saving,
-  },
-];
+export type TViewModelOnBoardingStackScreen = ReturnType<typeof ViewModel>;

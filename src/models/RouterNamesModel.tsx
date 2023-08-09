@@ -8,7 +8,6 @@ export enum EAppScreenList {
 }
 
 export enum EGuestScreenList {
-  FIRST_SCREEN = "FIRST_SCREEN",
   LOGIN_SCREEN = "LOGIN_SCREEN",
   ONBOARDING_SCREEN = "ONBOARDING_SCREEN",
 }

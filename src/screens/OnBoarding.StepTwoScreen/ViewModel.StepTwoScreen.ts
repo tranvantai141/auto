@@ -1,7 +1,27 @@
-import React from "react";
+import { TStepTwoScreenProps } from "./Model.StepTwoScreen";
 
-const ViewModel = () => {
-  return {};
+//NORMALLY EACH SCREEN HAS ITS OWN VIEW_MODEL TO HANDLE LOGIC
+const ViewModel = (props: TStepTwoScreenProps) => {
+  const {
+    email,
+    setEmail,
+    errorText,
+    phoneNumber,
+    selectedDate,
+    setPhoneNumber,
+    dismissKeyboard,
+    setDateModalVisible,
+  } = props;
+  return {
+    email,
+    setEmail,
+    errorText,
+    phoneNumber,
+    selectedDate,
+    setPhoneNumber,
+    dismissKeyboard,
+    setDateModalVisible,
+  };
 };
 
 export default ViewModel;
