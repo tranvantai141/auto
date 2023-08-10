@@ -10,10 +10,10 @@ import { ECurrentStep, IPurpose, IUserOnboardInformation, TValueTestArr } from "
 const ViewModel = () => {
   const [dateModalVisible, setDateModalVisible] = React.useState(false);
   const [currentStep, setCurrentStep] = React.useState<ECurrentStep>(ECurrentStep.stepOne);
-  const [username, setUsername] = React.useState("HELLO");
-  const [idNumber, setIdNumber] = React.useState("123456789123");
-  const [email, setEmail] = React.useState("hello123@gmail.com");
-  const [phoneNumber, setPhoneNumber] = React.useState("097647456");
+  const [username, setUsername] = React.useState("");
+  const [idNumber, setIdNumber] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [phoneNumber, setPhoneNumber] = React.useState("");
   const [selectedPurposes, setSelectedPurposes] = React.useState<Array<IPurpose>>([]);
   const [selectedDate, setSelectedDate] = React.useState(styles.ASSUMED_ONLY_15_YEARS_OLD_TO_HAVE_E_BANK_ACCOUNT);
   const [errorText, setErrorText] = React.useState("");
