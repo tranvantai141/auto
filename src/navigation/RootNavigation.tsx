@@ -9,6 +9,8 @@ import GuestNavigation from "./GuestNavigation";
 import { GlobalMessageComponent } from "@src/components";
 import { ROUTES } from "@src/models/RouterNamesModel";
 import SplashScreen from "react-native-splash-screen";
+import { useAppSelector } from "@src/hooks";
+import MainNavigation from "./MainNavigation";
 
 const Stack = createStackNavigator();
 
@@ -20,13 +22,20 @@ const RootNavigation = React.memo(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const { auth } = useAppSelector((state) => state);
+
+  const whichNavigation = React.useMemo(() => {
+    if (auth.access_token)
+      return <Stack.Screen name={ROUTES.MAIN_APPLICATION} component={gestureHandlerRootHOC(MainNavigation)} />;
+
+    return <Stack.Screen name={ROUTES.GUEST_NAVIGATION} component={gestureHandlerRootHOC(GuestNavigation)} />;
+  }, [auth?.access_token]);
+
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={"dark-content"} translucent={true} backgroundColor="transparent" />
       <NavigationContainer ref={navigationRef}>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name={ROUTES.GUEST_NAVIGATION} component={gestureHandlerRootHOC(GuestNavigation)} />
-        </Stack.Navigator>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>{whichNavigation}</Stack.Navigator>
       </NavigationContainer>
       <GlobalMessageComponent />
     </SafeAreaProvider>

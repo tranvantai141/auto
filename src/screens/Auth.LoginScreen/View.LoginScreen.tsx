@@ -1,22 +1,19 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Button, Text, View } from "react-native";
 import styles from "./Styles.LoginScreen";
 import ViewModel from "./ViewModel.LoginScreen";
 import { TLoginScreenProps } from "./Model.LoginScreen";
 import { COLORS, THEMES } from "@src/assets";
-import { IUserOnboardInformation } from "../OnBoarding.OnBoardingStackScreen/Model.OnBoardingStackScreen";
 import moment from "moment";
 
 const LoginScreen: React.FC<TLoginScreenProps> = React.memo((props) => {
-  const {} = ViewModel();
-  const { userInformation } = props?.route?.params;
+  const { _handleLogin, userInformation } = ViewModel(props?.route?.params);
 
   const _renderUserData = React.useCallback(() => {
     const output: React.ReactNode[] = [];
-    const userInformationClone = { ...userInformation };
-    delete (userInformation as Partial<IUserOnboardInformation>).purposes;
+    const userInformationClone = Object.assign({}, userInformation);
 
-    for (const key of Object.keys(userInformation)) {
+    for (const key of Object.keys(userInformation).filter((k) => k !== "purposes")) {
       let value = (userInformation as any)[key].toString();
       if (key === "dateOfBirth") {
         value = moment((userInformation as any)[key] as Date).format("DD/MM/YYYY");
@@ -33,7 +30,7 @@ const LoginScreen: React.FC<TLoginScreenProps> = React.memo((props) => {
       <View style={styles.rowContainer}>
         <Text style={THEMES.commonRegularText}>purposes: </Text>
         <Text style={THEMES.commonRegularText}>
-          {userInformationClone.purposes.map((purpose) => purpose.name).join(", ")}
+          {userInformationClone?.purposes?.map((purpose) => purpose.name).join(", ")}
         </Text>
       </View>,
     );
@@ -45,6 +42,8 @@ const LoginScreen: React.FC<TLoginScreenProps> = React.memo((props) => {
     <View style={styles.container}>
       <Text style={THEMES.titleStyle(COLORS.defaultTextColor)}>{`LOGIN SCREEN: user's data`}</Text>
       {_renderUserData()}
+
+      <Button title="login" onPress={_handleLogin} />
     </View>
   );
 });

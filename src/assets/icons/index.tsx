@@ -1,9 +1,11 @@
-import { ColorValue, StyleProp, View, ViewStyle } from "react-native";
+import { ColorValue, StyleProp, ViewStyle } from "react-native";
 import { SvgProps } from "react-native-svg";
 import Checkbox from "./Checkbox.svg";
 import UnCheckbox from "./UnCheckbox.svg";
 import Checked from "./Checked.svg";
 import ExclamationMark from "./ExclamationMark.svg";
+import HomeActive from "./HomeActive.svg";
+import HomeInactive from "./HomeInactive.svg";
 
 export type IconProps = {
   name: EIconsList;
@@ -45,6 +47,15 @@ const GeneralIcons = (props: IconProps): JSX.Element | null => {
   }
 
   return <Icon fill={color} style={style} {...widthProps} {...heightProps} />;
+};
+
+const HomeIcon = ({ focused }: { focused: boolean }) => {
+  if (focused) return <HomeActive testID="HomeIcon" />;
+  return <HomeInactive testID="HomeIcon" />;
+};
+
+export const ICON_LIST = {
+  HomeIcon,
 };
 
 export default GeneralIcons;

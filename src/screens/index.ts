@@ -7,3 +7,7 @@ export { default as StepTwoScreen } from "@src/screens/OnBoarding.StepTwoScreen/
 export { default as StepThreeScreen } from "@src/screens/OnBoarding.StepThreeScreen/View.StepThreeScreen";
 export { default as SuccessScreen } from "@src/screens/OnBoarding.SuccessScreen/View.SuccessScreen";
 export { default as OnBoardingStackScreen } from "@src/screens/OnBoarding.OnBoardingStackScreen/View.OnBoardingStackScreen";
+
+//Home
+export { default as HomeScreen } from "@src/screens/Home.HomeScreen/View.HomeScreen";
+export { default as HomeStackScreen } from "@src/screens/Home.HomeStackScreen/View.HomeStackScreen";
