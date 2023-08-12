@@ -6,6 +6,8 @@ import Checked from "./Checked.svg";
 import ExclamationMark from "./ExclamationMark.svg";
 import HomeActive from "./HomeActive.svg";
 import HomeInactive from "./HomeInactive.svg";
+import InternetConnectionOffIcon from "./InternetConnectionOff.svg";
+import InternetConnectionOnIcon from "./InternetConnectionOn.svg";
 
 export type IconProps = {
   name: EIconsList;
@@ -56,6 +58,8 @@ const HomeIcon = ({ focused }: { focused: boolean }) => {
 
 export const ICON_LIST = {
   HomeIcon,
+  InternetConnectionOnIcon,
+  InternetConnectionOffIcon,
 };
 
 export default GeneralIcons;

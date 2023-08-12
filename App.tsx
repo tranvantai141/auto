@@ -9,6 +9,7 @@ import ReduxManager from "@src/globalState/ReduxManager";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { COLORS } from "@src/assets";
 const queryClient = new QueryClient();
+import codePush from "react-native-code-push";
 
 const App: React.FC = (): JSX.Element => {
   React.useEffect(() => {
@@ -34,4 +35,23 @@ const App: React.FC = (): JSX.Element => {
   );
 };
 
-export default App;
+let WrappedApp = App;
+
+if (!__DEV__) {
+  WrappedApp = codePush({
+    checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+    installMode: codePush.InstallMode.IMMEDIATE,
+    mandatoryInstallMode: codePush.InstallMode.IMMEDIATE,
+    updateDialog: {
+      mandatoryUpdateMessage: "Bạn có muốn cập nhật ngay?",
+      mandatoryContinueButtonLabel: "Cập nhật",
+      appendReleaseDescription: true,
+      title: "Có bản cập nhật mới",
+      optionalIgnoreButtonLabel: "Để sau",
+      optionalInstallButtonLabel: "Cập nhật",
+      optionalUpdateMessage: "Bạn có muốn cập nhật ngay?",
+    },
+  })(App);
+}
+
+export default WrappedApp;

@@ -6,7 +6,7 @@ import { gestureHandlerRootHOC } from "react-native-gesture-handler";
 import { StatusBar } from "react-native";
 import { navigationRef } from "@helper/NavigationManager";
 import GuestNavigation from "./GuestNavigation";
-import { GlobalMessageComponent } from "@src/components";
+import { GlobalMessageComponent, InternetStatusComponent } from "@src/components";
 import { ROUTES } from "@src/models/RouterNamesModel";
 import SplashScreen from "react-native-splash-screen";
 import { useAppSelector } from "@src/hooks";
@@ -38,6 +38,7 @@ const RootNavigation = React.memo(() => {
         <Stack.Navigator screenOptions={{ headerShown: false }}>{whichNavigation}</Stack.Navigator>
       </NavigationContainer>
       <GlobalMessageComponent />
+      <InternetStatusComponent />
     </SafeAreaProvider>
   );
 });

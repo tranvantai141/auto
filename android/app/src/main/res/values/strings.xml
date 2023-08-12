@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ewallet</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">BctaAgnJYd3AWBIN6vz2iUEAV3twjT09BJ6-z</string>
 </resources>
