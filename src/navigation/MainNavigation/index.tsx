@@ -4,7 +4,7 @@ import { COLORS } from "@src/assets";
 import ScaleManager from "@src/assets/ScaleManager";
 import FONTS from "@src/assets/fonts";
 import { ICON_LIST } from "@src/assets/icons";
-import { EAppScreenList, EGuestScreenList } from "@src/models/RouterNamesModel";
+import { EGuestScreenList, EMainAppScreenList } from "@src/models/RouterNamesModel";
 import { HomeStackScreen } from "@src/screens";
 import React from "react";
 import { Platform, ViewStyle } from "react-native";
@@ -46,7 +46,7 @@ const MainNavigation = React.memo(() => {
   const tabBarList = React.useMemo(
     () => [
       {
-        name: EAppScreenList.HOME_STACK_SCREEN,
+        name: EMainAppScreenList.HOME_STACK_SCREEN,
         component: HomeStackScreen,
         tabBarLabel: "home",
         tabBarIcon: ICON_LIST.HomeIcon,

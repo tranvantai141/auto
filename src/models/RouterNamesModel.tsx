@@ -3,7 +3,7 @@ export enum ROUTES {
   GUEST_NAVIGATION = "GUEST_NAVIGATION",
 }
 
-export enum EAppScreenList {
+export enum EMainAppScreenList {
   HOME_STACK_SCREEN = "HOME_STACK_SCREEN",
 }
 

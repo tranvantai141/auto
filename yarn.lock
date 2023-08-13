@@ -9371,6 +9371,11 @@ react-native-keyboard-aware-scroll-view@^0.9.5:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
 
+react-native-network-logger@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/react-native-network-logger/-/react-native-network-logger-1.15.0.tgz#e333ac57f19875a5d4d797498b144a42b37e8a1e"
+  integrity sha512-/nxAC6iCWf7dwD4LB6hTV64P/wnMj75oSDxgKKSJXDO1m0yGiZwMQzC9fcAydMM9lqKWRS5T4jPUPinZNu7VOQ==
+
 react-native-orientation-locker@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/react-native-orientation-locker/-/react-native-orientation-locker-1.5.0.tgz#324853937eed4835ecd1c8613ab2206135d908ac"
@@ -9417,6 +9422,11 @@ react-native-svg@^13.7.0:
   dependencies:
     css-select "^5.1.0"
     css-tree "^1.1.3"
+
+react-native-toastable@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-toastable/-/react-native-toastable-0.2.1.tgz#09d2c4cea9ae87e6b1eeac19098895946fb760e1"
+  integrity sha512-i/Mh2kisg3n9cB7fpx5JpjVm/RSjdFFcXE3ABkwGnhQSFqRHTLOOZbIYjg3+IHq2oJLmus0jhL5jw3+U87aUnw==
 
 react-native@0.70.8:
   version "0.70.8"

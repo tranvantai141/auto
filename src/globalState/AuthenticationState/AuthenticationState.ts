@@ -16,8 +16,7 @@ const AuthenticationState = createSlice({
       state.refresh_token = action.payload.refresh_token;
     },
     logOutAction: (state) => {
-      state.access_token = initialState.access_token;
-      state.refresh_token = initialState.refresh_token;
+      Object.assign(state, initialState);
     },
   },
 });

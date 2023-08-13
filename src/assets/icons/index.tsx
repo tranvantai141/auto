@@ -8,6 +8,7 @@ import HomeActive from "./HomeActive.svg";
 import HomeInactive from "./HomeInactive.svg";
 import InternetConnectionOffIcon from "./InternetConnectionOff.svg";
 import InternetConnectionOnIcon from "./InternetConnectionOn.svg";
+import DragIcon from "./Drag.svg";
 
 export type IconProps = {
   name: EIconsList;
@@ -58,6 +59,7 @@ const HomeIcon = ({ focused }: { focused: boolean }) => {
 
 export const ICON_LIST = {
   HomeIcon,
+  DragIcon,
   InternetConnectionOnIcon,
   InternetConnectionOffIcon,
 };
