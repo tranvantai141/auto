@@ -41,6 +41,7 @@ class InputComponentStyles {
       fontFamily: FONTS.interRegular,
       fontSize: ScaleManager.moderateScale(11),
       color: COLORS.errorColor,
+      marginHorizontal: ScaleManager.PADDING_SIZE,
     },
   });
 

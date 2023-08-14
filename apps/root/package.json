@@ -13,7 +13,7 @@
     "react-native-orientation-locker": "*",
     "moment": "*",
     "react-native-date-picker": "*",
-    "i18n-js": "*",
+    "i18n-js": "^3.8.2",
     "react-native-splash-screen": "*",
     "libphonenumber-js": "*",
     "lottie-react-native": "*",
@@ -34,6 +34,17 @@
     "react-native-keyboard-aware-scroll-view": "*",
     "react-native-screens": "*",
     "react-native-svg-transformer": "*",
-    "ts-jest": "*"
+    "ts-jest": "*",
+    "@react-native-async-storage/async-storage": "*",
+    "@react-native-community/netinfo": "*",
+    "@reduxjs/toolkit": "*",
+    "@sentry/react-native": "*",
+    "@tanstack/react-query": "*",
+    "appcenter": "*",
+    "react-native-code-push": "*",
+    "react-native-network-logger": "*",
+    "react-native-toastable": "*",
+    "react-redux": "*",
+    "redux-persist": "*"
   }
 }

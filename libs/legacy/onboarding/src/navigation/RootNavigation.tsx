@@ -4,11 +4,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import { StatusBar } from 'react-native';
-import GuestNavigation from './GuestNavigation';
-import SplashScreen from 'react-native-splash-screen';
 import { navigationRef } from '@helper/NavigationManager';
-import { GlobalMessageComponent } from '../components';
-import { ROUTES } from '@models/RouterNamesModel';
+import GuestNavigation from './GuestNavigation';
+import { InternetStatusComponent, NetworkLogComponent } from '@src/components';
+import { ROUTES } from '@src/models/RouterNamesModel';
+import SplashScreen from 'react-native-splash-screen';
+import { useAppSelector } from '@src/hooks';
+import MainNavigation from './MainNavigation';
+import Toastable from 'react-native-toastable';
+import { test } from '@skeleton-app/navigator/main';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +23,25 @@ const RootNavigation = React.memo(() => {
     }, 300);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  console.log(test);
+  const { auth } = useAppSelector((state) => state);
+
+  const whichNavigation = React.useMemo(() => {
+    if (auth.access_token)
+      return (
+        <Stack.Screen
+          name={ROUTES.MAIN_APPLICATION}
+          component={gestureHandlerRootHOC(MainNavigation)}
+        />
+      );
+
+    return (
+      <Stack.Screen
+        name={ROUTES.GUEST_NAVIGATION}
+        component={gestureHandlerRootHOC(GuestNavigation)}
+      />
+    );
+  }, [auth?.access_token]);
 
   return (
     <SafeAreaProvider>
@@ -29,13 +52,12 @@ const RootNavigation = React.memo(() => {
       />
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen
-            name={ROUTES.GUEST_NAVIGATION}
-            component={gestureHandlerRootHOC(GuestNavigation)}
-          />
+          {whichNavigation}
         </Stack.Navigator>
       </NavigationContainer>
-      <GlobalMessageComponent />
+      <InternetStatusComponent />
+      <NetworkLogComponent />
+      <Toastable />
     </SafeAreaProvider>
   );
 });

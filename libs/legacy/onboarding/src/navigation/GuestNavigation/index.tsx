@@ -1,10 +1,14 @@
 import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
 import { EGuestScreenList } from "@src/models/RouterNamesModel";
-import { FirstScreen } from "@src/screens";
+import { LoginScreen, OnBoardingStackScreen } from "@src/screens";
+import { IUserOnboardInformation } from "@src/screens/OnBoarding.OnBoardingStackScreen/Model.OnBoardingStackScreen";
 import React from "react";
 
 export type TGuestStackParam = {
-  [EGuestScreenList.FIRST_SCREEN]: undefined;
+  [EGuestScreenList.LOGIN_SCREEN]: {
+    userInformation: IUserOnboardInformation;
+  };
+  [EGuestScreenList.ONBOARDING_SCREEN]: undefined;
 };
 
 const GuestNavigation = React.memo(() => {
@@ -12,15 +16,21 @@ const GuestNavigation = React.memo(() => {
 
   return (
     <Stack.Navigator
-      initialRouteName={EGuestScreenList.FIRST_SCREEN}
+      initialRouteName={EGuestScreenList.ONBOARDING_SCREEN}
       screenOptions={{
         headerShown: false,
       }}
     >
       <Stack.Screen
-        name={EGuestScreenList.FIRST_SCREEN}
+        name={EGuestScreenList.ONBOARDING_SCREEN}
         options={TransitionPresets.ModalPresentationIOS}
-        component={FirstScreen}
+        component={OnBoardingStackScreen}
+      />
+
+      <Stack.Screen
+        name={EGuestScreenList.LOGIN_SCREEN}
+        options={TransitionPresets.SlideFromRightIOS}
+        component={LoginScreen}
       />
     </Stack.Navigator>
   );

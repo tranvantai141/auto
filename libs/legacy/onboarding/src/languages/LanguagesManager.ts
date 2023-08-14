@@ -1,18 +1,30 @@
-import I18n from "i18n-js";
-import en from "@src/languages/en.json";
-import vi from "@src/languages/vi.json";
+import en from './en';
+import vi from './vi';
+import { TLanguageKeys } from './LanguageOptions';
+import { I18n } from 'i18n-js';
 
 export enum EAvailableLanguages {
-  "vi" = "vi",
-  "en" = "en",
+  'vi' = 'vi',
+  'en' = 'en',
 }
 
-export default class LanguagesManager {
-  public configuredI18 = I18n;
-
+class LanguagesManager {
+  private configuredI18: I18n;
   constructor() {
-    this.configuredI18.fallbacks = true;
-    this.configuredI18.defaultLocale = EAvailableLanguages.en;
+    console.log('I18n', I18n);
+    this.configuredI18 = new I18n();
     this.configuredI18.translations = { en, vi };
+    this.configuredI18.defaultLocale = EAvailableLanguages.en;
+    this.configuredI18.locale = EAvailableLanguages.en;
+  }
+
+  public changeLanguage(language: EAvailableLanguages) {
+    this.configuredI18.locale = language;
+  }
+
+  public translate(key: TLanguageKeys) {
+    return this.configuredI18.t(key);
   }
 }
+
+export default new LanguagesManager();

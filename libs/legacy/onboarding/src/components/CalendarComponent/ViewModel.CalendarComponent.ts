@@ -2,12 +2,12 @@ import React from "react";
 
 import { LayoutAnimation, TextStyle, ViewStyle } from "react-native";
 import moment from "moment";
-import { useTranslate } from "@src/hooks";
 import { DateManager, IDay } from "@src/helper/DateManager";
 import { COLORS } from "@src/assets";
-import { ELanguageOptions } from "@src/models/LanguageOptionsModel";
 import styles from "./Styles.CalendarComponent";
 import { EBackOrForward, ICalendarComponentProps } from "./Model.CalendarComponent";
+import LanguagesManager from "@src/languages/LanguagesManager";
+import LanguageOptions from "@src/languages/LanguageOptions";
 
 const ViewModel = (props: ICalendarComponentProps) => {
   const {
@@ -19,8 +19,6 @@ const ViewModel = (props: ICalendarComponentProps) => {
     setSelectedDate,
     currentMonthDetail,
   } = props;
-
-  const translate = useTranslate();
 
   const handleForwardMonth = React.useCallback(
     (type: EBackOrForward) => () => {
@@ -153,23 +151,23 @@ const ViewModel = (props: ICalendarComponentProps) => {
 
   const dateNameOfTheWeekArr = React.useMemo(() => {
     return [
-      translate(ELanguageOptions.monday),
-      translate(ELanguageOptions.tuesday),
-      translate(ELanguageOptions.wednesday),
-      translate(ELanguageOptions.thursday),
-      translate(ELanguageOptions.friday),
-      translate(ELanguageOptions.saturday),
-      translate(ELanguageOptions.sunday),
+      LanguagesManager.translate(LanguageOptions.monday),
+      LanguagesManager.translate(LanguageOptions.tuesday),
+      LanguagesManager.translate(LanguageOptions.wednesday),
+      LanguagesManager.translate(LanguageOptions.thursday),
+      LanguagesManager.translate(LanguageOptions.friday),
+      LanguagesManager.translate(LanguageOptions.saturday),
+      LanguagesManager.translate(LanguageOptions.sunday),
     ];
-  }, [translate]);
+  }, []);
 
   const monthHeaderText = React.useMemo(() => {
     let output = "";
     const text = moment(selectedMonth + "-01").format("MMMM yyyy");
-    output = translate(text.split(" ")[0] as ELanguageOptions) + moment(selectedMonth + "-01").format(" yyyy");
+    output = LanguagesManager.translate(text.split(" ")[0] as any) + moment(selectedMonth + "-01").format(" yyyy");
 
     return output;
-  }, [translate, selectedMonth]);
+  }, [selectedMonth]);
 
   return {
     canNextMonth,
