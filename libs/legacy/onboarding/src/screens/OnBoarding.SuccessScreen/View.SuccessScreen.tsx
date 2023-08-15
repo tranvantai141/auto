@@ -3,7 +3,7 @@ import { ImageBackground, Text, View } from "react-native";
 import styles from "./Styles.SuccessScreen";
 import ViewModel from "./ViewModel.SuccessScreen";
 import { ANIMATIONS, IMAGES } from "@src/assets";
-import HelperManager from "@src/helper/HelperManager";
+import HelperManager from "@sdk-managers/helper";
 import LottieView from "lottie-react-native";
 
 const SuccessScreen = React.memo(() => {

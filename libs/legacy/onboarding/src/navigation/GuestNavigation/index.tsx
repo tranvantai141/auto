@@ -1,5 +1,5 @@
 import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
-import { EGuestScreenList } from "@src/models/RouterNamesModel";
+import { EGuestScreenList } from "@models/RouterNamesModel";
 import { LoginScreen, OnBoardingStackScreen } from "@src/screens";
 import { IUserOnboardInformation } from "@src/screens/OnBoarding.OnBoardingStackScreen/Model.OnBoardingStackScreen";
 import React from "react";

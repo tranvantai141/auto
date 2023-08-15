@@ -1,8 +1,8 @@
 import React from "react";
 import { ECurrentStep, IPurpose, IUserOnboardInformation, TValueTestArr } from "./Model.OnboardingComponent";
 import { Keyboard } from "react-native";
-import HelperManager from "@src/helper/HelperManager";
-import RegOptions from "@src/models/RegModel";
+import HelperManager from "@sdk-managers/helper";
+import RegOptions from "@models/RegModel";
 import styles from "./Styles.OnboardingComponent";
 
 const ViewModel = () => {

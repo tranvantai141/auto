@@ -2,17 +2,19 @@ import { Animated, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import ScaleManager from "@src/assets/ScaleManager";
 import { IDay, TWeek } from "@src/helper/DateManager";
-import HelperManager from "@src/helper/HelperManager";
 import { THEMES } from "@src/assets";
 import styles from "./Styles.CalendarComponent";
 import { EBackOrForward, ICalendarComponentProps, ICustomizedCalendar } from "./Model.CalendarComponent";
 import ViewModel from "./ViewModel.CalendarComponent";
+import HelperManager from "@sdk-managers/helper";
 
 export const DEFAULT_SELECTED_DATES: ICustomizedCalendar = {
   singleDate: {} as IDay,
   startDate: {} as IDay,
   endDate: {} as IDay,
 };
+
+
 
 const CalendarComponent: React.FC<ICalendarComponentProps> = React.memo((props) => {
   const {

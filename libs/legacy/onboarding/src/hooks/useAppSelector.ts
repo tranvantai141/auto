@@ -1,4 +1,4 @@
-import { IAuthenticationModel } from "@src/models/AuthenticationModel";
+import { IAuthenticationModel } from "@models/AuthenticationModel";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export type TRootState = {

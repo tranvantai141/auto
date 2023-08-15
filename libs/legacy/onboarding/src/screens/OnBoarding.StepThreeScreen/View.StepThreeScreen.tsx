@@ -3,7 +3,7 @@ import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
 import styles from "./Styles.StepThreeScreen";
 import ViewModel from "./ViewModel.StepThreeScreen";
 import { COLORS, IMAGES, THEMES } from "@src/assets";
-import HelperManager from "@src/helper/HelperManager";
+import HelperManager from "@sdk-managers/helper";
 import { PURPOSE_LIST, TStepThreeScreenProps } from "./Model.StepThreeScreen";
 
 const StepThreeScreen: React.FC<TStepThreeScreenProps> = React.memo((props) => {

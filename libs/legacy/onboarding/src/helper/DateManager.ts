@@ -1,5 +1,5 @@
 import moment from "moment";
-import HelperManager from "@src/helper/HelperManager";
+import HelperManager from "@sdk-managers/helper";
 
 export interface IDay {
   monthName: string;

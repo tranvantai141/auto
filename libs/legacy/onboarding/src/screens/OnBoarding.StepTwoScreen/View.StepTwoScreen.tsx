@@ -5,7 +5,7 @@ import ViewModel from "./ViewModel.StepTwoScreen";
 import { TStepTwoScreenProps } from "./Model.StepTwoScreen";
 import { IMAGES, THEMES } from "@src/assets";
 import { InputComponent } from "@src/components";
-import HelperManager from "@src/helper/HelperManager";
+import HelperManager from "@sdk-managers/helper";
 
 const StepTwoScreen: React.FC<TStepTwoScreenProps> = React.memo((props) => {
   const {

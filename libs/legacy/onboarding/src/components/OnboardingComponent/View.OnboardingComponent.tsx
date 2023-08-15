@@ -2,11 +2,11 @@ import React from "react";
 import { ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
 import styles from "./Styles.OnboardingComponent";
 import ViewModel from "./ViewModel.OnboardingComponent";
-import HelperManager from "@src/helper/HelperManager";
+import HelperManager from "@sdk-managers/helper";
 import { ANIMATIONS, COLORS, THEMES } from "@src/assets";
 import { ECurrentStep, PURPOSE_LIST, STEP_LIST } from "./Model.OnboardingComponent";
 import InputComponent from "../InputComponent/View.InputComponent";
-import RegOptions from "@src/models/RegModel";
+import RegOptions from "@models/RegModel";
 import LottieView from "lottie-react-native";
 import DatePicker from "react-native-date-picker";
 

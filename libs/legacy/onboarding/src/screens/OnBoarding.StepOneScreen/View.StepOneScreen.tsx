@@ -3,10 +3,10 @@ import { ImageBackground, Text, TouchableWithoutFeedback, View } from "react-nat
 import styles from "./Styles.StepOneScreen";
 import ViewModel from "./ViewModel.StepOneScreen";
 import { IMAGES, THEMES } from "@src/assets";
-import HelperManager from "@src/helper/HelperManager";
+import HelperManager from "@sdk-managers/helper";
 import { TStepOneScreenProps } from "./Model.StepOneScreen";
 import { InputComponent } from "@src/components";
-import RegOptions from "@src/models/RegModel";
+import RegOptions from "@models/RegModel";
 
 const StepOneScreen: React.FC<TStepOneScreenProps> = React.memo((props) => {
   const { idNumber, username, setIdNumber, setUsername, dismissKeyboard } = ViewModel(props);

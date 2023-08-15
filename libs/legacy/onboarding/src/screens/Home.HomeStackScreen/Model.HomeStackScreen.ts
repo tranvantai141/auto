@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { EHomeScreenList } from "@src/models/RouterNamesModel";
+import { EHomeScreenList } from "@models/RouterNamesModel";
 
 export type THomeStack = {
   [EHomeScreenList.HOME_SCREEN]: undefined;

@@ -1,4 +1,4 @@
-import RegOptions from "@src/models/RegModel";
+import RegOptions from "@models/RegModel";
 import parsePhoneNumber, { CountryCode, PhoneNumber } from "libphonenumber-js";
 import { Platform } from "react-native";
 

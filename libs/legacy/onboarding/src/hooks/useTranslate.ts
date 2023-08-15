@@ -1,5 +1,5 @@
 import LanguagesManager, { EAvailableLanguages } from "@src/languages/LanguagesManager";
-import { ELanguageOptions } from "@src/models/LanguageOptionsModel";
+import { ELanguageOptions } from "@models/LanguageOptionsModel";
 
 const useTranslate = () => {
   const languageInstance = new LanguagesManager();

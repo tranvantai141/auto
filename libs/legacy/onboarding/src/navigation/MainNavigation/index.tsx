@@ -4,7 +4,7 @@ import { COLORS } from "@src/assets";
 import ScaleManager from "@src/assets/ScaleManager";
 import FONTS from "@src/assets/fonts";
 import { ICON_LIST } from "@src/assets/icons";
-import { EGuestScreenList, EMainAppScreenList } from "@src/models/RouterNamesModel";
+import { EGuestScreenList, EMainAppScreenList } from "@models/RouterNamesModel";
 import { HomeStackScreen } from "@src/screens";
 import React from "react";
 import { Platform, ViewStyle } from "react-native";

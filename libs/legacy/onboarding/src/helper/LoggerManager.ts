@@ -1,4 +1,4 @@
-import HelperManager from "@src/helper/HelperManager";
+import HelperManager from "@sdk-managers/helper";
 
 class LoggerManager {
   private shouldShowLogRequest!: boolean;

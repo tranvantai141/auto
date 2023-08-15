@@ -1,6 +1,6 @@
 import React from "react";
 import { Animated, Text, View, ViewStyle } from "react-native";
-import HelperManager from "@src/helper/HelperManager";
+import HelperManager from "@sdk-managers//helper";
 import styles from "./Styles.GlobalMessageComponent";
 import { EDeviceEmitter, emitter } from "@src/hooks/useEmitter";
 import { EMessageTypes, EObject, TShowGlobalMessage } from "./Model.GlobalMessageComponent";

@@ -1,10 +1,10 @@
 import React from "react";
 import { Keyboard } from "react-native";
-import RegOptions from "@src/models/RegModel";
+import RegOptions from "@models/RegModel";
 import styles from "./Styles.OnBoardingStackScreen";
-import HelperManager from "@src/helper/HelperManager";
+import HelperManager from "@sdk-managers/helper";
 import NavigationManager from "@src/helper/NavigationManager";
-import { EGuestScreenList, EOnBoardingScreenList } from "@src/models/RouterNamesModel";
+import { EGuestScreenList, EOnBoardingScreenList } from "@models/RouterNamesModel";
 import { ECurrentStep, IPurpose, IUserOnboardInformation, TValueTestArr } from "./Model.OnBoardingStackScreen";
 
 const ViewModel = () => {

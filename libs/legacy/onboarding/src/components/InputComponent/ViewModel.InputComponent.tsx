@@ -2,7 +2,7 @@ import { TextInputProps, ViewStyle } from "react-native";
 import React from "react";
 import { COLORS } from "@src/assets";
 import { IInputComponentProps } from "./Model.InputComponent";
-import HelperManager from "@src/helper/HelperManager";
+import HelperManager from "@sdk-managers/helper";
 import styles from "./Styles.InputComponent";
 
 const ViewModel = (props: IInputComponentProps) => {

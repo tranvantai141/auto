@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { IAuthenticationModel } from "@src/models/AuthenticationModel";
+import { IAuthenticationModel } from "@models/AuthenticationModel";
 
 const initialState: IAuthenticationModel = {
   access_token: "",

@@ -1,4 +1,4 @@
-import { EOnBoardingScreenList } from "@src/models/RouterNamesModel";
+import { EOnBoardingScreenList } from "@models/RouterNamesModel";
 import ViewModel from "./ViewModel.OnBoardingStackScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 

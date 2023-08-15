@@ -1,5 +1,5 @@
 import { AxiosInstance } from "axios";
-import HelperManager from "./HelperManager";
+import HelperManager from "@sdk-managers/helper";
 
 export class CurlHelper {
   request!: any;

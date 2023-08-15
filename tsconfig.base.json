@@ -21,7 +21,7 @@
       "@helper/*": ["libs/legacy/onboarding/src/helper/*"],
       "@hooks/*": ["libs/legacy/onboarding/src/hooks/*"],
       "@languages/*": ["libs/legacy/onboarding/src/languages/*"],
-      "@models/*": ["libs/legacy/onboarding/src/models/*"],
+      "@models/*": ["models/*"],
       "@navigation/*": ["libs/legacy/onboarding/src/navigation/*"],
       "@screens/*": ["libs/legacy/onboarding/src/screens/*"],
       "@services/*": ["libs/legacy/onboarding/src/services/*"],
@@ -32,6 +32,10 @@
       "@skeleton-app/navigator/main": ["libs/navigator/main/src/index.ts"],
       "@skeleton-app/navigator/root": ["libs/navigator/root/src/index.ts"],
       "@skeleton-app/nx-welcome": ["libs/nx-welcome/src/nx-welcome.tsx"],
+      "@skeleton-app/sdk-managers/helper": [
+        "libs/sdk-managers/helper/src/index.ts"
+      ],
+      "@sdk-managers/*": ["libs/sdk-managers/*"],
       "@src/*": ["libs/legacy/onboarding/src/*"]
     }
   },
