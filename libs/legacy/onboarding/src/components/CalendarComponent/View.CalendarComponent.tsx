@@ -1,7 +1,7 @@
 import { Animated, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import ScaleManager from '@src/assets/ScaleManager';
-import { IDay, TWeek } from '@src/helper/DateManager';
+import { IDay, TWeek } from '@skeleton-app/sdk-managers/date';
 import { THEMES } from '@src/assets';
 import styles from './Styles.CalendarComponent';
 import {

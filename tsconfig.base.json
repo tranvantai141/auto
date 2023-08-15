@@ -32,6 +32,9 @@
       "@skeleton-app/navigator/main": ["libs/navigator/main/src/index.ts"],
       "@skeleton-app/navigator/root": ["libs/navigator/root/src/index.ts"],
       "@skeleton-app/nx-welcome": ["libs/nx-welcome/src/nx-welcome.tsx"],
+      "@skeleton-app/sdk-managers/date": [
+        "libs/sdk-managers/date/src/index.ts"
+      ],
       "@skeleton-app/sdk-managers/helper": [
         "libs/sdk-managers/helper/src/index.ts"
       ],

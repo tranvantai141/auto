@@ -1,17 +1,16 @@
-import axios, { AxiosError } from "axios";
-import LoggerManager from "@src/helper/LoggerManager";
-import { CurlHelper } from "./CurlManager";
-import { STATUS_CODE_LIST } from "@src/assets";
+import axios, { AxiosError } from 'axios';
+import LoggerManager from '@src/helper/LoggerManager';
+import { STATUS_CODE_LIST } from '@src/assets';
 export class ServicesManager {
   //NOTE: set min res time to avoid unwanted quick response => ugly UI
   private static readonly MIN_RESPONSE_TIME = 500;
 
   //DEVELOP
-  public static _PREFIX = "https:/e-wallet.com";
+  public static _PREFIX = 'https:/e-wallet.com';
 
-  public static KEY_CLOAK_SECRET = "e-wallet";
+  public static KEY_CLOAK_SECRET = 'e-wallet';
 
-  public static KEY_CLOAK_URL = "e-wallet";
+  public static KEY_CLOAK_URL = 'e-wallet';
 
   public static DEFAULT_URL = `${ServicesManager._PREFIX}/api/v1/`;
 
@@ -71,11 +70,13 @@ export class ServicesManager {
 
     instance.interceptors.response.use(
       async (response) => {
-        await ServicesManager._checkMinimumResponseTime(parseInt(response.request._headers.requeststarttime));
+        await ServicesManager._checkMinimumResponseTime(
+          parseInt(response.request._headers.requeststarttime)
+        );
         LoggerManager.describeSuccessResponse(response);
         return response;
       },
-      (error: AxiosError) => ServicesManager._responseErrorHandler(error),
+      (error: AxiosError) => ServicesManager._responseErrorHandler(error)
     );
     return instance;
   };
@@ -87,7 +88,9 @@ export class ServicesManager {
       //   //reset diagnosis state
       // }, 500);
     }
-    await this._checkMinimumResponseTime(parseInt(error.request._headers.requeststarttime));
+    await this._checkMinimumResponseTime(
+      parseInt(error.request._headers.requeststarttime)
+    );
     LoggerManager.describeErrorResponse(error);
     return Promise.reject(error.response);
   };
@@ -100,7 +103,7 @@ export class ServicesManager {
         () => {
           resolve(true);
         },
-        isTooFast ? ServicesManager.MIN_RESPONSE_TIME - totalFetchTime : 0,
+        isTooFast ? ServicesManager.MIN_RESPONSE_TIME - totalFetchTime : 0
       );
     });
   };

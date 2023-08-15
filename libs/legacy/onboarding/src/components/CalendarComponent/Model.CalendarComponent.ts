@@ -1,4 +1,4 @@
-import { IDay, MyDay, TMonth } from "@src/helper/DateManager";
+import { IDay, MyDay, TMonth } from '@skeleton-app/sdk-managers/date';
 
 export interface ICalendarComponentProps {
   currentMonthDetail: TMonth;
