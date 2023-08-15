@@ -53,13 +53,14 @@ class HelperManager {
         if (object && Object.prototype.hasOwnProperty.call(object, key)) {
           return { [key]: object[key] };
         }
+        return {};
       })
     );
   };
 
   public static omitFnc: IOmit = (obj, ...keys) => {
     const rest = {} as {
-      [K in keyof typeof obj]: (typeof obj)[K];
+      [K in keyof typeof obj]: typeof obj[K];
     };
     let key: keyof typeof obj;
     for (key in obj) {

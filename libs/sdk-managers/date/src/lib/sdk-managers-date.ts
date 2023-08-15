@@ -1,4 +1,4 @@
-import moment from 'moment';
+import * as moment from 'moment';
 import HelperManager from '@skeleton-app/sdk-managers/helper';
 
 export interface IDay {
