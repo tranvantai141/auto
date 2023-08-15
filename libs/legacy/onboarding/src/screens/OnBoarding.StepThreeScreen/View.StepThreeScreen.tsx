@@ -1,10 +1,10 @@
-import React from "react";
-import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
-import styles from "./Styles.StepThreeScreen";
-import ViewModel from "./ViewModel.StepThreeScreen";
-import { COLORS, IMAGES, THEMES } from "@src/assets";
-import HelperManager from "@sdk-managers/helper";
-import { PURPOSE_LIST, TStepThreeScreenProps } from "./Model.StepThreeScreen";
+import React from 'react';
+import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import styles from './Styles.StepThreeScreen';
+import ViewModel from './ViewModel.StepThreeScreen';
+import { COLORS, IMAGES, THEMES } from '@src/assets';
+import HelperManager from '@skeleton-app/sdk-managers/helper';
+import { PURPOSE_LIST, TStepThreeScreenProps } from './Model.StepThreeScreen';
 
 const StepThreeScreen: React.FC<TStepThreeScreenProps> = React.memo((props) => {
   const { _handleSelectPurpose, selectedPurposes } = ViewModel(props);
@@ -25,9 +25,13 @@ const StepThreeScreen: React.FC<TStepThreeScreenProps> = React.memo((props) => {
               {...HelperManager.setLocator(styles.SCREEN_TAG, purpose.name)}
               key={`purpose-option-${purpose.name}`}
             >
-              <Text style={THEMES.commonMediumTextStyle(COLORS.white)}>{purpose.name}</Text>
+              <Text style={THEMES.commonMediumTextStyle(COLORS.white)}>
+                {purpose.name}
+              </Text>
               <View testID={purpose.name} style={styles.squareCheckTextWrapper}>
-                {selectedPurposes.map((s) => s.valueCode).includes(purpose.valueCode) && (
+                {selectedPurposes
+                  .map((s) => s.valueCode)
+                  .includes(purpose.valueCode) && (
                   <Text style={styles.checkText}>✓</Text>
                 )}
               </View>
@@ -35,7 +39,9 @@ const StepThreeScreen: React.FC<TStepThreeScreenProps> = React.memo((props) => {
           );
         })}
         <View style={styles.dateOfBirthRow}>
-          <Text style={styles.minAgeUsageNotice}>*You could select multiple purposes</Text>
+          <Text style={styles.minAgeUsageNotice}>
+            *You could select multiple purposes
+          </Text>
         </View>
       </View>
     </ImageBackground>

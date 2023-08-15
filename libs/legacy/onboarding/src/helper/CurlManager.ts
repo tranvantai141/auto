@@ -1,5 +1,5 @@
-import { AxiosInstance } from "axios";
-import HelperManager from "@sdk-managers/helper";
+import { AxiosInstance } from 'axios';
+import HelperManager from '@skeleton-app/sdk-managers/helper';
 
 export class CurlHelper {
   request!: any;
@@ -12,7 +12,7 @@ export class CurlHelper {
     let headers = {
       ...this.request.headers,
     };
-    let curlHeaders = "";
+    let curlHeaders = '';
 
     // get the headers concerning the appropriate method (defined in the global axios instance)
     if (!HelperManager.checkInvalidity(headers?.common)) {
@@ -21,7 +21,11 @@ export class CurlHelper {
 
     // add any custom headers (defined upon calling methods like .get(), .post(), etc.)
     for (const property in this.request.headers) {
-      if (!["common", "delete", "get", "head", "patch", "post", "put"].includes(property)) {
+      if (
+        !['common', 'delete', 'get', 'head', 'patch', 'post', 'put'].includes(
+          property
+        )
+      ) {
         headers[property] = this.request.headers[property];
       }
     }
@@ -42,18 +46,19 @@ export class CurlHelper {
 
   getBody() {
     if (
-      typeof this.request.data !== "undefined" &&
-      this.request.data !== "" &&
+      typeof this.request.data !== 'undefined' &&
+      this.request.data !== '' &&
       this.request.data !== null &&
-      this.request.method.toUpperCase() !== "GET"
+      this.request.method.toUpperCase() !== 'GET'
     ) {
       const data =
-        typeof this.request.data === "object" || Object.prototype.toString.call(this.request.data) === "[object Array]"
+        typeof this.request.data === 'object' ||
+        Object.prototype.toString.call(this.request.data) === '[object Array]'
           ? JSON.stringify(this.request.data)
           : this.request.data;
       return `--data '${data}'`.trim();
     } else {
-      return "";
+      return '';
     }
   }
 
@@ -61,11 +66,11 @@ export class CurlHelper {
     if (this.request.baseURL) {
       const baseUrl = this.request.baseURL;
       const url = this.request.url;
-      const finalUrl = baseUrl + "/" + url;
+      const finalUrl = baseUrl + '/' + url;
       return finalUrl
-        .replace(/\/{2,}/g, "/")
-        .replace("http:/", "http://")
-        .replace("https:/", "https://");
+        .replace(/\/{2,}/g, '/')
+        .replace('http:/', 'http://')
+        .replace('https:/', 'https://');
     }
     return this.request.url;
   }
@@ -73,16 +78,19 @@ export class CurlHelper {
   getQueryString() {
     if (this.request.paramsSerializer) {
       const params = this.request.paramsSerializer(this.request.params);
-      if (!params || params.length === 0) return "";
-      if (params.startsWith("?")) return params;
+      if (!params || params.length === 0) return '';
+      if (params.startsWith('?')) return params;
       return `?${params}`;
     }
-    let params = "";
+    let params = '';
     let i = 0;
 
     for (const param in this.request.params) {
       if ({}.hasOwnProperty.call(this.request.params, param)) {
-        params += i !== 0 ? `&${param}=${this.request.params[param]}` : `?${param}=${this.request.params[param]}`;
+        params +=
+          i !== 0
+            ? `&${param}=${this.request.params[param]}`
+            : `?${param}=${this.request.params[param]}`;
         i++;
       }
     }
@@ -93,7 +101,7 @@ export class CurlHelper {
   getBuiltURL() {
     let url = this.getUrl();
 
-    if (this.getQueryString() !== "") {
+    if (this.getQueryString() !== '') {
       url += this.getQueryString();
     }
 
@@ -103,7 +111,7 @@ export class CurlHelper {
   generateCommand() {
     return `curl ${this.getMethod()} "${this.getBuiltURL()}" ${this.getHeaders()} ${this.getBody()}`
       .trim()
-      .replace(/\s{2,}/g, " ");
+      .replace(/\s{2,}/g, ' ');
   }
 }
 
@@ -136,7 +144,7 @@ export default (instance: AxiosInstance, callback = defaultLogCallback) => {
             command: req.curlCommand,
             object: req.curlObject,
           },
-          null,
+          null
         );
       }
       // eslint-disable-next-line no-unsafe-finally

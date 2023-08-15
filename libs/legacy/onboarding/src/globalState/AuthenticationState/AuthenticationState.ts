@@ -1,17 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { IAuthenticationModel } from "@models/AuthenticationModel";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { IAuthenticationModel } from '@skeleton-app/sdk-managers/models';
 
 const initialState: IAuthenticationModel = {
-  access_token: "",
-  refresh_token: "",
+  access_token: '',
+  refresh_token: '',
 };
 
 const AuthenticationState = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
-    setLoginSuccessAction: (state, action: PayloadAction<IAuthenticationModel>) => {
+    setLoginSuccessAction: (
+      state,
+      action: PayloadAction<IAuthenticationModel>
+    ) => {
       state.access_token = action.payload.access_token;
       state.refresh_token = action.payload.refresh_token;
     },

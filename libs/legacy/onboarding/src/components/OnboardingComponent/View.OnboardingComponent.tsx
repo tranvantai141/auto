@@ -1,14 +1,24 @@
-import React from "react";
-import { ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
-import styles from "./Styles.OnboardingComponent";
-import ViewModel from "./ViewModel.OnboardingComponent";
-import HelperManager from "@sdk-managers/helper";
-import { ANIMATIONS, COLORS, THEMES } from "@src/assets";
-import { ECurrentStep, PURPOSE_LIST, STEP_LIST } from "./Model.OnboardingComponent";
-import InputComponent from "../InputComponent/View.InputComponent";
-import RegOptions from "@models/RegModel";
-import LottieView from "lottie-react-native";
-import DatePicker from "react-native-date-picker";
+import React from 'react';
+import {
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
+import styles from './Styles.OnboardingComponent';
+import ViewModel from './ViewModel.OnboardingComponent';
+import HelperManager from '@skeleton-app/sdk-managers/helper';
+import { ANIMATIONS, COLORS, THEMES } from '@src/assets';
+import {
+  ECurrentStep,
+  PURPOSE_LIST,
+  STEP_LIST,
+} from './Model.OnboardingComponent';
+import InputComponent from '../InputComponent/View.InputComponent';
+import RegOptions from '@skeleton-app/sdk-managers/models';
+import LottieView from 'lottie-react-native';
+import DatePicker from 'react-native-date-picker';
 
 const OnboardingComponent = React.memo(() => {
   const {
@@ -40,21 +50,27 @@ const OnboardingComponent = React.memo(() => {
       <DatePicker
         testID="DatePicker"
         modal
-        mode={"date"}
-        title={"Select date and Time"}
+        mode={'date'}
+        title={'Select date and Time'}
         open={dateModalVisible}
         date={selectedDate}
-        locale={"us"}
+        locale={'us'}
         androidVariant="iosClone"
-        confirmText={"Confirm"}
-        cancelText={"Cancel"}
+        confirmText={'Confirm'}
+        cancelText={'Cancel'}
         onConfirm={_handleOnConfirmDate}
         onCancel={() => {
           setDateModalVisible(false);
         }}
       />
     );
-  }, [_handleOnConfirmDate, dateModalVisible, selectedDate, setDateModalVisible, setSelectedDate]);
+  }, [
+    _handleOnConfirmDate,
+    dateModalVisible,
+    selectedDate,
+    setDateModalVisible,
+    setSelectedDate,
+  ]);
 
   const _renderHeader = React.useCallback(() => {
     const output: JSX.Element[] = [];
@@ -65,16 +81,26 @@ const OnboardingComponent = React.memo(() => {
       output.push(
         <View
           key={step.name}
-          {...HelperManager.setLocator(styles.TEST_ID, step.name + "container")}
+          {...HelperManager.setLocator(styles.TEST_ID, step.name + 'container')}
           style={styles.stepNumberContainer}
         >
           <View style={styles.stepNumberWrapperStyle(showGreen)}>
-            <Text style={THEMES.commonRegularTextStyle(showGreen ? COLORS.white : COLORS.mainColor)}>{step.name}</Text>
+            <Text
+              style={THEMES.commonRegularTextStyle(
+                showGreen ? COLORS.white : COLORS.mainColor
+              )}
+            >
+              {step.name}
+            </Text>
           </View>
-          <Text style={THEMES.commonRegularTextStyle(showGreen ? COLORS.successColor : COLORS.backgroundColor)}>
+          <Text
+            style={THEMES.commonRegularTextStyle(
+              showGreen ? COLORS.successColor : COLORS.backgroundColor
+            )}
+          >
             {step.title}
           </Text>
-        </View>,
+        </View>
       );
     }
     return <View style={styles.stepsHeaderContainer}>{output}</View>;
@@ -109,14 +135,14 @@ const OnboardingComponent = React.memo(() => {
       case ECurrentStep.stepOne:
         output = (
           <React.Fragment>
-            <Text style={THEMES.title}>{"Full-name"}</Text>
+            <Text style={THEMES.title}>{'Full-name'}</Text>
             <InputComponent
-              testId={"username-textinput"}
+              testId={'username-textinput'}
               {...{
                 value: username,
                 setValue: setUsername,
-                placeHolder: "Enter full-name",
-                errorMessageText: "Invalid name",
+                placeHolder: 'Enter full-name',
+                errorMessageText: 'Invalid name',
                 onBlur: (trueCallBack, falseCallback) => () => {
                   const passConditions = [] as Array<RegExp>;
                   if (!HelperManager.isValid(username, passConditions)) {
@@ -128,17 +154,19 @@ const OnboardingComponent = React.memo(() => {
               }}
             />
 
-            <Text style={THEMES.title}>{"ID number"}</Text>
+            <Text style={THEMES.title}>{'ID number'}</Text>
             <InputComponent
-              testId={"id-textinput"}
+              testId={'id-textinput'}
               {...{
                 value: idNumber,
                 setValue: setIdNumber,
-                placeHolder: "Enter 12 digits ID number",
-                keyboardType: "decimal-pad",
-                errorMessageText: "ID contains 12 digits",
+                placeHolder: 'Enter 12 digits ID number',
+                keyboardType: 'decimal-pad',
+                errorMessageText: 'ID contains 12 digits',
                 onBlur: (trueCallBack, falseCallback) => () => {
-                  const passConditions = [RegOptions.assumed_vietnamese_id_length] as Array<RegExp>;
+                  const passConditions = [
+                    RegOptions.assumed_vietnamese_id_length,
+                  ] as Array<RegExp>;
                   if (!HelperManager.isValid(idNumber, passConditions)) {
                     falseCallback();
                   } else {
@@ -154,15 +182,15 @@ const OnboardingComponent = React.memo(() => {
       case ECurrentStep.stepTwo:
         output = (
           <ScrollView showsVerticalScrollIndicator={false}>
-            <Text style={THEMES.title}>{"Email address"}</Text>
+            <Text style={THEMES.title}>{'Email address'}</Text>
             <InputComponent
-              testId={"email-textinput"}
+              testId={'email-textinput'}
               {...{
                 value: email,
                 setValue: setEmail,
-                autoCapitalize: "none",
-                placeHolder: "Enter email address",
-                errorMessageText: "Invalid email",
+                autoCapitalize: 'none',
+                placeHolder: 'Enter email address',
+                errorMessageText: 'Invalid email',
                 onBlur: (trueCallBack, falseCallback) => () => {
                   if (!HelperManager.validateEmail(email)) {
                     falseCallback();
@@ -173,15 +201,15 @@ const OnboardingComponent = React.memo(() => {
               }}
             />
 
-            <Text style={THEMES.title}>{"Phone number"}</Text>
+            <Text style={THEMES.title}>{'Phone number'}</Text>
             <InputComponent
-              testId={"phoneNumber-textinput"}
+              testId={'phoneNumber-textinput'}
               {...{
                 value: phoneNumber,
                 setValue: setPhoneNumber,
-                placeHolder: "Enter phone number",
-                keyboardType: "decimal-pad",
-                errorMessageText: "Invalid phone number",
+                placeHolder: 'Enter phone number',
+                keyboardType: 'decimal-pad',
+                errorMessageText: 'Invalid phone number',
                 onBlur: (trueCallBack, falseCallback) => () => {
                   const passConditions = [] as Array<RegExp>;
                   if (!HelperManager.isValid(phoneNumber, passConditions)) {
@@ -193,9 +221,10 @@ const OnboardingComponent = React.memo(() => {
               }}
             />
             <View style={styles.dateOfBirthRow}>
-              <Text style={styles.dateOfBirthText}>{"Date of birth"}</Text>
+              <Text style={styles.dateOfBirthText}>{'Date of birth'}</Text>
               <Text style={styles.dateOfBirthText}>{`Age: ${
-                new Date().getFullYear() - new Date(selectedDate.getTime()).getFullYear()
+                new Date().getFullYear() -
+                new Date(selectedDate.getTime()).getFullYear()
               } years old`}</Text>
             </View>
 
@@ -208,7 +237,9 @@ const OnboardingComponent = React.memo(() => {
               }}
               style={styles.dateOfBirthRow}
             >
-              <Text style={styles.minAgeUsageNotice}>*The minimum age requirement is 15 years or older</Text>
+              <Text style={styles.minAgeUsageNotice}>
+                *The minimum age requirement is 15 years or older
+              </Text>
             </TouchableOpacity>
           </ScrollView>
         );
@@ -228,9 +259,16 @@ const OnboardingComponent = React.memo(() => {
                   {...HelperManager.setLocator(styles.TEST_ID, purpose.name)}
                   key={`purpose-option-${purpose.name}`}
                 >
-                  <Text style={THEMES.commonMediumTextStyle(COLORS.white)}>{purpose.name}</Text>
-                  <View testID={purpose.name} style={styles.squareCheckTextWrapper}>
-                    {selectedPurposes.map((s) => s.valueCode).includes(purpose.valueCode) && (
+                  <Text style={THEMES.commonMediumTextStyle(COLORS.white)}>
+                    {purpose.name}
+                  </Text>
+                  <View
+                    testID={purpose.name}
+                    style={styles.squareCheckTextWrapper}
+                  >
+                    {selectedPurposes
+                      .map((s) => s.valueCode)
+                      .includes(purpose.valueCode) && (
                       <Text style={styles.checkText}>✓</Text>
                     )}
                   </View>
@@ -238,7 +276,9 @@ const OnboardingComponent = React.memo(() => {
               );
             })}
             <View style={styles.dateOfBirthRow}>
-              <Text style={styles.minAgeUsageNotice}>*You could select multiple purposes</Text>
+              <Text style={styles.minAgeUsageNotice}>
+                *You could select multiple purposes
+              </Text>
             </View>
           </React.Fragment>
         );
@@ -276,8 +316,13 @@ const OnboardingComponent = React.memo(() => {
           source={ANIMATIONS.success}
           loop={false}
         />
-        <View {...HelperManager.setLocator(styles.TEST_ID, `success-text`)} style={styles.dateOfBirthRow}>
-          <Text style={styles.successText}>{"🌺Registration complete! Welcome to your new e-wallet."}</Text>
+        <View
+          {...HelperManager.setLocator(styles.TEST_ID, `success-text`)}
+          style={styles.dateOfBirthRow}
+        >
+          <Text style={styles.successText}>
+            {'🌺Registration complete! Welcome to your new e-wallet.'}
+          </Text>
         </View>
       </View>
     );

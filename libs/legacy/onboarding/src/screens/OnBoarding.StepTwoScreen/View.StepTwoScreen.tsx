@@ -1,11 +1,18 @@
-import React from "react";
-import { ImageBackground, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
-import styles from "./Styles.StepTwoScreen";
-import ViewModel from "./ViewModel.StepTwoScreen";
-import { TStepTwoScreenProps } from "./Model.StepTwoScreen";
-import { IMAGES, THEMES } from "@src/assets";
-import { InputComponent } from "@src/components";
-import HelperManager from "@sdk-managers/helper";
+import React from 'react';
+import {
+  ImageBackground,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
+import styles from './Styles.StepTwoScreen';
+import ViewModel from './ViewModel.StepTwoScreen';
+import { TStepTwoScreenProps } from './Model.StepTwoScreen';
+import { IMAGES, THEMES } from '@src/assets';
+import { InputComponent } from '@src/components';
+import HelperManager from '@skeleton-app/sdk-managers/helper';
 
 const StepTwoScreen: React.FC<TStepTwoScreenProps> = React.memo((props) => {
   const {
@@ -26,16 +33,19 @@ const StepTwoScreen: React.FC<TStepTwoScreenProps> = React.memo((props) => {
       {...HelperManager.setLocator(styles.SCREEN_TAG, `imageBackground`)}
     >
       <TouchableWithoutFeedback onPress={dismissKeyboard}>
-        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-          <Text style={THEMES.title}>{"Email address"}</Text>
+        <ScrollView
+          style={styles.scrollView}
+          showsVerticalScrollIndicator={false}
+        >
+          <Text style={THEMES.title}>{'Email address'}</Text>
           <InputComponent
-            testId={"email-textinput"}
+            testId={'email-textinput'}
             {...{
               value: email,
               setValue: setEmail,
-              autoCapitalize: "none",
-              placeHolder: "Enter email address",
-              errorMessageText: "Invalid email",
+              autoCapitalize: 'none',
+              placeHolder: 'Enter email address',
+              errorMessageText: 'Invalid email',
               onBlur: (trueCallBack, falseCallback) => () => {
                 if (!HelperManager.validateEmail(email)) {
                   falseCallback();
@@ -46,15 +56,15 @@ const StepTwoScreen: React.FC<TStepTwoScreenProps> = React.memo((props) => {
             }}
           />
 
-          <Text style={THEMES.title}>{"Phone number"}</Text>
+          <Text style={THEMES.title}>{'Phone number'}</Text>
           <InputComponent
-            testId={"phoneNumber-textinput"}
+            testId={'phoneNumber-textinput'}
             {...{
               value: phoneNumber,
               setValue: setPhoneNumber,
-              placeHolder: "Enter phone number",
-              keyboardType: "decimal-pad",
-              errorMessageText: "Invalid phone number",
+              placeHolder: 'Enter phone number',
+              keyboardType: 'decimal-pad',
+              errorMessageText: 'Invalid phone number',
               onBlur: (trueCallBack, falseCallback) => () => {
                 const passConditions = [] as Array<RegExp>;
                 if (!HelperManager.isValid(phoneNumber, passConditions)) {
@@ -66,9 +76,10 @@ const StepTwoScreen: React.FC<TStepTwoScreenProps> = React.memo((props) => {
             }}
           />
           <View style={styles.dateOfBirthRow}>
-            <Text style={styles.dateOfBirthText}>{"Date of birth"}</Text>
+            <Text style={styles.dateOfBirthText}>{'Date of birth'}</Text>
             <Text style={styles.dateOfBirthText}>{`Age: ${
-              new Date().getFullYear() - new Date(selectedDate.getTime()).getFullYear()
+              new Date().getFullYear() -
+              new Date(selectedDate.getTime()).getFullYear()
             } years old`}</Text>
           </View>
 
@@ -81,7 +92,9 @@ const StepTwoScreen: React.FC<TStepTwoScreenProps> = React.memo((props) => {
             }}
             style={styles.dateOfBirthRow}
           >
-            <Text style={styles.minAgeUsageNotice}>*The minimum age requirement is 15 years or older</Text>
+            <Text style={styles.minAgeUsageNotice}>
+              *The minimum age requirement is 15 years or older
+            </Text>
           </TouchableOpacity>
         </ScrollView>
       </TouchableWithoutFeedback>

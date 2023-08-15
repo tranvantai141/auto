@@ -1,10 +1,10 @@
-import React from "react";
-import { ImageBackground, Text, View } from "react-native";
-import styles from "./Styles.SuccessScreen";
-import ViewModel from "./ViewModel.SuccessScreen";
-import { ANIMATIONS, IMAGES } from "@src/assets";
-import HelperManager from "@sdk-managers/helper";
-import LottieView from "lottie-react-native";
+import React from 'react';
+import { ImageBackground, Text, View } from 'react-native';
+import styles from './Styles.SuccessScreen';
+import ViewModel from './ViewModel.SuccessScreen';
+import { ANIMATIONS, IMAGES } from '@src/assets';
+import HelperManager from '@skeleton-app/sdk-managers/helper';
+import LottieView from 'lottie-react-native';
 
 const SuccessScreen = React.memo(() => {
   const {} = ViewModel();
@@ -23,8 +23,13 @@ const SuccessScreen = React.memo(() => {
           source={ANIMATIONS.success}
           loop={false}
         />
-        <View {...HelperManager.setLocator(styles.SCREEN_TAG, `success-text`)} style={styles.dateOfBirthRow}>
-          <Text style={styles.successText}>{"🌺Registration complete! Welcome to your new e-wallet."}</Text>
+        <View
+          {...HelperManager.setLocator(styles.SCREEN_TAG, `success-text`)}
+          style={styles.dateOfBirthRow}
+        >
+          <Text style={styles.successText}>
+            {'🌺Registration complete! Welcome to your new e-wallet.'}
+          </Text>
         </View>
       </View>
     </ImageBackground>

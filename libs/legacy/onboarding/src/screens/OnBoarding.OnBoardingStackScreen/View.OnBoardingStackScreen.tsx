@@ -1,20 +1,25 @@
-import { TransitionPresets } from "@react-navigation/stack";
-import React from "react";
-import StepOneScreen from "../OnBoarding.StepOneScreen/View.StepOneScreen";
-import StepTwoScreen from "../OnBoarding.StepTwoScreen/View.StepTwoScreen";
-import { EOnBoardingScreenList } from "@models/RouterNamesModel";
-import ViewModel from "./ViewModel.OnBoardingStackScreen";
-import { Text, TouchableOpacity, View } from "react-native";
-import styles from "./Styles.OnBoardingStackScreen";
-import { ECurrentStep, OnBoardingStack, STEP_LIST } from "./Model.OnBoardingStackScreen";
-import HelperManager from "@sdk-managers/helper";
-import { COLORS, THEMES } from "@src/assets";
-import SuccessScreen from "../OnBoarding.SuccessScreen/View.SuccessScreen";
-import StepThreeScreen from "../OnBoarding.StepThreeScreen/View.StepThreeScreen";
+import { TransitionPresets } from '@react-navigation/stack';
+import React from 'react';
+import StepOneScreen from '../OnBoarding.StepOneScreen/View.StepOneScreen';
+import StepTwoScreen from '../OnBoarding.StepTwoScreen/View.StepTwoScreen';
+import { EOnBoardingScreenList } from '@skeleton-app/sdk-managers/models';
+import ViewModel from './ViewModel.OnBoardingStackScreen';
+import { Text, TouchableOpacity, View } from 'react-native';
+import styles from './Styles.OnBoardingStackScreen';
+import {
+  ECurrentStep,
+  OnBoardingStack,
+  STEP_LIST,
+} from './Model.OnBoardingStackScreen';
+import HelperManager from '@skeleton-app/sdk-managers/helper';
+import { COLORS, THEMES } from '@src/assets';
+import SuccessScreen from '../OnBoarding.SuccessScreen/View.SuccessScreen';
+import StepThreeScreen from '../OnBoarding.StepThreeScreen/View.StepThreeScreen';
 
 const OnBoardingStackScreen = React.memo(() => {
   const commonState = ViewModel();
-  const { canNext, currentStep, _handlePressBack, _handlePressNext } = commonState;
+  const { canNext, currentStep, _handlePressBack, _handlePressNext } =
+    commonState;
 
   const _renderHeader = React.useCallback(() => {
     const output: JSX.Element[] = [];
@@ -25,16 +30,26 @@ const OnBoardingStackScreen = React.memo(() => {
       output.push(
         <View
           key={step.name}
-          {...HelperManager.setLocator(styles.TEST_ID, step.name + "container")}
+          {...HelperManager.setLocator(styles.TEST_ID, step.name + 'container')}
           style={styles.stepNumberContainer}
         >
           <View style={styles.stepNumberWrapperStyle(showGreen)}>
-            <Text style={THEMES.commonRegularTextStyle(showGreen ? COLORS.white : COLORS.mainColor)}>{step.name}</Text>
+            <Text
+              style={THEMES.commonRegularTextStyle(
+                showGreen ? COLORS.white : COLORS.mainColor
+              )}
+            >
+              {step.name}
+            </Text>
           </View>
-          <Text style={THEMES.commonRegularTextStyle(showGreen ? COLORS.successColor : COLORS.backgroundColor)}>
+          <Text
+            style={THEMES.commonRegularTextStyle(
+              showGreen ? COLORS.successColor : COLORS.backgroundColor
+            )}
+          >
             {step.title}
           </Text>
-        </View>,
+        </View>
       );
     }
     return <View style={styles.stepsHeaderContainer}>{output}</View>;
@@ -96,7 +111,11 @@ const OnBoardingStackScreen = React.memo(() => {
         }}
       >
         {screenList.map((screenObject) => (
-          <OnBoardingStack.Screen key={screenObject.name} name={screenObject.name} options={screenObject.options}>
+          <OnBoardingStack.Screen
+            key={screenObject.name}
+            name={screenObject.name}
+            options={screenObject.options}
+          >
             {(props) => <screenObject.screen {...props} {...commonState} />}
           </OnBoardingStack.Screen>
         ))}
@@ -115,5 +134,5 @@ const OnBoardingStackScreen = React.memo(() => {
   );
 });
 
-OnBoardingStackScreen.displayName = "OnBoardingStackScreen";
+OnBoardingStackScreen.displayName = 'OnBoardingStackScreen';
 export default OnBoardingStackScreen;

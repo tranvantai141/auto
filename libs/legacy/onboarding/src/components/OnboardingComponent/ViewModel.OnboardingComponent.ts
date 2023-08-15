@@ -1,20 +1,31 @@
-import React from "react";
-import { ECurrentStep, IPurpose, IUserOnboardInformation, TValueTestArr } from "./Model.OnboardingComponent";
-import { Keyboard } from "react-native";
-import HelperManager from "@sdk-managers/helper";
-import RegOptions from "@models/RegModel";
-import styles from "./Styles.OnboardingComponent";
+import React from 'react';
+import {
+  ECurrentStep,
+  IPurpose,
+  IUserOnboardInformation,
+  TValueTestArr,
+} from './Model.OnboardingComponent';
+import { Keyboard } from 'react-native';
+import HelperManager from '@skeleton-app/sdk-managers/helper';
+import RegOptions from '@skeleton-app/sdk-managers/models';
+import styles from './Styles.OnboardingComponent';
 
 const ViewModel = () => {
   const [dateModalVisible, setDateModalVisible] = React.useState(false);
-  const [currentStep, setCurrentStep] = React.useState<ECurrentStep>(ECurrentStep.stepOne);
-  const [username, setUsername] = React.useState("");
-  const [idNumber, setIdNumber] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [phoneNumber, setPhoneNumber] = React.useState("");
-  const [selectedPurposes, setSelectedPurposes] = React.useState<Array<IPurpose>>([]);
-  const [selectedDate, setSelectedDate] = React.useState(styles.ASSUMED_ONLY_15_YEARS_OLD_TO_HAVE_E_BANK_ACCOUNT);
-  const [errorText, setErrorText] = React.useState("");
+  const [currentStep, setCurrentStep] = React.useState<ECurrentStep>(
+    ECurrentStep.stepOne
+  );
+  const [username, setUsername] = React.useState('');
+  const [idNumber, setIdNumber] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [phoneNumber, setPhoneNumber] = React.useState('');
+  const [selectedPurposes, setSelectedPurposes] = React.useState<
+    Array<IPurpose>
+  >([]);
+  const [selectedDate, setSelectedDate] = React.useState(
+    styles.ASSUMED_ONLY_15_YEARS_OLD_TO_HAVE_E_BANK_ACCOUNT
+  );
+  const [errorText, setErrorText] = React.useState('');
 
   const dismissKeyboard = React.useCallback(() => {
     Keyboard.dismiss();
@@ -26,11 +37,11 @@ const ViewModel = () => {
         setErrorText("You can't");
         return;
       }
-      setErrorText("");
+      setErrorText('');
       setSelectedDate(date);
       setDateModalVisible(false);
     },
-    [selectedDate],
+    [selectedDate]
   );
 
   const _handlePressBack = React.useCallback(() => {
@@ -47,7 +58,7 @@ const ViewModel = () => {
       dateOfBirth: new Date(selectedDate.getTime()),
       purposes: selectedPurposes,
     };
-    console.log("📢 [ViewModel.OnboardingComponent.ts:61]", userInformation);
+    console.log('📢 [ViewModel.OnboardingComponent.ts:61]', userInformation);
 
     setCurrentStep((prev) => prev + 1);
   }, [email, idNumber, phoneNumber, selectedDate, selectedPurposes, username]);
@@ -61,13 +72,16 @@ const ViewModel = () => {
         return [...prev, purpose];
       });
     },
-    [],
+    []
   );
 
   const canNext = React.useMemo(() => {
     const stepOneCondition: TValueTestArr = [
       { value: username, passConditions: [] },
-      { value: idNumber, passConditions: [RegOptions.assumed_vietnamese_id_length] },
+      {
+        value: idNumber,
+        passConditions: [RegOptions.assumed_vietnamese_id_length],
+      },
     ];
     const stepTwoCondition: TValueTestArr = [
       {
@@ -84,16 +98,34 @@ const ViewModel = () => {
       },
     ];
 
-    const stepThreeCondition: TValueTestArr = [{ value: selectedPurposes, passConditions: [] }];
+    const stepThreeCondition: TValueTestArr = [
+      { value: selectedPurposes, passConditions: [] },
+    ];
 
-    const valueObjectListEachStep = [stepOneCondition, stepTwoCondition, stepThreeCondition, []][currentStep - 1];
+    const valueObjectListEachStep = [
+      stepOneCondition,
+      stepTwoCondition,
+      stepThreeCondition,
+      [],
+    ][currentStep - 1];
     return valueObjectListEachStep.every((valueObject) => {
-      if (typeof valueObject.value === "string") {
-        return HelperManager.isValid(valueObject.value, valueObject.passConditions);
+      if (typeof valueObject.value === 'string') {
+        return HelperManager.isValid(
+          valueObject.value,
+          valueObject.passConditions
+        );
       }
       return !HelperManager.checkInvalidity(valueObject.value);
     });
-  }, [username, idNumber, email, phoneNumber, selectedDate, selectedPurposes, currentStep]);
+  }, [
+    username,
+    idNumber,
+    email,
+    phoneNumber,
+    selectedDate,
+    selectedPurposes,
+    currentStep,
+  ]);
 
   return {
     email,

@@ -35,7 +35,9 @@
       "@skeleton-app/sdk-managers/helper": [
         "libs/sdk-managers/helper/src/index.ts"
       ],
-      "@sdk-managers/*": ["libs/sdk-managers/*"],
+      "@skeleton-app/sdk-managers/models": [
+        "libs/sdk-managers/models/src/index.ts"
+      ],
       "@src/*": ["libs/legacy/onboarding/src/*"]
     }
   },

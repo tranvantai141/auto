@@ -1,5 +1,5 @@
-import { IAuthenticationModel } from "@models/AuthenticationModel";
-import { TypedUseSelectorHook, useSelector } from "react-redux";
+import { IAuthenticationModel } from '@skeleton-app/sdk-managers/models';
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 export type TRootState = {
   auth: IAuthenticationModel;

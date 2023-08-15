@@ -1,8 +1,11 @@
-import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
-import { EGuestScreenList } from "@models/RouterNamesModel";
-import { LoginScreen, OnBoardingStackScreen } from "@src/screens";
-import { IUserOnboardInformation } from "@src/screens/OnBoarding.OnBoardingStackScreen/Model.OnBoardingStackScreen";
-import React from "react";
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
+import { EGuestScreenList } from '@skeleton-app/sdk-managers/models';
+import { LoginScreen, OnBoardingStackScreen } from '@src/screens';
+import { IUserOnboardInformation } from '@src/screens/OnBoarding.OnBoardingStackScreen/Model.OnBoardingStackScreen';
+import React from 'react';
 
 export type TGuestStackParam = {
   [EGuestScreenList.LOGIN_SCREEN]: {
@@ -36,5 +39,5 @@ const GuestNavigation = React.memo(() => {
   );
 });
 
-GuestNavigation.displayName = "GuestNavigation";
+GuestNavigation.displayName = 'GuestNavigation';
 export default GuestNavigation;

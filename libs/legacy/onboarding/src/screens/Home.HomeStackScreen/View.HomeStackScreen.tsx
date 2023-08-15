@@ -1,8 +1,8 @@
-import React from "react";
-import { HomeStack } from "./Model.HomeStackScreen";
-import { EHomeScreenList } from "@models/RouterNamesModel";
-import { TransitionPresets } from "@react-navigation/stack";
-import HomeScreen from "../Home.HomeScreen/View.HomeScreen";
+import React from 'react';
+import { HomeStack } from './Model.HomeStackScreen';
+import { EHomeScreenList } from '@skeleton-app/sdk-managers/models';
+import { TransitionPresets } from '@react-navigation/stack';
+import HomeScreen from '../Home.HomeScreen/View.HomeScreen';
 
 const HomeStackScreen = React.memo(() => {
   return (

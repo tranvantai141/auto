@@ -1,6 +1,6 @@
-import RegOptions from "@models/RegModel";
-import parsePhoneNumber, { CountryCode, PhoneNumber } from "libphonenumber-js";
-import { Platform } from "react-native";
+import RegOptions from '@skeleton-app/sdk-managers/models';
+import parsePhoneNumber, { CountryCode, PhoneNumber } from 'libphonenumber-js';
+import { Platform } from 'react-native';
 
 interface IOmit {
   <T extends object, K extends [...(keyof T)[]]>(obj: T, ...keys: K): {
@@ -16,7 +16,7 @@ class HelperManager {
       param === undefined ||
       (param instanceof Object && Object.keys(param).length === 0) ||
       (Array.isArray(param) && param.length === 0) ||
-      param === "" ||
+      param === '' ||
       Number.isNaN(param)
     ) {
       return true;
@@ -43,14 +43,17 @@ class HelperManager {
     return map;
   };
 
-  public static pickFnc = <T, G extends keyof T>(object: T, keys: G[]): Pick<T, G> => {
+  public static pickFnc = <T, G extends keyof T>(
+    object: T,
+    keys: G[]
+  ): Pick<T, G> => {
     return Object.assign(
       {},
       ...keys.map((key) => {
         if (object && Object.prototype.hasOwnProperty.call(object, key)) {
           return { [key]: object[key] };
         }
-      }),
+      })
     );
   };
 
@@ -67,7 +70,10 @@ class HelperManager {
     return rest;
   };
 
-  public static removeDuplicates = <T extends Object>(originalArray: T[], prop: keyof T) => {
+  public static removeDuplicates = <T extends Object>(
+    originalArray: T[],
+    prop: keyof T
+  ) => {
     const newArray = [];
     const lookupObject: any = {};
 
@@ -97,7 +103,10 @@ class HelperManager {
     return RegOptions.email.exec(String(email)?.toLowerCase());
   };
 
-  public static isValidPhoneNumber = (input: string, country: CountryCode): boolean => {
+  public static isValidPhoneNumber = (
+    input: string,
+    country: CountryCode
+  ): boolean => {
     const phoneNumber = parsePhoneNumber(input, country);
     if (HelperManager.checkInvalidity(phoneNumber)) {
       return false;
@@ -108,7 +117,7 @@ class HelperManager {
 
   public static setLocator = (prefix: string, id: string) => {
     const testID = `${prefix}-${id}`;
-    if (Platform.OS === "ios") {
+    if (Platform.OS === 'ios') {
       return {
         testID,
         accessible: false,

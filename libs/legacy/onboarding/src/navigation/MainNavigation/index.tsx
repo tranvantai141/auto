@@ -1,13 +1,19 @@
-import { BottomTabNavigationOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
-import { COLORS } from "@src/assets";
-import ScaleManager from "@src/assets/ScaleManager";
-import FONTS from "@src/assets/fonts";
-import { ICON_LIST } from "@src/assets/icons";
-import { EGuestScreenList, EMainAppScreenList } from "@models/RouterNamesModel";
-import { HomeStackScreen } from "@src/screens";
-import React from "react";
-import { Platform, ViewStyle } from "react-native";
+import {
+  BottomTabNavigationOptions,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { COLORS } from '@src/assets';
+import ScaleManager from '@src/assets/ScaleManager';
+import FONTS from '@src/assets/fonts';
+import { ICON_LIST } from '@src/assets/icons';
+import {
+  EGuestScreenList,
+  EMainAppScreenList,
+} from '@skeleton-app/sdk-managers/models';
+import { HomeStackScreen } from '@src/screens';
+import React from 'react';
+import { Platform, ViewStyle } from 'react-native';
 
 export type TMainNavigation = {
   [EGuestScreenList.ONBOARDING_SCREEN]: undefined;
@@ -21,12 +27,12 @@ const MainNavigation = React.memo(() => {
   const defaultTabBarStyle: ViewStyle = React.useMemo(
     () => ({
       height: ScaleManager.BOTTOM_TAB_HEIGHT,
-      flexDirection: "row",
+      flexDirection: 'row',
       backgroundColor: COLORS.white,
       ...Platform.select({
         android: {
           elevation: 9,
-          borderTopColor: "#F6F6F7",
+          borderTopColor: '#F6F6F7',
           borderTopWidth: 2,
         },
         ios: {
@@ -40,7 +46,7 @@ const MainNavigation = React.memo(() => {
         },
       }),
     }),
-    [],
+    []
   );
 
   const tabBarList = React.useMemo(
@@ -48,11 +54,11 @@ const MainNavigation = React.memo(() => {
       {
         name: EMainAppScreenList.HOME_STACK_SCREEN,
         component: HomeStackScreen,
-        tabBarLabel: "home",
+        tabBarLabel: 'home',
         tabBarIcon: ICON_LIST.HomeIcon,
       },
     ],
-    [],
+    []
   );
 
   const screenOption: BottomTabNavigationOptions = React.useMemo(
@@ -61,16 +67,16 @@ const MainNavigation = React.memo(() => {
       tabBarActiveTintColor: COLORS.mainColor,
       tabBarItemStyle: {
         flex: 1,
-        alignItems: "center",
+        alignItems: 'center',
         paddingBottom: ScaleManager.scaleSizeWidth(8),
       },
       tabBarLabelStyle: {
         fontSize: ScaleManager.scaleSizeWidth(12),
-        textAlign: "center",
+        textAlign: 'center',
         fontFamily: FONTS.interRegular,
       },
     }),
-    [],
+    []
   );
 
   return (
@@ -84,10 +90,10 @@ const MainNavigation = React.memo(() => {
             options={({ route }) =>
               ({
                 tabBarStyle: ((route) => {
-                  const routeName = getFocusedRouteNameFromRoute(route) ?? "";
+                  const routeName = getFocusedRouteNameFromRoute(route) ?? '';
                   if (NOT_SHOW_BOTTOM_TAB_SCREEN_LIST.includes(routeName)) {
                     return {
-                      display: "none",
+                      display: 'none',
                     };
                   }
                   return defaultTabBarStyle;
@@ -103,5 +109,5 @@ const MainNavigation = React.memo(() => {
   );
 });
 
-MainNavigation.displayName = "MainNavigation";
+MainNavigation.displayName = 'MainNavigation';
 export default MainNavigation;

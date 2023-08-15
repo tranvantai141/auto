@@ -1,5 +1,7 @@
-import LanguagesManager, { EAvailableLanguages } from "@src/languages/LanguagesManager";
-import { ELanguageOptions } from "@models/LanguageOptionsModel";
+import LanguagesManager, {
+  EAvailableLanguages,
+} from '@src/languages/LanguagesManager';
+import { ELanguageOptions } from '@skeleton-app/sdk-managers/models';
 
 const useTranslate = () => {
   const languageInstance = new LanguagesManager();
@@ -7,8 +9,8 @@ const useTranslate = () => {
   const translate = (
     scope: ELanguageOptions,
     options: I18n.TranslateOptions = {
-      defaultValue: "ERROR TRANSLATION",
-    },
+      defaultValue: 'ERROR TRANSLATION',
+    }
   ) => languageInstance.configuredI18.t(scope, options);
 
   return translate;

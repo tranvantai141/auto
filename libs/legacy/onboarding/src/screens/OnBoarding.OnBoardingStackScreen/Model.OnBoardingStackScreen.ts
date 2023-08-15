@@ -1,6 +1,6 @@
-import { EOnBoardingScreenList } from "@models/RouterNamesModel";
-import ViewModel from "./ViewModel.OnBoardingStackScreen";
-import { createStackNavigator } from "@react-navigation/stack";
+import { EOnBoardingScreenList } from '@skeleton-app/sdk-managers/models';
+import ViewModel from './ViewModel.OnBoardingStackScreen';
+import { createStackNavigator } from '@react-navigation/stack';
 
 export type TOnBoardingStack = {
   [EOnBoardingScreenList.ONBOARDING_STEP_ONE_SCREEN]: undefined;
@@ -56,19 +56,19 @@ export type TValueTestArr = Array<IValuePassCondition>;
 
 export const STEP_LIST: Array<IStep> = [
   {
-    name: "1",
+    name: '1',
     value: ECurrentStep.stepOne,
-    title: "Basic Info",
+    title: 'Basic Info',
   },
   {
-    name: "2",
+    name: '2',
     value: ECurrentStep.stepTwo,
-    title: "Additional Info",
+    title: 'Additional Info',
   },
   {
-    name: "3",
+    name: '3',
     value: ECurrentStep.stepThree,
-    title: "Purposes",
+    title: 'Purposes',
   },
 ];
 

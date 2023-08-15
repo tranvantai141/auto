@@ -1,5 +1,7 @@
 //this is the model
-import { IRoute } from "@models/CommonModel";
-import { IUserOnboardInformation } from "../OnBoarding.OnBoardingStackScreen/Model.OnBoardingStackScreen";
+import { IRoute } from '@skeleton-app/sdk-managers/models';
+import { IUserOnboardInformation } from '../OnBoarding.OnBoardingStackScreen/Model.OnBoardingStackScreen';
 
-export type TLoginScreenProps = IRoute<{ userInformation: IUserOnboardInformation }>;
+export type TLoginScreenProps = IRoute<{
+  userInformation: IUserOnboardInformation;
+}>;

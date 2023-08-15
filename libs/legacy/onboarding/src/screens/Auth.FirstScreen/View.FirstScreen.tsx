@@ -1,10 +1,10 @@
-import React from "react";
-import { ImageBackground } from "react-native";
-import styles from "./Styles.FirstScreen";
-import ViewModel from "./ViewModel.FirstScreen";
-import HelperManager from "@sdk-managers/helper";
-import { IMAGES } from "@src/assets";
-import { OnboardingComponent } from "@src/components";
+import React from 'react';
+import { ImageBackground } from 'react-native';
+import styles from './Styles.FirstScreen';
+import ViewModel from './ViewModel.FirstScreen';
+import HelperManager from '@skeleton-app/sdk-managers/helper';
+import { IMAGES } from '@src/assets';
+import { OnboardingComponent } from '@src/components';
 
 const FirstScreen = React.memo(() => {
   const {} = ViewModel();

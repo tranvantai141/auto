@@ -7,7 +7,7 @@ import { StatusBar } from 'react-native';
 import { navigationRef } from '@helper/NavigationManager';
 import GuestNavigation from './GuestNavigation';
 import { InternetStatusComponent, NetworkLogComponent } from '@src/components';
-import { ROUTES } from '@models/RouterNamesModel';
+import { ROUTES } from '@skeleton-app/sdk-managers/models';
 import SplashScreen from 'react-native-splash-screen';
 import { useAppSelector } from '@src/hooks';
 import MainNavigation from './MainNavigation';

@@ -1,15 +1,21 @@
-import React from "react";
-import { ImageBackground, Text, TouchableWithoutFeedback, View } from "react-native";
-import styles from "./Styles.StepOneScreen";
-import ViewModel from "./ViewModel.StepOneScreen";
-import { IMAGES, THEMES } from "@src/assets";
-import HelperManager from "@sdk-managers/helper";
-import { TStepOneScreenProps } from "./Model.StepOneScreen";
-import { InputComponent } from "@src/components";
-import RegOptions from "@models/RegModel";
+import React from 'react';
+import {
+  ImageBackground,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
+import styles from './Styles.StepOneScreen';
+import ViewModel from './ViewModel.StepOneScreen';
+import { IMAGES, THEMES } from '@src/assets';
+import HelperManager from '@skeleton-app/sdk-managers/helper';
+import { TStepOneScreenProps } from './Model.StepOneScreen';
+import { InputComponent } from '@src/components';
+import RegOptions from '@skeleton-app/sdk-managers/models';
 
 const StepOneScreen: React.FC<TStepOneScreenProps> = React.memo((props) => {
-  const { idNumber, username, setIdNumber, setUsername, dismissKeyboard } = ViewModel(props);
+  const { idNumber, username, setIdNumber, setUsername, dismissKeyboard } =
+    ViewModel(props);
 
   return (
     <ImageBackground
@@ -20,14 +26,14 @@ const StepOneScreen: React.FC<TStepOneScreenProps> = React.memo((props) => {
     >
       <TouchableWithoutFeedback onPress={dismissKeyboard}>
         <View style={styles.bodyContainer}>
-          <Text style={THEMES.title}>{"Full-name"}</Text>
+          <Text style={THEMES.title}>{'Full-name'}</Text>
           <InputComponent
-            testId={"username-textinput"}
+            testId={'username-textinput'}
             {...{
               value: username,
               setValue: setUsername,
-              placeHolder: "Enter full-name",
-              errorMessageText: "Invalid name",
+              placeHolder: 'Enter full-name',
+              errorMessageText: 'Invalid name',
               onBlur: (trueCallBack, falseCallback) => () => {
                 const passConditions = [] as Array<RegExp>;
                 if (!HelperManager.isValid(username, passConditions)) {
@@ -39,17 +45,19 @@ const StepOneScreen: React.FC<TStepOneScreenProps> = React.memo((props) => {
             }}
           />
 
-          <Text style={THEMES.title}>{"ID number"}</Text>
+          <Text style={THEMES.title}>{'ID number'}</Text>
           <InputComponent
-            testId={"id-textinput"}
+            testId={'id-textinput'}
             {...{
               value: idNumber,
               setValue: setIdNumber,
-              placeHolder: "Enter 12 digits ID number",
-              keyboardType: "decimal-pad",
-              errorMessageText: "ID contains 12 digits",
+              placeHolder: 'Enter 12 digits ID number',
+              keyboardType: 'decimal-pad',
+              errorMessageText: 'ID contains 12 digits',
               onBlur: (trueCallBack, falseCallback) => () => {
-                const passConditions = [RegOptions.assumed_vietnamese_id_length] as Array<RegExp>;
+                const passConditions = [
+                  RegOptions.assumed_vietnamese_id_length,
+                ] as Array<RegExp>;
                 if (!HelperManager.isValid(idNumber, passConditions)) {
                   falseCallback();
                 } else {

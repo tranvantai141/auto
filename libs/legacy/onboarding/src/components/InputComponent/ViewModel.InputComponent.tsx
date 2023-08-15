@@ -1,21 +1,21 @@
-import { TextInputProps, ViewStyle } from "react-native";
-import React from "react";
-import { COLORS } from "@src/assets";
-import { IInputComponentProps } from "./Model.InputComponent";
-import HelperManager from "@sdk-managers/helper";
-import styles from "./Styles.InputComponent";
+import { TextInputProps, ViewStyle } from 'react-native';
+import React from 'react';
+import { COLORS } from '@src/assets';
+import { IInputComponentProps } from './Model.InputComponent';
+import HelperManager from '@skeleton-app/sdk-managers/helper';
+import styles from './Styles.InputComponent';
 
 const ViewModel = (props: IInputComponentProps) => {
   const {
     setValue,
-    keyboardType = "default",
+    keyboardType = 'default',
     customTextInputStyle,
-    errorMessageText = "",
+    errorMessageText = '',
     onBlur,
     showError,
     customTextChange,
   } = props;
-  const [errorMessage, setErrorMessage] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   const _handleOnchangeText = React.useCallback(
     (string: string) => {
@@ -25,7 +25,7 @@ const ViewModel = (props: IInputComponentProps) => {
       }
       setValue(string);
     },
-    [setValue, customTextChange],
+    [setValue, customTextChange]
   );
 
   let textInputStyle = { ...styles.textInput };
@@ -33,7 +33,10 @@ const ViewModel = (props: IInputComponentProps) => {
     textInputStyle = { ...textInputStyle, ...customTextInputStyle };
   }
 
-  const textInputProps: TextInputProps = React.useMemo(() => ({ ...(props as any) }), [props]);
+  const textInputProps: TextInputProps = React.useMemo(
+    () => ({ ...(props as any) }),
+    [props]
+  );
 
   if (errorMessage) {
     (textInputStyle as ViewStyle).borderWidth = 1;
@@ -44,22 +47,25 @@ const ViewModel = (props: IInputComponentProps) => {
     (errMess: string) => () => {
       setErrorMessage(errMess);
     },
-    [],
+    []
   );
 
-  if (keyboardType === "email-address") {
-    textInputProps.autoCapitalize = "none";
+  if (keyboardType === 'email-address') {
+    textInputProps.autoCapitalize = 'none';
   }
 
   if (onBlur) {
-    textInputProps.onBlur = onBlur(_handleCloseErrorMessage(""), _handleCloseErrorMessage(errorMessageText));
+    textInputProps.onBlur = onBlur(
+      _handleCloseErrorMessage(''),
+      _handleCloseErrorMessage(errorMessageText)
+    );
   }
 
   React.useEffect(() => {
     if (showError) {
       setErrorMessage(errorMessageText);
     } else {
-      setErrorMessage("");
+      setErrorMessage('');
     }
   }, [showError, errorMessageText]);
 
